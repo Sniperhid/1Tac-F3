@@ -41,8 +41,7 @@ _halo = _this select 7;
         sleep 5;
         _unitName = format["respawnedUnit%1",(_this select 0)];
         waitUntil{sleep 3;!isNil _unitName};
-        _unit = 0;
-        call compile format["_unit = %1 ;",_unitName];
+        _unit = missionNamespace getVariable[_unitName,objNull];
         while{true} do {
             if (isNull _unit) exitWith{};
             if (!isPlayer _unit) exitWith {

@@ -288,30 +288,36 @@ fn_toggleSpectator = {
 };
 
 fn_respawnMap_onMouseButtonDown = {
+    private["_x","_y","_type","_i","_fullmapWindow","_var","_pos","_continue"];
     _fullmapWindow = _this select 0;
     _type = _this select 1;
     _x = _this select 2;
     _y = _this select 3;
-    
+	
     if (_type == 0) then { // left click
         _i = 1;
-        while {true} do {
-            _testStr = format["f3_respawnPoint%1",_i];
-            if (isNil _testStr) exitWith {};
-            _var = [0,0,0];
-            call compile format ["_var = %1",_testStr];
-            _pos = (position _var);
-            if (([_x,_y] distance (_fullmapWindow posWorldToScreen _pos)) < 0.1) then {
-                f3_respawnMousePos = _i;
+        _continue = true;
+        while {_continue} do {
+            _var = missionNamespace getVariable[format["f3_respawnPoint%1",_i],objNull];
+            if (isNull _var) then {
+				_continue = false;
             } else {
-                f3_respawnMousePos = _fullmapWindow posScreenToWorld [_x,_y];
+                _pos = (position _var);
+                if (([_x,_y] distance (_fullmapWindow posWorldToScreen _pos)) < 0.1) then {
+                    f3_respawnMousePos = _i;
+					_continue = false;
+                };
+                _i = _i + 1;
             };
         };
+		if (!_continue) then {
+			f3_respawnMousePos = _fullmapWindow posScreenToWorld [_x,_y];
+		};
     };
-    
 };
 
 fn_respawnMap_keyUp = {
+    private["_type","_halo","_position","_var"];
     _type = _this select 1;
     //28 = enter
     if (_type == 28) then {
@@ -327,12 +333,12 @@ fn_respawnMap_keyUp = {
                 _position = f3_respawnMousePos;  
                 _halo = f3_respawnHalo;
             } else {
-                _testStr = format["f3_respawnPoint%1",f3_respawnMousePos];
-                if (!isNil _testStr) then {
-                    call compile format ["_position = position %1",_testStr];
+                _var = missionNamespace getVariable[format["f3_respawnPoint%1",f3_respawnMousePos],objNull];
+                if (!isNull _var) then {
+                    _position = position _var;
                 };
             };
-            if (_halo ) then {
+            if (_halo) then {
                 hint "Group created as HALO group.";
             } else {
                 hint "Group created on ground.";

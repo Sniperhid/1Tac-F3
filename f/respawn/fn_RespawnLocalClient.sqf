@@ -47,7 +47,7 @@ _class createUnit [_position,_dummyGroup,_init,0.5,_rankName];
 // Wait till the unit is created
 waitUntil{!isNil _unitName};
 
-call compile format ["localRespawnedUnit = %1 ",_unitName];
+localRespawnedUnit = missionNamespace getVariable [_unitName,objNull];
 
 // Exit Spectator
 [] call F_fnc_ForceExit;
@@ -105,7 +105,8 @@ if (_halo) then {
  _groupVarName = format ["GrpRespawn_%1",_groupNum];
 if (_leader) then {
     //Broadcast group var to everyone so people can join.
-    call compile format["%1 = _dummyGroup;",_groupVarName];
+    missionNamespace setVariable[_groupVarName,_dummyGroup];
+    //call compile format["%1 = _dummyGroup;",_groupVarName];
     publicVariable _groupVarName;
     
 } else {
@@ -115,7 +116,7 @@ if (_leader) then {
         // Wait for group exist.
         sleep 1; // Ensure that everything is in Sync.
         waitUntil{!isNil _groupVarName};
-        call compile format["[player] joinSilent %1;",_groupVarName];
+        [player] joinSilent (missionNamespace getVariable[_groupVarName,grpNull]);
    };
 };
 

@@ -37,13 +37,10 @@ if (isNil "f_cam_blufor_color") then {
 
 ///f3_respawnPoint1
 _mousePos = f3_respawnMousePos;
-_format = "f3_respawnPoint";
 _i = 1;
 while {true} do {
-    _testStr = format["%1%2",_format,_i];
-    if (isNil _testStr) exitWith {};
-    _var = [0,0,0];
-    call compile format ["_var = %1",_testStr];
+    _var = missionNamespace getVariable[format["f3_respawnPoint%1",_i],objNull];
+    if (isNull _var) exitWith {};
     _pos = (position _var);
     
     if (_i isEqualTo _mousePos) then {
