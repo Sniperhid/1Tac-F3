@@ -4,11 +4,11 @@
 
 // RUN ONLY ON THE SERVER
 // This function does never need to run on a client
-if !(isServer) exitWith {};
+//if !(isServer) exitWith {};
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_timeOfDay","_year","_month","_day","_hour","_minute","_transition"];
+private ["_timeOfDay","_year","_month","_day","_hour","_minute"]; //,"_transition"
 
 // ====================================================================================
 
@@ -22,9 +22,9 @@ _timeOfDay = _this select 0;
 // SET DEFAULT VALUES
 // The default values that together form the in-game date are set.
 
-_year = 2030;
-_month = 6;
-_day = 16;
+_day = date select 2;
+_month = date select 1;
+_year = date select 0;
 _hour = 0;
 _minute = 0;
 
@@ -90,7 +90,7 @@ switch (_timeOfDay) do
 // CHECK IF TRANSITION IS NEEDED
 // If we're changing the date in-mission, set the BIS function to display a smooth transition
 // We check the varios dates to make sure we stick with a smart value
-
+/*
 _transition = false;
 if (time > 0) then {
 	_transition = true;
@@ -101,7 +101,7 @@ if (time > 0) then {
 	if (date select 3 > _hour) then {_day = _day + 1};
 	if (_day > 31) then {_day = 1; _month = _month + 1};
 	if (_month > 12) then {_month = 1; _year = _year + 1};
-};
+};*/
 
 // ====================================================================================
 
@@ -111,9 +111,9 @@ _date = [_year,_month,_day,_hour,_minute];
 
 // ====================================================================================
 
-// SET DATE FOR ALL CLIENTS
-// Using a BIS function we share the new date across the network
-[_date,true,_transition] call BIS_fnc_setDate;
+// SET DATE 
+
+setDate _date;
 
 // ====================================================================================
 
