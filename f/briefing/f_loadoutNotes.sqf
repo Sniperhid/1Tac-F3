@@ -113,10 +113,10 @@ if (count _weps > 0) then {
 
 		{
 			if (typeName _x != typeName [] && {_x != ""}) then {
-                _icon = getText (configFile >> "CfgWeapons" >> _x >> "displayname");
+                _icon = getText(configFile >> "CfgWeapons" >> _x >> "picture");
                 if (_icon find ".paa" == -1) then { _icon = _icon + ".paa"};
-				_text = _text + format["<br/> |- %1",_icon];
-				_visText = _visText + "<img image='" + getText(configFile >> "CfgWeapons" >> _x >> "picture") + "' height=48 />";
+				_text = _text + format["<br/> |- %1",getText (configFile >> "CfgWeapons" >> _x >> "displayname")];
+				_visText = _visText + "<img image='" + _icon + "' height=48 />";
 			};
 		} forEach _attachments;
 		_visText = _visText;

@@ -76,20 +76,19 @@ if (_ourPresetIndex == -1) then { systemChat "[Warning] F3-ACRE no preset assign
 _assignedRadioChannels = []; { _assignedRadioChannels pushBack [_x,-1]; } forEach _radiosToGive; // 'ClassName','Chan num'
 _usedRadioIndexs = []; // Used for tracking colours, so that we know which ones we have already used.
 _symbolForPresent = "<font color='#ff4747'>*</font>";
-_ltext = format["<font size='11'>Legend: %1 is used to denote a channel you are suppose to be on.<br/>The colours are used to match your radios with channels (your radios will be set to these channels), white radios will remain on channel 1.</font><br/><br/>",_symbolForPresent];
+_ltext = format["<font size='11'>Legend: %1 is used to denote a channel you are suppose to be on.<br/>The colours are used to match your radios with channels (your radios will be set to these channels), white radios will remain on channel 1.<br/>I can speak any languages that are <font color='#ff4747'>highlighted</font>.</font><br/><br/>",_symbolForPresent];
+
+// BRIEFING: LANGUAGES
 _ltext = _ltext + "<font size='16'>BABEL - LANGUAGES</font><br/>Languages spoken in this area:<br/>";
 {
   if (_forEachIndex != 0) then {_ltext = _ltext + ", "; };
-  _ltext = _ltext + format["%1",_x select 1];
+  if ((_x select 0) in _languagesToSpeak) then {
+	_ltext = _ltext + format["<font color='#ff4747'>%1</font>",_x select 1];
+  } else {
+	_ltext = _ltext + format["%1",_x select 1];
+  };
 } forEach f_radios_settings_acre2_languages;
-_ltext = _ltext + "<br/><br/>I can speak and understand:<br/>";
-{
-    if (_forEachIndex != 0) then {_ltext = _ltext + ", "; };
-    _languageType = _x;
-    {
-        if (_x select 0 == _languageType) exitWith { _ltext = _ltext + format["%1",(_x select 1)];};
-    } forEach (f_radios_settings_acre2_languages);  
-} forEach _languagesToSpeak;
+
 
 _text = "<br/><font size='16'>RADIO CHANNEL LISTING</font>";
 {
