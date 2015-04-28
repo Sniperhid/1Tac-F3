@@ -28,7 +28,7 @@ if (_drawMe) then {
 
 	if (f_groupMarkers_pboLoaded) then {
 		_gTexture = switch (_rootData select 7) do {
-		  case 0:{"\f3_groupmarkers\textures\modif_o.paa"}; //"\A3\ui_f\data\map\markers\nato\group_0.paa"}; // fireteam
+		  case 0:{"\f3_groupmarkers\textures\modif_o.paa"};  // fireteam
 		  case 1:{"\f3_groupmarkers\textures\modif_dot.paa"}; // squad/section
 		  case 2:{"\f3_groupmarkers\textures\modif_2dot.paa"}; // 2 squads/half platoon
 		  case 3:{"\f3_groupmarkers\textures\modif_3dot.paa"}; // platoon
@@ -36,7 +36,7 @@ if (_drawMe) then {
 		};
 	} else {
 		_gTexture = switch (_rootData select 7) do {
-		  case 0:{"\A3\ui_f\data\map\markers\nato\group_0.paa"}; //"\A3\ui_f\data\map\markers\nato\group_0.paa"}; // fireteam
+		  case 0:{"\A3\ui_f\data\map\markers\nato\group_0.paa"}; // fireteam
 		  case 1:{"\A3\ui_f\data\map\markers\nato\group_1.paa"}; // squad/section
 		  case 2:{"\A3\ui_f\data\map\markers\nato\group_2.paa"}; // 2 squads/half platoon
 		  case 3:{"\A3\ui_f\data\map\markers\nato\group_3.paa"}; // platoon

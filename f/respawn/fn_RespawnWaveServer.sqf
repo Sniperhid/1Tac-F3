@@ -83,7 +83,7 @@ f_serverRespawnGroupCounter = f_serverRespawnGroupCounter + 1;
             if (isNil (_entry select 0)) then {
                 _toRemove = true;   
             } else {
-                _entity = call compile format ["%1",_entry select 0];
+                _entity = missionNamespace getVariable [(_entry select 0),objNull];
                 if (isNull _entity) then {
                     _toRemove = true;   
                 } else {
@@ -91,7 +91,7 @@ f_serverRespawnGroupCounter = f_serverRespawnGroupCounter + 1;
                         _toRemove = false;
                         //FUTURE consider removing group if the leader is dead.
                     } else {
-                      _toRemove = true;  
+                        _toRemove = true;  
                     };
                 };
             };

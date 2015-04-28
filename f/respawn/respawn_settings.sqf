@@ -110,30 +110,30 @@ fn_respawnSelectClass = {
 ///////////// MARKER SETTINGS
 
 // Possible marker icons
-// Format: Texture path, GUI marker display name.
+// Format: Texture path, GUI marker display name, name for optional pbo
 
 respawnMenuMarkers = [
-    ["\A3\ui_f\data\map\markers\nato\b_hq.paa","HQ"],
-    ["\A3\ui_f\data\map\markers\nato\b_inf.paa","Infantry"],
-    ["\A3\ui_f\data\map\markers\nato\b_support.paa","MG Team"],
-    ["\A3\ui_f\data\map\markers\nato\b_motor_inf.paa","Missle (AT/AA) Team"],
-    ["\A3\ui_f\data\map\markers\nato\b_recon.paa","Sniper"],
-    ["\A3\ui_f\data\map\markers\nato\b_mortar.paa","Mortar Team"],
-    ["\A3\ui_f\data\map\markers\nato\b_motor_inf.paa","APC/IFV"],
-    ["\A3\ui_f\data\map\markers\nato\b_armor.paa","Armour"],
-    ["\A3\ui_f\data\map\markers\nato\b_air.paa","Heli"],
-    ["\A3\ui_f\data\map\markers\nato\b_plane.paa","Airplane/Jet"]   
+    ["\A3\ui_f\data\map\markers\nato\b_hq.paa","HQ","hq"],
+    ["\A3\ui_f\data\map\markers\nato\b_inf.paa","Infantry","inf"],
+    ["\A3\ui_f\data\map\markers\nato\b_support.paa","MG Team","mg_m"],
+    ["\A3\ui_f\data\map\markers\nato\b_motor_inf.paa","Missle (AT/AA) Team","antitank"],
+    ["\A3\ui_f\data\map\markers\nato\b_recon.paa","Sniper","recon"],
+    ["\A3\ui_f\data\map\markers\nato\b_mortar.paa","Mortar Team","mortar"],
+    ["\A3\ui_f\data\map\markers\nato\b_motor_inf.paa","APC/IFV","inf_mech"],
+    ["\A3\ui_f\data\map\markers\nato\b_armor.paa","Armour","armor"],
+    ["\A3\ui_f\data\map\markers\nato\b_air.paa","Heli","helo_cargo"],
+    ["\A3\ui_f\data\map\markers\nato\b_plane.paa","Airplane/Jet","fixedwing"]   
 ];
 
 // Respawn Marker Colours
-// Format [r,g,b,alpha], GUI display name.
+// Format [r,g,b,alpha], GUI display name, colour name for optional pbo
 
 respawnMenuMarkerColours = [
-    [[1,0,0,1],"Red"],
-    [[0,0,1,1],"Blue"],
-    [[0,1,0,1],"Green"],
-    [[1,0.647,0,1],"Orange"],
-    [[1,1,0,1],"Yellow"],
-    [[0,0,0,1],"Black"],
-    [[1,1,1,1],"White"]
+    [[1,0,0,1],"Red","red"],
+    [[0,0,1,1],"Blue","blue"],
+    [[0,1,0,1],"Green","green"],
+    [[1,0.647,0,1],"Orange","orange"],
+    [[1,1,0,1],"Yellow","yellow"],
+    [[0,0,0,1],"Black","yellow"],
+    [[1,1,1,1],"White","yellow"]
 ];

@@ -133,6 +133,8 @@ fn_update_aliveListBox = {
             default { };
         };
         _groupListBox lbSetColor [_i, [1, 1, 1, 1]];
+        _groupListBox lbSetPictureColor [_i, [1,1,1,0.7]];
+        _groupListBox lbSetPictureColorSelected [_i,[1,1,1,1]];
         _i = _i + 1;
     } forEach selectedRespawnGroup;
 };
@@ -288,7 +290,7 @@ fn_toggleSpectator = {
 };
 
 fn_respawnMap_onMouseButtonDown = {
-    private["_x","_y","_type","_i","_fullmapWindow","_var","_pos","_continue"];
+    private["_x","_y","_type","_i","_fullmapWindow","_var","_pos","_found"];
     _fullmapWindow = _this select 0;
     _type = _this select 1;
     _x = _this select 2;
@@ -296,21 +298,18 @@ fn_respawnMap_onMouseButtonDown = {
 	
     if (_type == 0) then { // left click
         _i = 1;
-        _continue = true;
-        while {_continue} do {
-            _var = missionNamespace getVariable[format["f3_respawnPoint%1",_i],objNull];
-            if (isNull _var) then {
-				_continue = false;
-            } else {
-                _pos = (position _var);
-                if (([_x,_y] distance (_fullmapWindow posWorldToScreen _pos)) < 0.1) then {
-                    f3_respawnMousePos = _i;
-					_continue = false;
-                };
-                _i = _i + 1;
+        _found = false;
+        _var = missionNamespace getVariable[format["f3_respawnPoint%1",_i],objNull];
+        while {!(isNull _var)} do {
+            _pos = (position _var);
+            if (([_x,_y] distance (_fullmapWindow posWorldToScreen _pos)) < 0.1) then {
+                f3_respawnMousePos = _i;
+                _found = true;
             };
+            _i = _i + 1;
+            _var = missionNamespace getVariable[format["f3_respawnPoint%1",_i],objNull];
         };
-		if (!_continue) then {
+		if (!_found) then {
 			f3_respawnMousePos = _fullmapWindow posScreenToWorld [_x,_y];
 		};
     };
