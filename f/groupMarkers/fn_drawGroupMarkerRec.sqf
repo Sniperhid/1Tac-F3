@@ -46,7 +46,7 @@ if (_drawMe) then {
     _textSize = 0.035;
     if (_minSiblingDist < 0.0014) then {_textSize = 0}; //0.0014
 
-	_mapControl drawIcon["#(argb,8,8,3)color(0,0,0,0)",[1,1,1,1],_pos,(_size select 0),(_size select 1),0,_text,2,_textSize,'PuristaSemibold'];//PuristaBold
+	_mapControl drawIcon["#(argb,8,8,3)color(0,0,0,0)",[1,1,1,1],_pos,(_size select 0),(_size select 1),0,_text,2,_textSize,'PuristaSemibold','right'];//PuristaBold
 	_mapControl drawIcon[_texture,_color,_pos,(_size select 0),(_size select 1),0];
 	
     if (_gTexture != "") then {
