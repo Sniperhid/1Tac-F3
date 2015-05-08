@@ -91,12 +91,6 @@ f_acre2_radioBaseNameToSettingsIdx = {
 
             [_radioName, (_radioSettingEntry select 5), _presetName] call acre_api_fnc_copyPreset; // tweak
 
-			_nameField = switch (_radioName) do {
-				case "ACRE_PRC152": {"description"};
-				case "ACRE_PRC148": {"label"};
-				case "ACRE_PRC117F": {"name"};
-				default {""};
-			};
 			_channelCount = switch (_radioName) do {
 				case "ACRE_PRC152": {100};
 				case "ACRE_PRC148": {32};
@@ -115,9 +109,8 @@ f_acre2_radioBaseNameToSettingsIdx = {
 						_frequency = [_radioSettingIndex,(count f_radios_settings_acre2_radioChannels),(_channelEntry select 5)] call f_acre2_radios_calcFreq; // Use 'special preset' and 'special channel' number.
 					};
 				};
-				if (_nameField != "") then {
-					[_radioName, _presetName, _i, _nameField, _channelName] call acre_api_fnc_setPresetChannelField;
-				};
+				
+                [_radioName, _presetName, _i, "label", _channelName] call acre_api_fnc_setPresetChannelField;
 				[_radioName, _presetName, _i, "frequencyTX", _frequency] call acre_api_fnc_setPresetChannelField;
 				[_radioName, _presetName, _i, "frequencyRX", _frequency] call acre_api_fnc_setPresetChannelField;
 			};

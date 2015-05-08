@@ -19,8 +19,11 @@ if (isServer) then {
         } else {
             {
                 _paramName =(configName ((missionConfigFile >> "Params") select _forEachIndex));
-                missionNamespace setVariable[_paramName,_x];
-                publicVariable _paramName;
+                // if variable exists and it is different to what it previously was. Save a 2nd publicVariabling.
+                if ((!isNil _paramName) and (!(missionNamespace getVariable[_paramName,0] == _x))) then {
+                    missionNamespace setVariable[_paramName,_x];
+                    publicVariable _paramName;
+                };
             } forEach paramsArray;
             f_ParamsArray_complete = true;
         };
