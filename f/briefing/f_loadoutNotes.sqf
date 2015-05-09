@@ -3,6 +3,7 @@
 // ====================================================================================
 
 // DECLARE VARIABLES AND FUNCTIONS
+if (!hasInterface) exitWith {};
 
 private ["_text","_stuff","_weps","_items","_fnc_wepMags","_wepMags","_magArr","_s","_mags","_bp","_maxload","_icon"];
 
@@ -42,13 +43,6 @@ _fnc_wepMags = {
   			_text = _text + "]";
   		};
 };
-
-/*
-						_visText = _visText + "<img image='" + getText(configFile >> "CfgMagazines" >> _x select 0  >> "picture") + "' height=48 />";
-					if ((_x select 1) > 1) then {
-						_visText = _visText + format[" x%1",(_x select 1)];
-					};
-					*/
 
 // ====================================================================================
 

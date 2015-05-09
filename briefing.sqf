@@ -1,6 +1,7 @@
 // F3 - Briefing
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
+if (!hasInterface) exitWith {};
 
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
 
@@ -155,4 +156,4 @@ if (_unitfaction == "") exitwith {
 // ERROR CHECKING
 // If the faction of the unit cannot be defined, the script exits with an error.
 
-player globalchat format ["DEBUG (briefing.sqf): Faction %1 is not defined.",_unitfaction];
+player globalChat format ["DEBUG (briefing.sqf): Faction %1 is not defined.",_unitfaction];

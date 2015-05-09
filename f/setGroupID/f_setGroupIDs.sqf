@@ -341,6 +341,13 @@ _groups = [
 
 // ====================================================================================
 
-// SET GROUP IDS
-// Execute setGroupID Function for all factions
-{_x call f_fnc_setGroupID} forEach _groups;
+// SET THE GROUP IDS
+
+private ["_grp"];
+{
+    // Check first if the group exists
+    _grp = missionNamespace getVariable[(_x select 0),grpNull];
+    if(!isNull _grp) then {
+        _grp setGroupId [(_x select 1),"GroupColor0"];
+    };
+} forEach _groups;
