@@ -89,34 +89,35 @@ f_radios_settings_acre2_radioChannels = [
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m"])}]             
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]             
 	],
 	[   // 1
 		{side _unit == east},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m"])}]                 
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]                 
 	],
 	[   // 2
 		{side _unit == resistance}, 
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m"])}]          
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]          
 	],
 	[   // 3
 		{toLower (faction _unit) == "blu_g_f"},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m"])}]           
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]           
 	]
 ];
 
+//Special channels are for channels that go across multiple presets, to allow communications between different factions/teams.
 f_radios_settings_acre2_special_radioChannels = [
-	// Presets, channel should be accesible in, DETAILS, CONDITIONS OF BEING IN IT.
-	[[0,3],"NATO n FIA","FIA and NATO Liason Net","ACRE_PRC148",{_typeOfUnit in ["co"]}]
+    // Presets, channel should be accesible in, DETAILS, CONDITIONS OF BEING IN IT. EXAMPLE BELOW:
+	//[[0,3],"NATO n FIA","FIA and NATO Liason Net","ACRE_PRC148",{_typeOfUnit in ["co"]}]
 ];
 
 // If the unit doesn't have enough radios to access the channels they are meant to be on, shall we give them radios (will give the  default radio for the channel).

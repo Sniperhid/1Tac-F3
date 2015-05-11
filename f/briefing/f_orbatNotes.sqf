@@ -11,7 +11,7 @@ uiSleep 5;
 
 _orbatBriefingContents =  format ["Note: This is only valid at mission start.<br/><font size='18'>ORBAT Summary:</font><br/>"];
 
-_summaryGroupListing = "";
+_summaryGroupListing = "<font size='12'>";
 _fullGroupListing = "";
 {
     _group = _x;
@@ -27,8 +27,10 @@ _fullGroupListing = "";
             //_color = "#FFFFFF";
             if (_group == group player) then {
                 _color = "#f7da00";
+                _summaryGroupListing = _summaryGroupListing + format["<font color='#f7da00'>%1 - %2</font><br/>", (groupID _group), name (leader _group)];
+            } else {
+                _summaryGroupListing = _summaryGroupListing + format["%1 - %2<br/>", (groupID _group), name (leader _group)];
             };
-            _summaryGroupListing = _summaryGroupListing + format["<font size='12'>%1 - %2</font><br/>", (groupID _group), name (leader _group)];
 
             _fullGroupListing = _fullGroupListing + format ["<br/><font color='%1' size='20'>%2</font><br/>", _color, (groupID _group)];
             {
@@ -55,7 +57,7 @@ _fullGroupListing = "";
     };
 } forEach allGroups;
 
-_orbatBriefingContents = _orbatBriefingContents + _summaryGroupListing + "<br/><font size='18'>Full ORBAT:</font><br/>" + _fullGroupListing;
+_orbatBriefingContents = _orbatBriefingContents + _summaryGroupListing + "</font><br/><font size='18'>Full ORBAT:</font><br/>" + _fullGroupListing;
 
 waitUntil {scriptDone f_script_briefing};
 player createDiaryRecord ["diary", ["ORBAT", _orbatBriefingContents]];

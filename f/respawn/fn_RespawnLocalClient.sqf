@@ -93,12 +93,10 @@ if (_halo) then {
 };
 
 // Spawn to avoid blocking with waitUntil for assignGear to finish.
-[] spawn {
-    switch (f_param_radios) do {
-      case 1: {
-        [false] call acre_api_fnc_setSpectator;
+if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
+    [false] call acre_api_fnc_setSpectator;
+    [] spawn { //Intensive don't block execution.
         [] call f_acre2_clientInit;
-      };
     };
 };
 

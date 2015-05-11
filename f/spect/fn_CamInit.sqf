@@ -52,12 +52,10 @@ if(isNull _oldUnit ) then {if(count playableUnits > 0) then {_oldUnit = (playabl
 // ====================================================================================
 
 // Set spectator mode for whichever radio system is in use
-switch (f_param_radios) do {
-  // ACRE
-  case 1: {
+if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
     [true] call acre_api_fnc_setSpectator;
-  };
 };
+    
 // ====================================================================================
 
 _listBox = 2100;

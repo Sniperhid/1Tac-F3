@@ -11,10 +11,6 @@
 
 if (hasInterface) then
 {
-    if (isClass(configFile >> "CfgPatches" >> "agm_medical")) then {
-        [] execVM "f\medical\AGM_clientInit.sqf";
-    };
-
     if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then {
         [] execVM "f\medical\ACE3_basic_clientInit.sqf";
     };

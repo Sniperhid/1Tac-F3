@@ -967,26 +967,15 @@ switch (_typeofUnit) do
 // ====================================================================================
 
 // If this is an ammobox, check medical component settings and if needed run converter script.
+// If this isn't run on an infantry unit we can exit
 
-if (!_isMan) then
-{
-	// Authentic Gameplay Modification
-	if (isClass(configFile >> "CfgPatches" >> "agm_medical")) exitWith
-    {
-        [_unit] execVM "f\medical\AGM_converter.sqf";
-    };
+if (!_isMan) exitWith {
     // ACE3
 	if (isClass(configFile >> "CfgPatches" >> "ace_medical")) exitWith
     {
         [_unit] execVM "f\medical\ACE3_basic_converter.sqf";
     };
 };
-
-
-// ====================================================================================
-
-// If this isn't run on an infantry unit we can exit
-if !(_isMan) exitWith {};
 
 // ====================================================================================
 

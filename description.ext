@@ -143,32 +143,6 @@ class Params
 
 // ============================================================================================
 
-// F3 - Radio Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-
-    class f_param_radios
-    {
-            title = "Radio System";
-            values[] = {0,1};
-            texts[] = {"Off","ACRE2"};
-            default = 1;
-    };
-
-// ============================================================================================
-
-// F3 - Medical Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-
-    class f_param_medical
-    {
-            title = "Medical System";
-            values[] = {0,1};
-            texts[] = {"Arma 3 Default","Authentic Gameplay Mod"};
-            default = 1;
-    };
-
-// ============================================================================================
-
 // F3 - Mission Timer/Safe Start
 // Credits: Please see the F2 online manual (http://www.ferstaberinde.com/f3/en/)
 
