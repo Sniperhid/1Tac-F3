@@ -17,12 +17,7 @@ enableSentences false;
 // TODO : Make function
 [] call compile preprocessFileLineNumbers "f\setGroupID\f_setGroupIDs.sqf";
 
-MISSION_ROOT = call {
-    private "_arr";
-    _arr = toArray __FILE__;
-    _arr resize (count _arr - 8);
-    toString _arr
-};
+MISSION_ROOT = call { private "_arr"; _arr = toArray __FILE__; _arr resize (count _arr - 8); toString _arr };
 
 // ====================================================================================
 
@@ -43,7 +38,6 @@ MISSION_ROOT = call {
 
 f_script_briefing = [] execVM "briefing.sqf";
 
-
 // ====================================================================================
 
 // F3 - Buddy Team Colours
@@ -57,15 +51,6 @@ f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_initGroupMarkers.sqf";
-
-// ====================================================================================
-
-// F3 - F3 Common Local Variables
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-// WARNING: DO NOT DISABLE THIS COMPONENT
-if(isServer) then {
-	f_script_setLocalVars = [] execVM "f\common\f_setLocalVars.sqf";
-};
 
 // ====================================================================================
 
@@ -130,15 +115,6 @@ if(isServer) then {
 
 // [] execVM "f\assignGear\f_assignGear_AI.sqf";
 
-
-// ====================================================================================
-
-// F3 - Group E&E Check
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-
-// [side,ObjectName or "MarkerName",100,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
-// [["Grp1","Grp2"],ObjectName or "MarkerName",100,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
-
 // ====================================================================================
 
 // F3 - ORBAT Notes
@@ -152,13 +128,6 @@ if(isServer) then {
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 [] execVM "f\briefing\f_loadoutNotes.sqf";
-
-// ====================================================================================
-
-// F3 - Join Group Action
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-
-[false] execVM "f\groupJoin\f_groupJoinAction.sqf";
 
 // ====================================================================================
 
@@ -192,12 +161,4 @@ f_var_cachingAggressiveness = 2;
 // F3 - Medical Systems Support
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
-// SWS Config Settings
-// How many extra FirstAidKits (FAKS) each player should receive when using the F3 Simple Wounding System:
-f_wound_extraFAK = 2;
-
 [] execVM "f\medical\medical_init.sqf";
-
-// ====================================================================================
-
-[] execVM "f\respawn\respawn_init.sqf";

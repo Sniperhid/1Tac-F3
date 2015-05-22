@@ -31,7 +31,6 @@ f_radios_settings_acre_babel_assignment = {
 // TRUE = Disable radios for all units
 f_radios_settings_acre2_disableRadios = false;
 
-
 // ACRE Radio loss settings.
 // Indiciates how much terrian loss should be modelled.
 // Values: 0 no loss, 1 full terrian loss, default: 1
@@ -86,31 +85,31 @@ f_radios_settings_acre2_radioChannels = [
 	// chn entry: NAME, DESCRIPTION, RADIO_TYPE, condition for being on the channel
 	[   // 0
 		{toLower (faction _unit) == "blu_f"}, //Condition for using the preset.
-		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
-		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
-		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]             
+		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call isUnitInGroupArray}],
+		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call isUnitInGroupArray}],
+		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call isUnitInGroupArray}],
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]             
 	],
 	[   // 1
 		{side _unit == east},
-		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
-		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
-		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]                 
+		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call isUnitInGroupArray}],
+		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call isUnitInGroupArray}],
+		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call isUnitInGroupArray}],
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]                 
 	],
 	[   // 2
 		{side _unit == resistance}, 
-		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
-		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
-		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]          
+		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call isUnitInGroupArray}],
+		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call isUnitInGroupArray}],
+		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call isUnitInGroupArray}],
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]          
 	],
 	[   // 3
 		{toLower (faction _unit) == "blu_g_f"},
-		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
-		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
-		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]           
+		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call isUnitInGroupArray}],
+		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call isUnitInGroupArray}],
+		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call isUnitInGroupArray}],
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]           
 	]
 ];
 
@@ -126,11 +125,12 @@ f_radios_settings_giveMissingRadios = true;
 // Provide these radios on a scroll wheel action, disable set to []
 f_radios_settings_acre2_addActionRadios = ["ACRE_PRC343","ACRE_PRC148"];
 
-// This are the core radio settings, it is advisiable to not touch this.
+// These are the core radio settings, uncomment and modify this to override the defaults.
+/*
 f_radios_settings_acre2_radioSettings = [
 		// Array of Radio names, min freq, max freq, freq step, freq spacing between channels (for channel allocation), default preset name to copy
 		[["ACRE_PRC343"],2400,2420,0.01,0.1,"default2"],
-		[["ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F"],30,300,0.00625,1,"default"]//,
-	 //   [["ACRE_PRC77"],30,75.95,0.05,5] <- Doesn't support preset assignment.
+		[["ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F"],30,300,0.00625,1,"default"]
 	];
+*/
 

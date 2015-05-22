@@ -8214,24 +8214,6 @@ class Mission
 			text="VehFIA_TH1";
 		};
 	};
-	class Markers
-	{
-		items=2;
-		class Item0
-		{
-			position[]={9026.5449,73.256729,8266.9883};
-			name="f_insert";
-			text="insert";
-			type="mil_start";
-		};
-		class Item1
-		{
-			position[]={9026.4189,58.26981,8198.6484};
-			name="f_extract";
-			text="extract";
-			type="mil_end";
-		};
-	};
 };
 class Intro
 {

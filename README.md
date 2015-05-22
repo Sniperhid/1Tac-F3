@@ -15,3 +15,24 @@ For the F/F2/F3 credits please see the 'F3_Readme.md' file
  * Custom ORBAT (with help from BW)
  * Custom drawIcon groupMarkers
  * New loadout page
+
+--- Size Analysis ---
+setAISkill 9.7kb
+mapClick 8.73gb
+missionConditions 8.07kb
+cache 7.40kb
+preMount 6kb
+safeStart 5kb
+casualtiesCap 4.80kb
+mpEnd 3.54kb
+removeBody 3.5kb
+authorizedCrew 2.8b
+chargeUav 2.75kb
+dynamicViewDistance 2.2kb
+common 2kb - nearPlayers
+
+
+medical 6kb
+
+setTeamColours 2kb
+brifing+assigncolour+setGroupID - 220kb

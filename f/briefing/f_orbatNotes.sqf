@@ -25,7 +25,7 @@ _fullGroupListing = "";
                 default {"#FFFFFF"};
             };
             //_color = "#FFFFFF";
-            if (_group == group player) then {
+            if (_group isEqualTo (group player)) then {
                 _color = "#f7da00";
                 _summaryGroupListing = _summaryGroupListing + format["<font color='#f7da00'>%1 - %2</font><br/>", (groupID _group), name (leader _group)];
             } else {
@@ -48,7 +48,7 @@ _fullGroupListing = "";
                     _unitLine = _unitLine + format["<img image='%1' height='32'/>",_weaponIcon];
                 };
 
-                if (_x == player) then {
+                if (_x isEqualTo player) then {
                     _unitLine = "<font color='#f7da00'>" + _unitLine + "</font>";
                 };
                  _fullGroupListing = _fullGroupListing + (_unitLine + "<br/>");

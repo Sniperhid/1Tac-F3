@@ -61,12 +61,21 @@ _unitClasses = [
 // ====================================================================================
 
 // Interpret parameters
-_units = if (count _this == 0) then [{waitUntil {scriptDone f_script_setLocalVars};f_param_men},{_this}];
+_units = [];
+if (count _this isEqualTo 0) then {
+	{
+		if ((_x isKindOf "CAManBase")) then {
+			_units pushBack _x;
+		};
+	} forEach allUnits;
+} else {
+	_units = _this;
+};
 
 // LOOP THROUGH AI UNITS AND ASSIGN GEAR
 {
 
-	sleep 0.1;
+	uiSleep 0.1;
 	_unit = _x;
 
 	// Check if the unit was already touched by the F3 Assign Gear Component

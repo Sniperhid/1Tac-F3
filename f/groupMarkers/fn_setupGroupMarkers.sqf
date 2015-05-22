@@ -3,71 +3,68 @@
 /*
 	Setup the default groups for a faction
 	Paramaters
-		0: Side
+		0: Faction
 		1: Bool : Reset ( resets the data )
 	Returns
 		Nothing
 */
+private["_unitfaction","_reset","_name","_style","_entity","_units"];
+
 _unitfaction = toLower ([_this, 0, "",[""]] call BIS_fnc_param);
 _reset = [_this, 1, false,[true,false]] call BIS_fnc_param;
 
-if(_reset) then
-{
+if(_reset) then {
     f_grpMkr_groups = [];
+    
 	// Start with just platoon marker.
-
-	["","1PLT",["1PLT"] call F_fnc_getGroupMarkerStyle,3] call F_fnc_addGroupMarker;
-	f_grpMkr_data = [];
-	f_grpMkr_id = 0;
+	["","1PLT",["1PLT"] call F_fnc_getGroupMarkerStyle,3] call f_addon_fnc_addGroupMarker;
 };
 
 
 // ====================================================================================
 // Setup Group markers.
 
+if ([_unitfaction,"ASL","A1","A2","A3"] call f_addon_fnc_doGroupsExist) then {
+   ["1PLT","A",["A"] call F_fnc_getGroupMarkerStyle,1] call f_addon_fnc_addGroupMarker;  
+};
+if ([_unitfaction,"BSL","B1","B2","B3"] call f_addon_fnc_doGroupsExist) then {
+    ["1PLT","B",["B"] call F_fnc_getGroupMarkerStyle,1] call f_addon_fnc_addGroupMarker;  
+};
+if ([_unitfaction,"CSL","C1","C2","C3"] call f_addon_fnc_doGroupsExist) then {
+    ["1PLT","C",["C"] call F_fnc_getGroupMarkerStyle,1] call f_addon_fnc_addGroupMarker;   
+};
+
 // Add the 3 squads, automatic markers requires the groupID function
 {
-	if(faction (leader _x) == _unitfaction) then
-	{
-        _name = ([groupID _x," "] call BIS_fnc_splitString) select 1;
+	if(toLower (faction (leader _x)) isEqualTo _unitfaction) then {
+        
+        _name = ([groupID _x," "] call BIS_fnc_splitString); _name = _name select ((count _name) -1);
 		_style = [_name] call F_fnc_getGroupMarkerStyle;
         _entity = _x;
         
         switch (true) do {
-          case (_name in ["ASL","A1","A2","A3"]):{
-              // If no Alpha Squad Marker found already, make one.
-              if (count ([f_grpMkr_groups,"A"] call BIS_fnc_findNestedElement) == 0) then {
-                  ["1PLT","A",["A"] call F_fnc_getGroupMarkerStyle,1] call F_fnc_addGroupMarker;
-              };
-			  if (_name == "ASL") then {
-				["A",_name,_style,-1,_entity] call F_fnc_addGroupMarker; 
-			  } else {
-				["A",_name,_style,0,_entity] call F_fnc_addGroupMarker; 
-			  };
+            case (_name isEqualTo "ASL"): {
+                ["A",_name,_style,-1,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+            case (_name in ["A1","A2","A3"]):{
+                ["A",_name,_style,0,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+            case (_name isEqualTo "BSL"): {
+                ["B",_name,_style,-1,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+            case (_name in ["B1","B2","B3"]):{
+                ["B",_name,_style,0,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+            case (_name isEqualTo "CSL"): {
+                ["C",_name,_style,-1,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+            case (_name in ["C1","C2","C3"]):{
+                ["C",_name,_style,0,_entity] call f_addon_fnc_addGroupMarker; 
+            };
+          default {
+              //For any Group that isn't specified above add them to as a group of the platoon.
+              ["1PLT",_name,_style,-1,_entity] call f_addon_fnc_addGroupMarker;
           };
-          case (_name in ["BSL","B1","B2","B3"]):{ 
-              // If no Bravo Squad Marker found already, make one.
-              if (count ([f_grpMkr_groups,"B"] call BIS_fnc_findNestedElement) == 0) then {
-                  ["1PLT","B",["B"] call F_fnc_getGroupMarkerStyle,1] call F_fnc_addGroupMarker;
-              };
-              if (_name == "BSL") then {
-				["B",_name,_style,-1,_entity] call F_fnc_addGroupMarker; 
-			  } else {
-				["B",_name,_style,0,_entity] call F_fnc_addGroupMarker; 
-			  };
-          };
-          case (_name in ["CSL","C1","C2","C3"]):{
-              // If no Charlie Squad Marker found already, make one.
-              if (count ([f_grpMkr_groups,"C"] call BIS_fnc_findNestedElement) == 0) then {
-                  ["1PLT","C",["C"] call F_fnc_getGroupMarkerStyle,1] call F_fnc_addGroupMarker;
-              };
-              if (_name == "CSL") then {
-				["C",_name,_style,-1,_entity] call F_fnc_addGroupMarker; 
-			  } else {
-				["C",_name,_style,0,_entity] call F_fnc_addGroupMarker; 
-			  };
-          };
-          default { ["1PLT",_name,_style,-1,_entity] call F_fnc_addGroupMarker;};
         };
 	};
 } forEach allGroups;
@@ -120,6 +117,6 @@ switch (_unitfaction) do {
     _entity = missionNamespace getVariable[(_x select 0),objNull];
     if (!isNull _entity) then {
         _style = [_x select 1] call F_fnc_getGroupMarkerStyle;
-        [(_x select 2),(_x select 1),_style,-1,_entity] call F_fnc_addGroupMarker;
+        [(_x select 2),(_x select 1),_style,-1,_entity] call f_addon_fnc_addGroupMarker;
     };
 } forEach _units;

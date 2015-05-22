@@ -322,7 +322,7 @@ class CfgRespawnTemplates
 	// F3 Spectator Script
 	class f_Spectator
 	{
-		onPlayerRespawn = "f_fnc_CamInit";
+		onPlayerRespawn = "f_addon_fnc_CamInit";
 	};
   	//Overwrite Vanilla Seagull
     class Seagull
@@ -330,14 +330,6 @@ class CfgRespawnTemplates
         onPlayerRespawn = "";
     };
 };
-
-// ============================================================================================
-
-// F3 - Menu components
-// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
-
-// Menu components for the Spectator Script
-#include "f\spect\config.hpp"
 
 // ============================================================================================
 
@@ -374,11 +366,7 @@ class CfgFunctions
 		};
 		class groupMarkers {
 			file = "f\groupMarkers";
-			class addGroupMarker{};
-			class drawGroupMarkers{};
-            class drawGroupMarkerRec{};
 			class getGroupMarkerStyle{};
-            class updateGroupMarkers{};
 			class setupGroupMarkers{};
 		};
 		class missionConditions
@@ -422,31 +410,10 @@ class CfgFunctions
 			file = "f\preMount";
 			class mountGroups{};
 		};
-		class zeus
-		{
-			file = "f\zeus";
-			class zeusInit{};
-			class zeusAddAddons{};
-			class zeusAddObjects{};
-		};
         class safeStart
 		{
 			file = "f\safeStart";
 			class safety{};
 		};
-		#include "f\spect\functions.hpp"
-        #include "f\respawn\functions.hpp"
 	};
 };
-
-
-// ============================================================================================
-
-// F3 - Custom Insignia
-
-class CfgUnitInsignia {
-	#include "f\assignGear\insignia\define.hpp"
-};
-
-#include "f\respawn\defines.hpp"
-#include "f\respawn\dialogs.hpp"

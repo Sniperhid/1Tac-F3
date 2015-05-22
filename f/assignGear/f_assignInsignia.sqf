@@ -2,7 +2,7 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-private ["_group","_badge","_groupBadges","_roleBadge","_unit","_typeofUnit"];
+private ["_group","_badge","_groupBadges","_roleBadge","_unit","_typeofUnit","_faction"];
 
 _badge = ""; 
 _unit = _this select 0;

@@ -58,33 +58,33 @@ if(!_isFireteam) exitWith {};
 	_unitStr = str _x;
     _unit = _x;
 	{
-        if ((_unitStr find _x) != -1) then {
+        if ((_unitStr find _x) != -1) exitWith {
 			_unit assignTeam "RED";
 		};
 	} forEach _red;
 
 	{
-		if ((_unitStr find _x) != -1) then {
+		if ((_unitStr find _x) != -1) exitWith {
 			_unit assignTeam "blue";
 		};
 	} forEach _blue;
 
 	{
-		if ((_unitStr find _x) != -1) then {
+		if ((_unitStr find _x) != -1) exitWith {
 			_unit assignTeam "yellow";
 		};
 	} forEach _yellow;
 
 	{
-		if ((_unitStr find _x) != -1) then {
+		if ((_unitStr find _x) != -1) exitWith {
 			_unit assignTeam "green";
 		};
 	} forEach _green;
 
 	{
-		if ((_unitStr find _x) != -1) then {
+		if ((_unitStr find _x) != -1) exitWith {
 			_unit assignTeam "white";
 		};
 	} forEach _white;
 
-} foreach units (group _unit);
+} forEach units (group _unit);

@@ -56,14 +56,14 @@ if(typeName _grpstemp == "SIDE") then // if the variable is any of the side vari
 		{
 			if((side _x == _grpstemp) && (leader _x in playableUnits)) then
 			{
-				_grps set [count _grps,_x]; // Add group to array
+				_grps pushBack _x; // Add group to array
 			};
 		}
 		else
 		{
 			if (side _x == _grpstemp) then
 			{
-				_grps set [count _grps,_x]; // Add group to array
+				_grps pushBack _x; // Add group to array
 			};
 		};
 
@@ -88,7 +88,7 @@ else
 		_Tgrp = call compile format ["%1",_x];
 		if(!isnil "_Tgrp") then
 		{
-			_grps set [count _grps,_Tgrp];
+			_grps pushBack _Tgrp;
 		};
 	} foreach _grpstemp;
 };
