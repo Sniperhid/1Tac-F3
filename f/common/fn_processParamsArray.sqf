@@ -15,15 +15,12 @@ if (isServer) then {
                 _paramValue = (getNumber (missionConfigFile >> "Params" >> _paramName >> "default"));
                 missionNamespace setVariable[_paramName,_paramValue];
                 publicVariable _paramName;
-            } forEach ((missionConfigFile >> "Params") call bis_fnc_returnChildren);
+            } forEach ("true" configClasses (missionConfigFile >> "Params"));
         } else {
             {
                 _paramName =(configName ((missionConfigFile >> "Params") select _forEachIndex));
-                // if variable exists and it is different to what it previously was. Save a 2nd publicVariabling.
-                if ((!isNil _paramName) and (!(missionNamespace getVariable[_paramName,0] == _x))) then {
-                    missionNamespace setVariable[_paramName,_x];
-                    publicVariable _paramName;
-                };
+				missionNamespace setVariable[_paramName,_x];
+				publicVariable _paramName;
             } forEach paramsArray;
             f_ParamsArray_complete = true;
         };
