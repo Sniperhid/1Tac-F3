@@ -119,8 +119,8 @@ _text = "<br/><font size='16'>RADIO CHANNEL LISTING</font>";
             };
           };
 		  _channelLine = format["CHN %1 (%2 MHz) - %3 - %4",_chanNum,_frequency,(_x select 0),(_x select 1)];
-
-		  if (_x select 4) then { // if player is supposet to be on this channel
+		_defaultRadio = (_x select 2);
+		if (_x select 4) then { // if player is supposet to be on this channel
 			  // Match radio to number...
 			  _radioFndIdx = -1;
 			  {
@@ -135,11 +135,11 @@ _text = "<br/><font size='16'>RADIO CHANNEL LISTING</font>";
 				  };
 			  } forEach _radiosToGive;
               // Give missing radio?
-              if ((_radioFndIdx == -1) && f_radios_settings_giveMissingRadios) then {
-                    _radiosToGive pushBack _radio;
-                    _assignedRadioChannels pushBack [_radio,_chanNum];
-                  _radioFndIdx = (count _radiosToGive)-1;
-                    _usedRadioIndexs pushBack [_radioFndIdx];
+              if ((_radioFndIdx isEqualTo -1) && f_radios_settings_giveMissingRadios) then {
+                    _radiosToGive pushBack _defaultRadio;
+                    _assignedRadioChannels pushBack [_defaultRadio,_chanNum];
+					_radioFndIdx = (count _radiosToGive)-1;
+                    _usedRadioIndexs pushBack _radioFndIdx;
               };
 
 			  _color = [_radioFndIdx] call fn_numToColor;

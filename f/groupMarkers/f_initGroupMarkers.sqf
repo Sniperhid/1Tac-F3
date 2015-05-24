@@ -1,4 +1,4 @@
-private ["_unitfaction","_style"];
+private ["_unitfaction"];
 
 if (!hasInterface) exitWith {}; // Only needed on clients
 
@@ -19,10 +19,7 @@ if (!isDedicated && (isNull player)) then
 _unitfaction = "";
 if(count _this == 0) then
 {
-	_unitfaction = toLower (faction player);
-
-	// If the unitfaction is different from the 	group leader's faction, the leader's faction is used
-	if (_unitfaction != toLower (faction (leader group player))) then {_unitfaction = toLower (faction (leader group player))};
+	_unitfaction = toLower (faction (leader group player));
 }
 else
 {

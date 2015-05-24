@@ -11,7 +11,7 @@ _minSiblingDist = _myPos distanceSqr (_mapControl posWorldToScreen (_rootData se
 
 if (_hasChildren) then {
     _maxChildCenterDist = _myPos distanceSqr (_mapControl posWorldToScreen (_rootData select 6));
-    if (_maxChildCenterDist < 0.005) then {
+    if (_maxChildCenterDist < 0.0025) then {
         _drawMe = true;  
     };
 };
@@ -43,19 +43,17 @@ if (_drawMe) then {
 		  default {""};
 		};
 	};
-    _textSize = 0.035;
-    if (_minSiblingDist < 0.0014) then {_textSize = 0}; //0.0014
+	_textSize = 0.035;
+	if (_minSiblingDist < 0.0014) then {_textSize = 0}; //0.0014
 
 	_mapControl drawIcon["#(argb,8,8,3)color(0,0,0,0)",[1,1,1,1],_pos,(_size select 0),(_size select 1),0,_text,2,_textSize,'PuristaSemibold','right'];//PuristaBold
 	_mapControl drawIcon[_texture,_color,_pos,(_size select 0),(_size select 1),0];
 	
-    if (_gTexture != "") then {
-      _mapControl drawIcon[_gTexture,[1,1,1,1],_pos,(_size select 0),(_size select 1),0,"",0];  
-    };
+	if (_gTexture != "") then {
+		_mapControl drawIcon[_gTexture,[1,1,1,1],_pos,(_size select 0),(_size select 1),0,"",0];  
+	};
 } else { // Draw the children instead.
-    {
-        if (_forEachIndex != 0) then {
-          [_x,_mapControl] call f_fnc_drawGroupmarkerRec; 
-        };
-    } forEach _in;
+	for "_i" from 1 to (count _in - 1) do {
+		[(_in select _i),_mapControl] call f_fnc_drawGroupmarkerRec; 
+	};
 };
