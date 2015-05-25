@@ -1,135 +1,169 @@
-// F3 - Folk ARPS Assign Gear Script (Server-side)
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-// ====================================================================================
+private ["_unit","_faction","_typeOfUnit"];
 
-// DECLARE VARIABLES AND FUNCTIONS
-
-private ["_faction","_typeofUnit","_unit"];
-
-// ====================================================================================
-
-// DETECT unit FACTION
-// The following code detects what faction the unit's slot belongs to, and stores
-// it in the private variable _faction. It can also be passed as an optional parameter.
-
-_typeofUnit = toLower (_this select 0);
+_typeOfUnit = _this select 0;
 _unit = _this select 1;
 
 _faction = toLower (faction _unit);
-if(count _this > 2) then
-{
-  _faction = toLower (_this select 2);
-};
+
+if(count _this > 2) then { _faction = _this select 2; };
 
 // ====================================================================================
 
 // INSIGNIA
 // This block will give units insignia on their uniforms.
-[_unit,_typeofUnit] spawn {
-	#include "f_assignInsignia.sqf"
+[_unit,_typeofUnit] call f_fnc_assignInsignia;
+
+
+if (!(local _unit)) exitWith {};
+private ["_path","_uniforms","_vests","_headgears","_backpack","_primaryWeapons","_secondaryWeapons","_sidearmWeapons","_thingsNotAdded","_scopes","_bipods","_attachments","_silencers"];
+
+_path = missionConfigFile >> "CfgLoadouts" >> _faction >> _typeOfUnit;
+
+if(!isClass(_path)) exitWith {
+    systemChat format ["[F3 Gear] No loadout called %1", _typeOfUnit]; 
+    /*if (isNil "missingGearClasses") then { missingGearClasses = []; };
+    if (_faction == "blu_f") then { missingGearClasses pushBack _typeOfUnit;};*/
 };
 
-// ====================================================================================
-
-// DECIDE IF THE SCRIPT SHOULD RUN
-// Depending on locality the script decides if it should run
-
-if !(local _unit) exitWith {};
-
-// ====================================================================================
-
-// SET A PUBLIC VARIABLE
-// A public variable is set on the unit, indicating their type. This is mostly relevant for the F3 respawn component
+_unit setVariable ["BIS_enableRandomization", false];
 
 _unit setVariable ["f_var_assignGear",_typeofUnit,true];
-
-// ====================================================================================
-
-// DECLARE VARIABLES AND FUNCTIONS 2
-// Used by the faction-specific scripts
-
-private ["_attach1","_attach2","_silencer1","_silencer2","_scope1","_scope2","_scope3","_bipod1","_bipod2","_attachments","_silencer","_hg_silencer1","_hg_scope1","_hg_attachments","_rifle","_riflemag","_riflemag_tr","_carbine","_carbinemag","_carbinemag_tr","_smg","_smgmag","_smgmag_tr","_diverWep","_diverMag1","_diverMag2","_glrifle","_glriflemag","_glriflemag_tr","_glmag","_glsmokewhite","_glsmokegreen","_glsmokered","_glflarewhite","_glflarered","_glflareyellow","_glflaregreen","_pistol","_pistolmag","_grenade","_Mgrenade","_smokegrenade","_smokegrenadegreen","_firstaid","_medkit","_nvg","_uavterminal","_chemgreen","_chemred","_chemyellow","_chemblue","_bagsmall","_bagmedium","_baglarge","_bagmediumdiver","_baguav","_baghmgg","_baghmgag","_baghatg","_baghatag","_bagmtrg","_bagmtrag","_baghsamg","_baghsamag","_AR","_ARmag","_ARmag_tr","_MMG","_MMGmag","_MMGmag_tr","_Tracer","_DMrifle","_DMriflemag","_RAT","_RATmag","_MAT","_MATmag1","_MATmag2","_HAT","_HATmag1","_HATmag2","_SAM","_SAMmag","_SNrifle","_SNrifleMag","_ATmine","_satchel","_APmine1","_APmine2","_light","_heavy","_diver","_pilot","_crew","_ghillie","_specOp","_baseUniform","_baseHelmet","_baseGlasses","_lightRig","_mediumRig","_heavyRig","_diverUniform","_diverHelmet","_diverRig","_diverGlasses","_pilotUniform","_pilotHelmet","_pilotRig","_pilotGlasses","_crewUniform","_crewHelmet","_crewRig","_crewGlasses","_ghillieUniform","_ghillieHelmet","_ghillieRig","_ghillieGlasses","_sfuniform","_sfhelmet","_sfRig","_sfGlasses","_typeofUnit","_unit","_isMan","_backpack","_typeofBackPack","_loadout","_COrifle","_mgrenade","_DCrifle","_FTLrifle","_armag","_ratmag","_typeofunit"];
-
-// ====================================================================================
-
-// This variable simply tracks the progress of the gear assignation process, for other
-// scripts to reference.
-
 _unit setVariable ["f_var_assignGear_done",false,true];
 
-// ====================================================================================
+if (_unit isKindOf "CAManBase") then {
+    _uniforms = getArray(_path >> "uniform");
+    _vests = getArray(_path >> "vest");
+    _headgears = getArray(_path >> "headgear");
+    _backpack = getArray(_path >> "backpack");
+    _goggles = getArray(_path >> "goggles");
 
-// DEBUG
-if (f_param_debugMode == 1) then
-{
-	_unit sideChat format ["DEBUG (assignGear.sqf): unit faction: %1",_faction];
+    _primaryWeapons = getArray(_path >> "primaryWeapons");
+    _secondaryWeapons = getArray(_path >> "secondaryWeapons");
+    _sidearmWeapons = getArray(_path >> "sidearmWeapons");
+
+
+    removeHeadgear _unit;
+    removeUniform _unit;
+    removeVest _unit;
+    removeBackpack _unit;
+
+    removeAllWeapons _unit;
+    removeAllAssignedItems _unit;
+    removeAllItemsWithMagazines _unit;
+
+
+
+    // ====================================================================================
+    // Clothes
+    //#define selectRandom(array) array call BIS_fnc_selectRandom
+    #define selectRandom(array) array select (floor (random (count array)))
+
+
+    if (count _uniforms > 0) then { _unit forceAddUniform (selectRandom(_uniforms)); };
+    if (count _vests > 0) then { _unit addVest (selectRandom(_vests)); };
+    if (count _headgears > 0) then { _unit addHeadgear (selectRandom(_headgears)); };
+    if (count _backpack > 0) then { _unit addBackpack (selectRandom(_backpack)); };
+    if (count _goggles > 0) then { _unit addGoggles (selectRandom(_goggles)); };
+
+    //clearAllItemsFromBackpack _unit;
+    clearMagazineCargoGlobal (unitBackpack _unit);
+
+    // ====================================================================================
+    // Magazines
+    _thingsNotAdded = [];
+    {
+        if (_unit canAdd _x) then {
+           _unit addMagazine _x;
+        } else {
+            _thingsNotAdded pushBack _x;
+        };
+    } forEach (getArray(_path >> "magazines"));
+    // ====================================================================================
+    // Items
+    {
+        if (_unit canAdd _x) then {
+            _unit addItem _x;
+        } else {
+            _thingsNotAdded pushBack _x;
+        };
+    } forEach (getArray(_path >> "items"));
+
+    { _unit linkItem _x; } forEach getArray(_path >> "linkedItems");
+
+    /////
+
+    {
+        if (_unit canAddItemToBackpack _x) then {
+            _unit addItemToBackpack _x;
+        } else {
+            if (_unit canAdd _x) then {
+                _unit addItem _x;
+            } else {
+                _thingsNotAdded pushBack _x; 
+            };
+        };
+    } forEach (getArray(_path >> "backpackItems"));
+
+    {
+        if (_unit canAddItemToBackpack _x) then {
+            (unitBackpack _unit) addMagazineCargoGlobal [_x,1];
+        } else {
+            if (_unit canAdd _x) then {
+                _unit addItem _x;
+            } else {
+                _thingsNotAdded pushBack _x; 
+            };
+        };
+    } forEach (getArray(_path >> "backpackMagazines"));
+
+
+
+    // ====================================================================================
+    // Weapons
+    if (count _primaryWeapons > 0) then {_unit addWeapon (selectRandom(_primaryWeapons)); };
+    if (count _secondaryWeapons > 0) then {_unit addWeapon (selectRandom(_secondaryWeapons)); };
+    if (count _sidearmWeapons > 0) then {_unit addWeapon (selectRandom(_sidearmWeapons)); };
+
+    // ====================================================================================
+    // Attachments
+
+    _scopes = getArray(_path >> "scopes");
+    _bipods = getArray(_path >> "bipods");
+    _attachments = getArray(_path >> "attachments");
+    _silencers = getArray(_path >> "silencers");
+
+    if (count _scopes > 0) then {_unit addPrimaryWeaponItem (selectRandom(_scopes)); };
+    if (count _bipods > 0) then {_unit addPrimaryWeaponItem (selectRandom(_bipods)); };
+    if (count _attachments > 0) then {_unit addPrimaryWeaponItem (selectRandom(_attachments)); };
+    if (count _silencers > 0) then {_unit addPrimaryWeaponItem (selectRandom(_silencers)); };
+
+    {_unit addSecondaryWeaponItem _x;} forEach getArray(_path >> "secondaryAttachments");
+    {_unit addHandgunItem _x;} forEach getArray(_path >> "sidearmAttachments");
+
+
+    //Try to add missing magazines:
+    {
+        if (!(_unit canAdd _x)) then {
+            diag_log text format ["[F3 Gear] %1 (%3)- No room for equipment %2", _typeOfUnit, _x,_faction];
+            systemChat format ["[F3 Gear] Failed To add equipment %1 to %2 (%3)", _x, _typeOfUnit,_faction];
+        } else {
+            systemChat format ["[F3 Gear][bug] Can re-add %1 to %2 (%3).", _x, _typeOfUnit,_faction];  
+        };
+    } forEach _thingsNotAdded;
+
+    _unit setVariable ["f_var_assignGear_done",true,true];
+    
+} else { //Vehicles
+    
+    clearWeaponCargoGlobal _unit;
+    clearMagazineCargoGlobal _unit;
+    clearItemCargoGlobal _unit;
+    clearBackpackCargoGlobal _unit;
+    
+    { _unit addMagazineCargoGlobal [_x, 1]; } forEach getArray(_path >> "cargoMagazines");
+    { _unit addItemCargoGlobal [_x, 1]; } forEach getArray(_path >> "cargoItems");
+    { _unit addWeaponCargoGlobal [_x, 1]; } forEach getArray(_path >> "cargoWeapons");
+    { _unit addBackpackCargoGlobal [_x, 1]; } forEach getArray(_path >> "cargoBackpacks");
+    
+    
 };
-
-// ====================================================================================
-
-// ====================================================================================
-
-// GEAR: BLUFOR > NATO
-// The following block of code executes only if the unit is in a NATO slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction == "blu_f") then {
-#include "f_assignGear_nato.sqf"
-};
-
-
-// ====================================================================================
-
-// GEAR: OPFOR > CSAT
-// The following block of code executes only if the unit is in a CSAT slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction == "opf_f") then {
-	#include "f_assignGear_csat.sqf"
-};
-
-// ====================================================================================
-
-// GEAR: INDEPEDENT > AAF
-// The following block of code executes only if the unit is in a AAF slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if(_faction == "ind_f") then {
-	#include "f_assignGear_aaf.sqf";
-};
-
-// ====================================================================================
-
-// GEAR: FIA
-// The following block of code executes only if the unit is in a FIA slot (any faction); it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction in ["blu_g_f","opf_g_f","ind_g_f"]) then {
-	#include "f_assignGear_fia.sqf"
-};
-
-// ====================================================================================
-
-// This variable simply tracks the progress of the gear assignation process, for other
-// scripts to reference.
-
-_unit setVariable ["f_var_assignGear_done",true,true];
-
-// ====================================================================================
-
-// DEBUG
-
-// ====================================================================================
-
-// ERROR CHECKING
-// If the faction of the unit cannot be defined, the script exits with an error.
-
-if (isNil "_carbine") then { //_carbine should exist unless no faction has been called
-	player globalchat format ["DEBUG (assignGear.sqf): Faction %1 is not defined.",_faction];
-} else {
- 	if (f_param_debugMode == 1) then	{
-		player sideChat format ["DEBUG (assignGear.sqf): Gear for %1: %1 slot selected.",_unit,_faction,_typeofUnit];
-	};
-};
-
-// ====================================================================================

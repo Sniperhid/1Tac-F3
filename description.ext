@@ -371,6 +371,7 @@ class CfgFunctions
 			// Defines the functions to preInit the compling of the assignGear function used by units.
 			file = "f\assignGear";
 			class assignGear{};
+			class assignInsignia{};
 		};
 		class groupMarkers {
 			file = "f\groupMarkers";
@@ -450,3 +451,6 @@ class CfgUnitInsignia {
 
 #include "f\respawn\defines.hpp"
 #include "f\respawn\dialogs.hpp"
+class CfgLoadouts {
+    #include "f\assignGear\CfgLoadouts.hpp"
+};
