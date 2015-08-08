@@ -1,11 +1,4 @@
-_groupNum = _this select 0;
-_position = _this select 1;
-_faction = _this select 2; // facton id number.
-_typeOfUnit = _this select 3;
-_rank = _this select 4;
-_number = _this select 5;
-_leader = _this select 6;
-_halo = _this select 7;
+params["_groupNum","_position","_faction","_typeOfUnit","_rank","_number","_leader","_halo"];
 
 _faction = (respawnMenuFactions select _faction) select 0;
 _class = [_faction,_typeOfUnit] call fn_respawnSelectClass;
@@ -87,9 +80,7 @@ if (_halo) then {
       
         //	Fix backpack?
       
-      
   };
-    
 };
 
 // Spawn to avoid blocking with waitUntil for assignGear to finish.

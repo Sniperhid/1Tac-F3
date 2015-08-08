@@ -86,15 +86,6 @@ class cfgNotifications
 		priority = 1;
 	};
 
-	// Notification for the F3 Authorised Crew Component
-	class UnauthorisedCrew {
-		title= "NON-AUTHORISED CREW!";
-		description= "%1";
-		iconPicture = "\A3\ui_f\data\map\markers\military\warning_ca.paa";
-		duration = 3;
-		priority = 5;
-	};
-
 	// Notification for the F3 Mapclick Teleport component
 	class MapClickTeleport {
 		title= "NOTE";
@@ -395,11 +386,6 @@ class CfgFunctions
 			class cTracker {};
 			class gCache {};
 			class gUncache {};
-		};
-		class authorisedCrew
-		{
-			file = "f\authorisedCrew";
-			class authorisedCrewCheck {};
 		};
 		class bodyRemoval
 		{

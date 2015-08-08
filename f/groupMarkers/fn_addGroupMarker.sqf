@@ -1,14 +1,7 @@
 private ["_parent","_ourName","_style","_gSize","_entity","_line","_place","_subArray","_pos"];
 // Function to add groupMarkers to the F3 group marker system.
 
-_parent = _this select 0;
-_ourName = _this select 1;
-_style = _this select 2;
-_gSize = _this select 3;
-_entity = objNull;
-if (count _this > 4) then {
-    _entity = _this select 4;
-};
+params["_parent","_ourName","_style","_gSize",["_entity",objNull]];
 
 // MAXDISTPOST -> furtherest away child from mean, MinDistPos -> Closest sibling
 // NAME, TEXTURE, COLOUR, SIZE, POS, MINDISTPO (neighoubrS, MAXDISTPOS (neighbour), RANK, <ENTITY>

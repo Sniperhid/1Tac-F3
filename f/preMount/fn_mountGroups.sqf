@@ -9,48 +9,40 @@ if (!isServer) exitWith {};
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_objects","_crew","_vehs","_grps","_units"];
+private ["_objects","_units"];
 
 // ====================================================================================
 
 // SET KEY VARIABLES
 // Using the arguments passed to the script, we first define some local variables.
+params["_vehs","_grps",["_crew",true],["_fill",false]];
 
-_vehs = _this select 0;												// Array of vehicles    (objects)
-_grps = _this select 1;												// Array of group names (as strings)
-_crew = if (count _this > 2) then {_this select 2} else {true};		// Mount into crew positions? (optional - default:true)
-_fill = if (count _this > 3) then {_this select 3} else {false};	// Ignore fireteam cohesion in favor of filling vehicles? (optional - default:false)
+// _vehs = Array of vehicles    (objects)
+// _grps = Array of group names (as strings)
+// _crew = Mount into crew positions? (optional - default:true)
+// _fill Ignore fireteam cohesion in favor of filling vehicles? (optional - default:false)
 
 // ====================================================================================
 
 // CLEAN THE GROUP ARRAY
 // First we check if there are illegal groups (non-existent) in the array and remove them.
-
-if ({isNil _x} count _grps > 0) then {
-	{
-		if (isNil _x) then {
-			_grps set [_forEachIndex,grpNull];
-		};
-	} forEach _grps;
-};
-
-_grps = _grps - [grpNull];
-
-// ====================================================================================
-
-// PROCESS GROUPS
 // Check the passed groups to make sure none of them is empty and they have at least one unit that's not inside a vehicle
-{
-	_grp = call compile format ["%1",_x];
-	_grps set [_forEachIndex,_grp];
 
+private["_x","_length"];
+_x = 0;
+_length = count _grps;
+while {_x < _length} do {
+	_grp = missionNamespace getVariable [(_grps select _x),grpNull];
+	//units grpNull will equal 0, so this will also remove null.
 	if (count (units _grp) == 0 || {isNull (assignedVehicle _x)} count (units _grp) == 0) then {
-		_grps set [_forEachIndex,grpNull];
+		_grps deleteAt _x;
+		 _x = _x - 1;
+		_length = _length - 1;
+	} else {
+		_grps set [_x,_grp];
 	};
-
-} forEach _grps;
-
-_grps = _grps - [grpNull];
+	_x = _x + 1;
+};
 
 // ====================================================================================
 
@@ -85,8 +77,7 @@ if (count _vehs == 0 || count _grps == 0) exitWith {
 {
 	private ["_veh","_grpsT","_emptyPositions"];
 	_veh = _x;
-	_crew = if (count _this > 2) then {_this select 2} else {true};
-
+	
 	// Calculate the number of spare seats
 	_emptyPositions = [typeOf _veh,true] call BIS_fnc_crewCount; // Count all available slots(this includes co-pilot, commander, main-gunner etc.)
 	_emptyPositions = _emptyPositions - (count crew _veh); 		// Substract number of crew already present in the vehicle
@@ -118,8 +109,7 @@ if (count _vehs == 0 || count _grps == 0) exitWith {
 	   		// Loop through all vehicle roles and place the units in them accordingly
 		   	{
 			   	_unit = _units select 0;
-			   	_slot = _x select 0;
-			   	_path = _x select 1;
+				_x params ["_slot","_path"];
 
 			   	// If the slot is not a cargo slot and crew should be slotted
 				if (_crew && {_slot != "CARGO" && isNull assignedVehicle _unit}) then{
@@ -133,7 +123,7 @@ if (count _vehs == 0 || count _grps == 0) exitWith {
 
 				// If the unit was assigned, remove it so we can use the next unit. If it wasn't, use it again to find a useable seat
 				if (!isNull (assignedVehicle _unit)) then {
-					_units = _units - [_unit];
+					_units deleteAt 0;
 				};
 
 				// If no units are left, exit

@@ -2,11 +2,10 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-private ["_group","_badge","_groupBadges","_roleBadge","_unit","_typeofUnit"];
+private ["_group","_badge","_groupBadges","_roleBadge"];
+params["_unit","_typeofUnit"];
 
 _badge = ""; 
-_unit = _this select 0;
-_typeofUnit = _this select 1;
 _faction = toLower (faction _unit);
 
 // Note all badges must be defined in description.ext or be included your modpack.
@@ -14,7 +13,6 @@ _faction = toLower (faction _unit);
 
 // This variable stores the final badge to use which will applied at the end of this script.
 // A default badge can be set by changing this.
-
 
 // ===================================================================================
 
@@ -164,7 +162,6 @@ switch (_faction) do
 // Loop through the groups and match badges to the group _unit belongs to. Due to the groups being variables this requires calling formatted at runtime code.
 
 _group = (group _unit);
-
 
 {
     if (_group == missionNamespace getVariable[(_x select 0),grpNull]) exitWith { _badge = _x select 1; };

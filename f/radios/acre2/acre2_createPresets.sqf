@@ -2,17 +2,13 @@
 f_acre2_radios_calcFreq = {
 	// INPUT 'RadioEntryEntry' <- from radioSettings
     // e.g. [0,1,1] call f_acre2_radios_calcFreq
-	private["_radioSettingIndexP","_radioSettingEntry","_presetNum","_chanNum","_minFreq","_maxFreq","_channelMinSpacing","_spacingBetweenChannels","_randomSeed","_sizePresetBlock","_possibleSteps","_offset","_frequency"];
+	private["_radioSettingEntry","_randomSeed","_sizePresetBlock","_possibleSteps","_offset","_frequency"];
 
-	_radioSettingIndexP = _this select 0;
-	_presetNum = _this select 1;// 0 -> (n-1)
-	_chanNum = _this select 2;// 0-> (n-1)
+	params["_radioSettingIndexP","_presetNum","_chanNum"];
 
 	_radioSettingEntry = f_radios_settings_acre2_radioSettings select _radioSettingIndexP;
-	_minFreq = _radioSettingEntry select 1;
-	_maxFreq = _radioSettingEntry select 2;
-	_channelMinSpacing = _radioSettingEntry select 3;
-	_spacingBetweenChannels = _radioSettingEntry select 4;
+	_radioSettingEntry params["_ignore","_minFreq","_maxFreq","_channelMinSpacing","_spacingBetweenChannels"];
+	
 	_randomSeed = 0;
 	if (_presetNum == (count f_radios_settings_acre2_radioChannels)) then {
 		_randomSeed = f_radios_settings_acre2_freqOffsets select ((count f_radios_settings_acre2_radioChannels)+ _chanNum - 1);
@@ -30,8 +26,8 @@ f_acre2_radios_calcFreq = {
 };
 
 f_acre2_radioBaseNameToSettingsIdx = {
-	private ["_radio","_fndIdx"];
-	_radio = _this select 0;
+	private ["_fndIdx"];
+	params["_radio"];
 
 	_fndIdx = -1;
 	{

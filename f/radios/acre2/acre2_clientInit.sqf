@@ -8,7 +8,7 @@ if(!alive player) exitWith {[true] call acre_api_fnc_setSpectator;};
 _unit = player;
 
 fn_numToColor = {
-	_number = _this select 0;
+	params["_number"];
 	_color = switch (_number) do {
 		 case -1: {"#FFFFFF"};
 		 case 0: {"#1AFF00"};

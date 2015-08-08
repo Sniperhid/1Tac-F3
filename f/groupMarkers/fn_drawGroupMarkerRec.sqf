@@ -1,6 +1,6 @@
- private["_in","_rootData","_hasChildren","_drawMe","_mapControl","_minSiblingDist","_maxChildCenterDist","_myPos"];
-_in = _this select 0;
-_mapControl = _this select 1;
+ private["_rootData","_hasChildren","_drawMe","_minSiblingDist","_maxChildCenterDist","_myPos"];
+ params["_in","_mapControl"];
+
 _rootData = _in select 0;
 _hasChildren = count _in > 1;
 _drawMe = !_hasChildren; // no children = draw me.
@@ -18,13 +18,8 @@ if (_hasChildren) then {
 
 // Draw this.
 if (_drawMe) then {
-    private["_text","_texture","_color","_size","_pos","_gTexture"];
-    _text = _rootData select 0;
-    // DEBUG LINE_text = format["%1 %2",_minSiblingDist,_maxSiblingDist];
-    _texture = _rootData select 1;
-    _color = _rootData select 2;
-    _size = _rootData select 3;
-    _pos = _rootData select 4;
+    private["_gTexture"];
+	_rootData params ["_text","_texture","_color","_size","_pos"];
 
 	if (f_groupMarkers_pboLoaded) then {
 		_gTexture = switch (_rootData select 7) do {

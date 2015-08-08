@@ -68,9 +68,9 @@ f_factionNameToSimpleName = {
 };
 
 f_isUnitInGroupArray = {
-	private["_unit","_ret","_i","_factionStr","_grpString","_grp"];
+	private["_ret","_i","_factionStr","_grpString","_grp"];
 	_ret = false;
-	_unit = _this select 0;
+	params["_unit"];
 	_factionStr = [faction _unit] call f_factionNameToSimpleName;
     _grpString = ("Grp" + _factionStr  + "_");
 	for "_i" from 1 to ((count _this)-1) step 1 do {
@@ -80,9 +80,9 @@ f_isUnitInGroupArray = {
 };
 
 f_isUnitLeaderInGroupArray = {
-	private["_unit","_ret","_i","_factionStr","_grpString","_grp"];
+	private["_ret","_i","_factionStr","_grpString","_grp"];
 	_ret = false;
-	_unit = _this select 0;
+	params["_unit"];
 	_factionStr = [faction _unit] call f_factionNameToSimpleName;
     _grpString = ("Grp" + _factionStr  + "_");
 	for "_i" from 1 to ((count _this)-1) step 1 do {
@@ -94,8 +94,8 @@ f_isUnitLeaderInGroupArray = {
 };
 
 f_isUnitinUnitArray = {
-	private["_unit","_unitStr","_i","_ret","_factionStr"];
-	_unit = _this select 0;
+	private["_unitStr","_i","_ret","_factionStr"];
+	params["_unit"];
 	_unitStr = (str _unit);
 	_ret = false;
 
