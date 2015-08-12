@@ -2,17 +2,12 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-// DECLARE VARIABLES AND FUNCTIONS
-
-private ["_weather","_missionOvercast","_MissionRain","_MissionRainbow","_MissionLightnings","_MissionWindStr","_MissionWindGusts","_MissionWaves","_MissionHumidity"];
-
-// ====================================================================================
-
 // SET KEY VARIABLES
 // We interpret the values parsed to the script. If the function was called from the parameters those values are used.
 
-_weather = _this select 0;
-_transition = if (count _this > 1) then {_this select 1} else {false};
+params["_weather",["_transition",false]];
+
+private ["_missionOvercast","_MissionRain","_MissionRainbow","_MissionLightnings","_MissionWindStr","_MissionWindGusts","_MissionWaves","_MissionHumidity"];
 
 _MissionOvercast = 0;
 _MissionRain = 0;
@@ -168,5 +163,3 @@ _transition setLightnings _MissionLightnings;
 };
 
 // ====================================================================================
-
-

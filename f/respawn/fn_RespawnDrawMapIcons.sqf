@@ -10,11 +10,7 @@ if (isNil "f_cam_blufor_color") then {
 };
 
 {
-	_pos = getpos _x;
-	_x1 = _pos select 0;
-	_y = _pos select 1;
-	if(alive _x) then
-	{
+	if(alive _x) then {
 		_name = "";
 		if(isPlayer _x) then {_name = name _x};
 		if(leader _x == _x && {isPlayer _x} count units _x > 0) then {_name = format["%1 - %2",toString(toArray(groupID (group _x)) - [45]),_name]};

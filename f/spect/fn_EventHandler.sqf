@@ -3,8 +3,7 @@
 // ==================================================================
 
 // handles all the events. be afraid.
-_type = _this select 0;
-_args = _this select 1;
+params["_type","_args"];
 _handled = true;
 switch (_type) do
 {

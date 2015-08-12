@@ -1,4 +1,3 @@
-private ["_unitfaction"];
 
 if (!hasInterface) exitWith {}; // Only needed on clients
 
@@ -16,15 +15,7 @@ if (!isDedicated && (isNull player)) then
 // DETECT PLAYER FACTION
 // The following code detects what faction the player's slot belongs to, and stores
 // it in the private variable _unitfaction
-_unitfaction = "";
-if(count _this == 0) then
-{
-	_unitfaction = toLower (faction (leader group player));
-}
-else
-{
-	_unitfaction = (_this select 0);
-};
+params[["_unitfaction",(toLower (faction (leader group player)))]];
 
 // ====================================================================================
 // Init: check if optional pbo is loaded
@@ -101,41 +92,6 @@ if (isClass(configFile >> "CfgPatches" >> "ace_microdagr")) then {
 
 // ====================================================================================
 // Actively monitor reported displays, such that all BIS displays function properly.
-/*
-[] spawn {
-    f_groupMarkersActiveMapControls = [];
-    while {true} do
-    {
-        disableSerialization;
-        {
-            _display = _x;
-            {
-                if (ctrlMapScale _x != 0) then {
-                    if !(_x in f_groupMarkersActiveMapControls ) then { 
-                        f_groupMarkersActiveMapControls pushBack _x;
-                        _x ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-                    };
-                };
-            } forEach allControls _display;
-        } forEach allDisplays;
-        
-        {
-            _display = _x;
-            {
-                if (ctrlMapScale _x != 0) then {
-                    if !(_x in f_groupMarkersActiveMapControls ) then {
-                        f_groupMarkersActiveMapControls pushBack _x;
-                        _x ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-                    };
-                };
-            } forEach allControls _display;
-        } forEach (uiNameSpace getVariable "igui_displays");
-        sleep 1;
-        //Garbage collect old controls.
-        f_groupMarkersActiveMapControls = f_groupMarkersActiveMapControls - [controlNull];
-    };
-};
-*/
 
 [_unitfaction,true] call f_fnc_setupGroupMarkers;
 

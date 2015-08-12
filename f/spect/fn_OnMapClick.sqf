@@ -31,14 +31,12 @@ if(f_cam_mapMode == 2) then
             ctrlShow [1350,false];
             ctrlShow [1360,false];
 
-
             ctrlSetText [1000,format ["Spectating:%1", name f_cam_curTarget]];
         };
     };
     if(f_cam_mode == 3) then
     {
-        _x = _pos select 0;
-        _y = _pos select 1;
+        _pos params ["_x","_y"];
         f_cam_freecamera setPosASL [_x,_y,((getposASL f_cam_freecamera) select 2 ) max ((getTerrainHeightASL [_x,_y])+1)];
         // hide map
         f_cam_mapMode = 0;
@@ -46,7 +44,6 @@ if(f_cam_mapMode == 2) then
         ctrlShow [2010,true];
         ctrlShow [1350,false];
         ctrlShow [1360,false];
-
     };
 };
 true

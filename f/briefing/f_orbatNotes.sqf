@@ -61,5 +61,3 @@ _orbatBriefingContents = _orbatBriefingContents + _summaryGroupListing + "</font
 
 waitUntil {scriptDone f_script_briefing};
 player createDiaryRecord ["diary", ["ORBAT", _orbatBriefingContents]];
-
-

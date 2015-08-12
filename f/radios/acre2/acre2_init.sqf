@@ -3,15 +3,11 @@
 // ====================================================================================
 
 // precompile functions
-
 f_acre2_clientInit = compile preprocessFileLineNumbers "f\radios\acre2\acre2_clientInit.sqf";
 f_acre2_createPresets = compile preprocessFileLineNumbers "f\radios\acre2\acre2_createPresets.sqf";
 
-
-
 // jip check
-if (!isDedicated && (isNull player)) then
-{
+if (!isDedicated && (isNull player)) then {
     waitUntil {sleep 0.1; !isNull player};
 };
 
@@ -98,9 +94,7 @@ f_isUnitinUnitArray = {
 	params["_unit"];
 	_unitStr = (str _unit);
 	_ret = false;
-
 	_factionStr = [faction _unit] call f_factionNameToSimpleName;
-
 	for "_i" from 1 to ((count _this)-1) step 1 do {
 		if (_unitStr == format["Unit%1_%2",_factionStr,(_this select _i)]) exitWith {_ret = true };
 	};
@@ -133,7 +127,7 @@ if(hasInterface) then
 	// define our languages (need to be the same order for everyone)
 	{
 		_x call acre_api_fnc_babelAddLanguageType;
-	} foreach f_radios_settings_acre2_languages;
+	} forEach f_radios_settings_acre2_languages;
 
 	[] call f_acre2_clientInit;
 };

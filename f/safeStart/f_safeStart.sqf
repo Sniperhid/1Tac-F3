@@ -10,7 +10,6 @@ if (isNil "f_param_mission_timer") then {
 };
 
 // ====================================================================================
-
 // BEGIN SAFE-START LOOP
 // If a value was set for the mission-timer, begin the safe-start loop and turn on invincibility
 

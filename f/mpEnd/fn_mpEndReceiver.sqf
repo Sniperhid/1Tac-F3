@@ -4,10 +4,7 @@
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_ending","_state"];
-
-_ending = _this select 0;
-_state = if (count _this > 1) then {_this select 1} else {true};
+params["_ending",["_state",true]];
 
 // ====================================================================================
 

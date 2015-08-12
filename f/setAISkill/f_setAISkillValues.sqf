@@ -2,7 +2,6 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 // ====================================================================================
-
 // CHECK ACTIVATED PARAMETERS
 // Depending on enabled parameters, the skill level for each side are set up
 
@@ -11,39 +10,22 @@ if (isNil "f_param_AISkill_OPFOR") then {f_param_AISkill_OPFOR = 99};
 if (isNil "f_param_AISkill_INDP") then {f_param_AISkill_INDP = 99};
 
 // ====================================================================================
-
 // SELECT BLUFOR AI SKILLS
 // Using the value of f_param_AISkill_BLUFOR, a value for _skillSideBLUFOR is set.
 
-if (isNil "f_param_skillBlu") then
-{
+if (isNil "f_param_skillBlu") then {
 f_param_skillBlu =
-	switch (f_param_AISkill_BLUFOR) do
-	{
+	switch (f_param_AISkill_BLUFOR) do {
 	// Super
-		case 0:
-		{
-			_superSkill;
-		};
+		case 0: { _superSkill; };
 	// High
-		case 1:
-		{
-			_highSkill;
-		};
+		case 1: { _highSkill; };
 	// Medium
-		case 2:
-		{
-			_mediumSkill;
-		};
+		case 2: { _mediumSkill; };
 	// Low
-		case 3:
-		{
-			_lowSkill;
-		};
+		case 3: { _lowSkill; };
 	// Default
-	    default {
-	    	99;
-		};
+	    default { 99; };
 	};
 	publicVariable "f_param_skillBlu";
 };
@@ -54,40 +36,23 @@ f_param_skillBlu =
 // SELECT OPFOR AI SKILLS
 // Using the value of f_param_AISkill_OPFOR, a value for _skillSideOPFOR is set.
 
-if (isNil "f_param_skillOpf") then
-{
+if (isNil "f_param_skillOpf") then {
 	f_param_skillOpf =
-	switch (f_param_AISkill_OPFOR) do
-	{
+	switch (f_param_AISkill_OPFOR) do {
 	// Super
-		case 0:
-		{
-			_superSkill;
-		};
+		case 0: { _superSkill; };
 	// High
-		case 1:
-		{
-			_highSkill;
-		};
+		case 1: { _highSkill; };
 	// Medium
-		case 2:
-		{
-			_mediumSkill;
-		};
+		case 2: { _mediumSkill; };
 	// Low
-		case 3:
-		{
-			_lowSkill;
-		};
+		case 3: { _lowSkill; };
 	// Default
-	    default {
-	    	99;
-		};
+	    default { 99; };
 	};
 	publicVariable "f_param_skillOpf";
 };
 // ====================================================================================
-
 // SELECT INDEPENDENT AI SKILLS
 // Using the value of f_param_AISkill_INDP, a value for _skillSideOPFOR is set.
 
@@ -97,35 +62,20 @@ if (isNil "f_param_skillRes") then
 	switch (f_param_AISkill_INDP) do
 	{
 	// Super
-		case 0:
-		{
-			 _superSkill;
-		};
+		case 0: { _superSkill; };
 	// High
-		case 1:
-		{
-			 _highSkill;
-		};
+		case 1: { _highSkill; };
 	// Medium
-		case 2:
-		{
-			_mediumSkill;
-		};
+		case 2: { _mediumSkill; };
 	// Low
-		case 3:
-		{
-			_lowSkill;
-		};
+		case 3: { _lowSkill; };
 	// Default
-	    default {
-	    	99;
-		};
+	    default { 99; };
 	};
 	publicVariable "f_param_skillRes";
 };
 
 // ====================================================================================
-
 // SELECT CIVILIAN AI SKILLS
 // If the civilian side variable is enabled, their level will be set accordingly
 
@@ -145,7 +95,6 @@ if (!isNil "f_param_civAI") then {
 publicVariable "f_param_skillCiv";
 
 // ====================================================================================
-
 // DEBUG
 if (f_param_debugMode == 1) then
 {

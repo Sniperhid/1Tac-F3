@@ -20,14 +20,7 @@ if (!isDedicated && (isNull player)) then
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_veh","_vd","_seat","_sleep"];
-
-// ====================================================================================
-
-// SETUP KEY VARIABLES
-// The sleep governs how often the scripts checks if the player has changed the vehicle
-
-_sleep = 3;
+private ["_veh","_vd","_seat"];
 
 // ====================================================================================
 
@@ -65,6 +58,6 @@ while {!isNull player} do {
 		// Check if the player has changed seats.
 		if (_veh != player && {_seat != (assignedVehicleRole player select 0)}) exitWith {};
 
-		sleep _sleep;
+		sleep 3;
 	};
 };

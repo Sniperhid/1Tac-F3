@@ -1,7 +1,6 @@
 // F3 - ACRE Clientside Initialisation
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
-
 // if dead, set spectator and exit
 if(!alive player) exitWith {[true] call acre_api_fnc_setSpectator;};
 
@@ -21,9 +20,7 @@ fn_numToColor = {
 	_color
 };
 
-
 // ====================================================================================
-
 // Set language of the units depending on side (BABEL API)
 
 _languagesToSpeak = [] call f_radios_settings_acre_babel_assignment;

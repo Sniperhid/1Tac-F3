@@ -1,19 +1,16 @@
 // F3 - Automatic Body Removal
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
-
 // RUN THE SCRIPT ONLY SERVER SIDE AND ON HEADLESS CLIENT
 
 if (!isServer && hasInterface) exitWith {};
 
 // ====================================================================================
-
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_men","_str_Men","_handle"];
+private ["_men","_handle"];
 
 // ====================================================================================
-
 // SET KEY VARIABLES
 // Using a common variable, we will create an array containing all men, minus playable units.
 
@@ -22,12 +19,10 @@ _men = allUnits - playableUnits;
 // DEBUG
 if (f_param_debugMode == 1) then
 {
-	_str_men = str _men;
-	player sideChat format ["DEBUG (f\removeBody\f_addRemoveBodyEH.sqf): _men = %1",_str_men];
+	player sideChat format ["DEBUG (f\removeBody\f_addRemoveBodyEH.sqf): _men = %1",(str _men)];
 };
 
 // ====================================================================================
-
 // PREVENT UNTIS FROM BEING REMOVED
 // All units in the corresponding array are flagged to never be removed
 if (isNil "f_param_doNotRemoveBodies") then {f_param_doNotRemoveBodies = []};
@@ -37,7 +32,6 @@ if (isNil "f_param_doNotRemoveBodies") then {f_param_doNotRemoveBodies = []};
 } forEach f_param_doNotRemoveBodies;
 
 // ====================================================================================
-
 // ADD EVENT HANDLER
 // A killed event handler is added to all units in the array _men that are not part of the exempt group
 
@@ -49,7 +43,4 @@ if !(_handle && local _x) then {
 	};
 } forEach _men;
 
-
 // ====================================================================================
-
-

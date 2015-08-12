@@ -8,7 +8,6 @@
 _customText = "";
 
 // ====================================================================================
-
 // ADMIN BRIEFING
 // This is a generic section displayed only to the ADMIN
 
@@ -20,7 +19,6 @@ This briefing section can only be seen by the current admin.
 ";
 
 // ====================================================================================
-
 // MISSION-MAKER NOTES
 // This section displays notes made by the mission-maker for the ADMIN
 
@@ -34,21 +32,17 @@ _briefing = _briefing + _customText;
 _briefing = _briefing + "<br/><br/>";
 
 // ====================================================================================
-
 // ENDINGS
 // This block of code collects all valid endings and formats them properly
 
-_title = [];
-_ending = [];
 _endings = [];
 
 _i = 1;
 while {true} do {
-	_title = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "title");
-	_description = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "description");
-	if (_title == "") exitWith {};
-	_ending = [_i,_title,_description];
-	_endings set [count _endings,_ending];
+	_title = getText (missionConfigFile >> "CfgDebriefing" >> format ["end%1",_i] >> "title");
+    if (_title == "") exitWith {};
+	_description = getText (missionConfigFile >> "CfgDebriefing" >> format ["end%1",_i] >> "description");
+	_endings pushBack [_i,_title,_description];
 	_i = _i + 1;
 };
 
@@ -68,7 +62,6 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 } forEach _endings;
 
 // ====================================================================================
-
 // ADD ZEUS SUPPORT SECTION
 
 _briefing = _briefing + "
@@ -98,7 +91,6 @@ if (isNull (getAssignedCuratorLogic player)) then {hintsilent 'Assign ZEUS first
 ";
 
 // ====================================================================================
-
 // CREATE DIARY ENTRY
 
 player createDiaryRecord ["diary", ["Admin",_briefing]];

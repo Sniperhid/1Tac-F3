@@ -168,7 +168,6 @@ _group = (group _unit);
 } forEach _groupBadges;
 
 // ====================================================================================
-
 //  Let the unit insignia override the group insignia.
 
 if (_roleBadge != "") then {

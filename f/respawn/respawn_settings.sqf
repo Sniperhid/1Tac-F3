@@ -53,8 +53,7 @@ respawnMenuFactions = [
 // This is important as the ability to perform certain tasks can be derived from being a certain class.
 
 fn_respawnSelectClass = {
-    _faction = _this select 0;
-    _typeOfUnit = _this select 1;
+    params["_faction","_typeOfUnit"];
     
     //Setup a default value.
     _type = "C_man_1";

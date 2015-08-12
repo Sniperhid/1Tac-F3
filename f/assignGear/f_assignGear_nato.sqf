@@ -55,7 +55,6 @@
 //		crate_large	- large ammocrate
 //
 // ====================================================================================
-
 // GENERAL EQUIPMENT USED BY MULTIPLE CLASSES
 
 // ATTACHMENTS - PRIMARY
@@ -81,8 +80,8 @@ _attachments = [_attach1,_scope1]; // The default attachment set for most units,
 // false = keep attachments as they are
 
 // ====================================================================================
-
 // ATTACHMENTS - HANDGUN
+
 _hg_silencer1 = "muzzle_snds_acp";	// .45 suppressor
 
 _hg_scope1 = "optic_MRD";			// MRD
@@ -91,7 +90,6 @@ _hg_scope1 = "optic_MRD";			// MRD
 _hg_attachments= []; // The default attachment set for handguns, overwritten in the individual unitType
 
 // ====================================================================================
-
 // WEAPON SELECTION
 
 // Standard Riflemen ( MMG Assistant Gunner, Assistant Automatic Rifleman, MAT Assistant Gunner, MTR Assistant Gunner, Rifleman)
@@ -176,7 +174,6 @@ _baghsamg = "B_AA_01_weapon_F";				// used by Heavy SAM gunner
 _baghsamag = "B_HMG_01_support_F";			// used by Heavy SAM assistant gunner
 
 // ====================================================================================
-
 // UNIQUE, ROLE-SPECIFIC EQUIPMENT
 
 // Automatic Rifleman
@@ -231,9 +228,7 @@ _APmine1 = "APERSBoundingMine_Range_Mag";
 _APmine2 = "APERSMine_Range_Mag";
 
 // ====================================================================================
-
 // CLOTHES AND UNIFORMS
-
 // Define classes. This defines which gear class gets which uniform
 // "medium" vests are used for all classes if they are not assigned a specific uniform
 
@@ -287,20 +282,11 @@ _sfRig = ["V_PlateCarrierSpec_rgr"];
 _sfGlasses = [];
 
 // ====================================================================================
-
-// INTERPRET PASSED VARIABLES
-// The following inrerprets formats what has been passed to this script element
-
-_typeofUnit = toLower (_this select 0);			// Tidy input for SWITCH/CASE statements, expecting something like : r = Rifleman, co = Commanding Officer, rat = Rifleman (AT)
-_unit = _this select 1;					// expecting name of unit; originally passed by using 'this' in unit init
-_isMan = _unit isKindOf "CAManBase";	// We check if we're dealing with a soldier or a vehicle
-
-// ====================================================================================
-
 // This block needs only to be run on an infantry unit
+
 if (_isMan) then {
 
-		// PREPARE UNIT FOR GEAR ADDITION
+    // PREPARE UNIT FOR GEAR ADDITION
 	// The following code removes all existing weapons, items, magazines and backpacks
 
 	removeBackpack _unit;
@@ -309,14 +295,12 @@ if (_isMan) then {
 	removeAllAssignedItems _unit;
 
 	// ====================================================================================
-
 	// HANDLE CLOTHES
 	// Handle clothes and helmets and such using the include file called next.
 
 	#include "f_assignGear_clothes.sqf";
 
 	// ====================================================================================
-
 	// ADD UNIVERSAL ITEMS
 	// Add items universal to all units of this faction
 
@@ -332,22 +316,18 @@ if (_isMan) then {
 
 
 // ====================================================================================
-
 // SETUP BACKPACKS
 // Include the correct backpack file for the faction
 
 _backpack = {
-	_typeofBackPack = _this select 0;
-	_loadout = f_param_backpacks;
-	if (count _this > 1) then {_loadout = _this select 1};
-	switch (_typeofBackPack) do
-	{
+    params["_typeofBackPack",["_loadout",f_param_backpacks]];
+
+	switch (_typeofBackPack) do {
 		#include "f_assignGear_nato_b.sqf";
 	};
 };
 
 // ====================================================================================
-
 // DEFINE UNIT TYPE LOADOUTS
 // The following blocks of code define loadouts for each type of unit (the unit type
 // is passed to the script in the first variable)

@@ -17,7 +17,6 @@ Made with F3 (http://www.ferstaberinde.com/f3/en/)
 "]];
 
 // ====================================================================================
-
 // NOTES: ADMINISTRATION
 // The code below creates the administration sub-section of notes.
 
@@ -27,7 +26,6 @@ _adm = player createDiaryRecord ["diary", ["Administration","
 "]];
 
 // ====================================================================================
-
 // NOTES: EXECUTION
 // The code below creates the execution sub-section of notes.
 
@@ -51,7 +49,6 @@ _exe = player createDiaryRecord ["diary", ["Execution","
 "]];
 
 // ====================================================================================
-
 // NOTES: MISSION
 // The code below creates the mission sub-section of notes.
 
@@ -61,7 +58,6 @@ _mis = player createDiaryRecord ["diary", ["Mission","
 "]];
 
 // ====================================================================================
-
 // NOTES: SITUATION
 // The code below creates the situation sub-section of notes.
 

@@ -1,79 +1,3 @@
-/* #Mokula
-$[
-	1.063,
-	["respawnTool",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"respawnGroupFrame",[1,"",["0.241158 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.510469 * safezoneW","0.484 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1500,"deadPlayersListBox",[1,"",["0.25147 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.139219 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1501,"groupListBox",[1,"",["0.468031 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.20625 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1000,"waveRespawnTitle",[1,"Wave Respawn Tool",["0.247344 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.128906 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1600,"respawneMenuAddButton",[1,"Add",["0.407199 * safezoneW + safezoneX","0.467 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1601,"respawnMenuRemoteButton",[1,"Remove",["0.407199 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1602,"respawnMenuSpawnButton",[1,"Spawn Group",["0.587656 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.0773437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1603,"respawnMenuChangeRoleButton",[1,"Change Role",["0.684594 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1604,"respawnMenuChangeRankButton",[1,"Change Rank",["0.684594 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1001,"respawnMenuGroupNameText",[1,"INSERT_GROUP_NAME",["0.524746 * safezoneW + safezoneX","0.3262 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1002,"respawnMenuMarkerName",[1,"INSERT_MARKER_NAME",["0.453594 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.113437 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2800,"respawnMenuGroupMarkerCheckbox",[1,"Give group Marker",["0.422656 * safezoneW + safezoneX","0.742 * safezoneH + safezoneY","0.0103125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"respawnMenuSpawnMarkerText",[1,"Spawn with Marker?",["0.324687 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.113437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2100,"respawnMenuSideCombo",[1,"Side",["0.39895 * safezoneW + safezoneX","0.423 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1004,"respawnMenuPlayersText",[1,"Players in Spectator: 0",["0.2525 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1400,"RscEditTest",[1,"edit",["0.391719 * safezoneW + safezoneX","0.346 * safezoneH + safezoneY","0.103125 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
-]
-*/
-
-/* #Fuzuzo
-$[
-	1.063,
-	["respawnTool",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"respawnGroupFrame",[1,"",["0.238065 * safezoneW + safezoneX","0.3174 * safezoneH + safezoneY","0.510469 * safezoneW","0.484 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1500,"deadPlayersListBox",[1,"",["0.25147 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.139219 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1"],[]],
-	[1501,"groupListBox",[1,"",["0.468031 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.20625 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1000,"waveRespawnTitle",[1,"Wave Respawn Tool",["0.247344 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.128906 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1600,"respawneMenuAddButton",[1,"Add",["0.407199 * safezoneW + safezoneX","0.467 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1601,"respawnMenuRemoteButton",[1,"Remove",["0.407199 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1602,"respawnMenuSpawnButton",[1,"Spawn Group",["0.587656 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.0773437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1603,"respawnMenuChangeRoleButton",[1,"Change Role",["0.684594 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1604,"respawnMenuChangeRankButton",[1,"Change Rank",["0.684594 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1001,"respawnMenuGroupNameText",[1,"INSERT_GROUP_NAME",["0.474227 * safezoneW + safezoneX","0.3394 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1002,"respawnMenuMarkerName",[1,"INSERT_MARKER_NAME",["0.417509 * safezoneW + safezoneX","0.7376 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2800,"respawnMenuGroupMarkerCheckbox",[1,"Give group Marker",["0.381416 * safezoneW + safezoneX","0.742 * safezoneH + safezoneY","0.0103125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"respawnMenuSpawnMarkerText",[1,"Spawn with Marker?",["0.27623 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.113437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2100,"respawnMenuSideCombo",[1,"Side",["0.642254 * safezoneW + safezoneX","0.346 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1004,"respawnMenuPlayersText",[1,"Players in Spectator: 0",["0.2525 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1605,"RscCloseButton",[1,"Close",["0.716563 * safezoneW + safezoneX","0.3196 * safezoneH + safezoneY","0.0309375 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2101,"",[1,"Side",["0.399885 * safezoneW + safezoneX","0.620822 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2102,"",[1,"Side",["0.400341 * safezoneW + safezoneX","0.665733 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
-]
-*/
-
-/* #Kuzifa
-$[
-	1.063,
-	["respawnTool",[[0,0,1,1],0.025,0.04,"GUI_GRID"],0,0,0],
-	[1800,"respawnGroupFrame",[1,"",["0.234972 * safezoneW + safezoneX","0.3174 * safezoneH + safezoneY","0.510469 * safezoneW","0.484 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1500,"deadPlayersListBox",[1,"",["0.25147 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.139219 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","1"],[]],
-	[1501,"groupListBox",[1,"",["0.468031 * safezoneW + safezoneX","0.401 * safezoneH + safezoneY","0.20625 * safezoneW","0.308 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1000,"waveRespawnTitle",[1,"Wave Respawn Tool",["0.247344 * safezoneW + safezoneX","0.313 * safezoneH + safezoneY","0.128906 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1600,"respawneMenuAddButton",[1,"Add",["0.407199 * safezoneW + safezoneX","0.467 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1601,"respawnMenuRemoteButton",[1,"Remove",["0.407199 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.04125 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1602,"respawnMenuSpawnButton",[1,"Spawn Group",["0.641268 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.0773437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1603,"respawnMenuChangeRoleButton",[1,"Change Role",["0.684594 * safezoneW + safezoneX","0.445 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1604,"respawnMenuChangeRankButton",[1,"Change Rank",["0.684594 * safezoneW + safezoneX","0.544 * safezoneH + safezoneY","0.0567187 * safezoneW","0.055 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1001,"respawnMenuGroupNameText",[1,"INSERT_GROUP_NAME",["0.474227 * safezoneW + safezoneX","0.3394 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1002,"respawnMenuMarkerName",[1,"INSERT_MARKER_NAME",["0.376269 * safezoneW + safezoneX","0.7354 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2800,"respawnMenuGroupMarkerCheckbox",[1,"Give group Marker",["0.352548 * safezoneW + safezoneX","0.742 * safezoneH + safezoneY","0.0103125 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1003,"respawnMenuSpawnMarkerText",[1,"Spawn with Marker?",["0.253548 * safezoneW + safezoneX","0.731 * safezoneH + safezoneY","0.113437 * safezoneW","0.044 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2100,"respawnMenuSideCombo",[1,"Side",["0.642254 * safezoneW + safezoneX","0.346 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1004,"respawnMenuPlayersText",[1,"Players in Spectator: 0",["0.2525 * safezoneW + safezoneX","0.368 * safezoneH + safezoneY","0.108281 * safezoneW","0.033 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[1605,"RscCloseButton",[1,"Close",["0.716563 * safezoneW + safezoneX","0.3196 * safezoneH + safezoneY","0.0309375 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2101,"",[1,"Side",["0.399885 * safezoneW + safezoneX","0.620822 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2102,"",[1,"Side",["0.400341 * safezoneW + safezoneX","0.665733 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2103,"",[1,"Side",["0.493103 * safezoneW + safezoneX","0.742822 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]],
-	[2104,"",[1,"Side",["0.569973 * safezoneW + safezoneX","0.743052 * safezoneH + safezoneY","0.0567187 * safezoneW","0.022 * safezoneH"],[-1,-1,-1,-1],[-1,-1,-1,-1],[-1,-1,-1,-1],"","-1"],[]]
-]
-*/
-
-
 /* #Xovizy
 $[
 	1.063,
@@ -105,12 +29,8 @@ class respawnMenuDialog {
 	idd = 26893;
 	movingEnable = 0;
 	onLoad="[] spawn fn_respawnMenuInit;";
-	class controlsBackground { 
-		// define controls here
-	};
-	class objects { 
-		// define controls here
-	};
+	class controlsBackground {};
+	class objects {};
 	class controls { 
 		class respawnGroupFrame: respawnMenu_RscFrame
 		{
@@ -139,7 +59,7 @@ class respawnMenuDialog {
 		class waveRespawnTitle: respawnMenu_RscText
 		{
 			idc = 1000;
-			text = "Wave Respawn Tool"; //--- ToDo: Localize;
+			text = "Wave Respawn Tool";
             x = 0.247344 * safezoneW + safezoneX;
             y = 0.313 * safezoneH + safezoneY;
             w = 0.128906 * safezoneW;
@@ -148,7 +68,7 @@ class respawnMenuDialog {
 		class respawnMenuAddButton: respawnMenu_RscButton
 		{
 			idc = 1600;
-			text = "Add"; //--- ToDo: Localize;
+			text = "Add";
             x = 0.407199 * safezoneW + safezoneX;
             y = 0.467 * safezoneH + safezoneY;
             w = 0.04125 * safezoneW;
@@ -158,7 +78,7 @@ class respawnMenuDialog {
 		class respawnMenuRemoveButton: respawnMenu_RscButton
 		{
 			idc = 1601;
-			text = "Remove"; //--- ToDo: Localize;
+			text = "Remove";
             x = 0.407199 * safezoneW + safezoneX;
             y = 0.544 * safezoneH + safezoneY;
             w = 0.04125 * safezoneW;
@@ -168,7 +88,7 @@ class respawnMenuDialog {
 		class respawnMenuSpawnButton: respawnMenu_RscButton
 		{
 			idc = 1602;
-			text = "Spawn Group"; //--- ToDo: Localize;
+			text = "Spawn Group";
             x = 0.641268 * safezoneW + safezoneX;
             y = 0.731 * safezoneH + safezoneY;
             w = 0.0773437 * safezoneW;
@@ -178,7 +98,7 @@ class respawnMenuDialog {
 		class respawnMenuChangeRoleButton: respawnMenu_RscButton
 		{
 			idc = 1603;
-			text = "Cycle Role"; //--- ToDo: Localize;
+			text = "Cycle Role";
             x = 0.684594 * safezoneW + safezoneX;
             y = 0.445 * safezoneH + safezoneY;
             w = 0.0567187 * safezoneW;
@@ -188,7 +108,7 @@ class respawnMenuDialog {
 		class respawnMenuChangeRankButton: respawnMenu_RscButton
 		{
 			idc = 1604;
-			text = "Cycle Rank"; //--- ToDo: Localize;
+			text = "Cycle Rank";
             x = 0.684594 * safezoneW + safezoneX;
             y = 0.544 * safezoneH + safezoneY;
             w = 0.0567187 * safezoneW;
@@ -198,7 +118,7 @@ class respawnMenuDialog {
 		class respawnMenuGroupNameText: respawnMenu_RscEdit
 		{
 			idc = 26898;
-			text = "INSERT_GROUP_NAME"; //--- ToDo: Localize;
+			text = "INSERT_GROUP_NAME";
             x = 0.474227 * safezoneW + safezoneX;
             y = 0.3394 * safezoneH + safezoneY;
             w = 0.108281 * safezoneW;
@@ -207,7 +127,7 @@ class respawnMenuDialog {
 		class respawnMenuMarkerName: respawnMenu_RscEdit
 		{
 			idc = 26899;
-			text = "INSERT_MARKER_NAME"; //--- ToDo: Localize;
+			text = "INSERT_MARKER_NAME";
             x = 0.376269 * safezoneW + safezoneX;
             y = 0.7354 * safezoneH + safezoneY;
             w = 0.108281 * safezoneW;
@@ -216,7 +136,7 @@ class respawnMenuDialog {
 		class respawnMenuGroupMarkerCheckbox: respawnMenu_RscCheckbox
 		{
 			idc = 26903;
-			text = "Give group Marker"; //--- ToDo: Localize;
+			text = "Give group Marker";
             x = 0.352548 * safezoneW + safezoneX;
             y = 0.742 * safezoneH + safezoneY;
             w = 0.0103125 * safezoneW;
@@ -226,7 +146,7 @@ class respawnMenuDialog {
 		class respawnMenuSpawnMarkerText: respawnMenu_RscText
 		{
 			idc = 1003;
-			text = "Spawn with Marker?"; //--- ToDo: Localize;
+			text = "Spawn with Marker?";
             x = 0.253548 * safezoneW + safezoneX;
             y = 0.731 * safezoneH + safezoneY;
             w = 0.113437 * safezoneW;
@@ -235,7 +155,7 @@ class respawnMenuDialog {
 		class respawnMenuSideCombo: respawnMenu_RscCombo
 		{
 			idc = 26894;
-			text = "Side"; //--- ToDo: Localize;
+			text = "Side";
             x = 0.603125 * safezoneW + safezoneX;
             y = 0.346 * safezoneH + safezoneY;
             w = 0.0773437 * safezoneW;
@@ -244,7 +164,7 @@ class respawnMenuDialog {
         class respawnMenuPlayersText: respawnMenu_RscText
         {
             idc = 26895;
-            text = "Players in Spectator: 0"; //--- ToDo: Localize;
+            text = "Players in Spectator: 0";
             x = 0.2525 * safezoneW + safezoneX;
             y = 0.368 * safezoneH + safezoneY;
             w = 0.108281 * safezoneW;
@@ -253,7 +173,7 @@ class respawnMenuDialog {
         class respawnMenuCloseButton: respawnMenu_RscButton
         {
             idc = 26904;
-            text = "Close"; //--- ToDo: Localize;
+            text = "Close";
             x = 0.716563 * safezoneW + safezoneX;
             y = 0.3196 * safezoneH + safezoneY;
             w = 0.0309375 * safezoneW;
@@ -263,7 +183,7 @@ class respawnMenuDialog {
         class respawnMenuRscComboRole: respawnMenu_RscCombo
         {
             idc = 26896;
-            text = "Side"; //--- ToDo: Localize;
+            text = "Side";
             x = 0.396792 * safezoneW + safezoneX;
             y = 0.616422 * safezoneH + safezoneY;
             w = 0.0670312 * safezoneW;
@@ -272,7 +192,7 @@ class respawnMenuDialog {
         class respawnMenuRscComboRank: respawnMenu_RscCombo
         {
             idc = 26897;
-            text = "Side"; //--- ToDo: Localize;
+            text = "Side";
             x = 0.396792 * safezoneW + safezoneX;
             y = 0.663533 * safezoneH + safezoneY;
             w = 0.0670312 * safezoneW;
@@ -282,7 +202,7 @@ class respawnMenuDialog {
         class RscCombo_2103: respawnMenu_RscCombo
         {
             idc = 26900;
-            text = "Side"; //--- ToDo: Localize;
+            text = "Side";
             x = 0.493103 * safezoneW + safezoneX;
             y = 0.742822 * safezoneH + safezoneY;
             w = 0.0567187 * safezoneW;
@@ -291,7 +211,7 @@ class respawnMenuDialog {
         class RscCombo_2104: respawnMenu_RscCombo
         {
             idc = 26901;
-            text = "Side"; //--- ToDo: Localize;
+            text = "Side";
             x = 0.569973 * safezoneW + safezoneX;
             y = 0.743052 * safezoneH + safezoneY;
             w = 0.0567187 * safezoneW;
@@ -300,16 +220,14 @@ class respawnMenuDialog {
         class respawnMenuVOIP: respawnMenu_RscButton
         {
             idc = 26927;
-            text = "Toggle Spectator VOIP"; //--- ToDo: Localize;
+            text = "Toggle Spectator VOIP";
             x = 0.365937 * safezoneW + safezoneX;
             y = 0.346 * safezoneH + safezoneY;
             w = 0.0979687 * safezoneW;
             h = 0.022 * safezoneH;
-            tooltip = "Toggles the spectator channel for you (ACRE/TFAR), so that you can talk to dead players if alive."; //--- ToDo: Localize;
+            tooltip = "Toggles the spectator channel for you (ACRE/TFAR), so that you can talk to dead players if alive.";
             action = "[] call fn_toggleSpectator";
         };
-        
-        
 	};
 };
 

@@ -5,51 +5,49 @@
 // DECLARE VARIABLES AND FUNCTIONS
 if (!hasInterface) exitWith {};
 
-private ["_text","_stuff","_weps","_items","_fnc_wepMags","_wepMags","_magArr","_s","_mags","_bp","_maxload","_icon"];
+private ["_text","_weps","_items","_fnc_wepMags","_wepMags","_magArr","_s","_mags","_icon"];
 
 // Local function to set the proper magazine count.
 _fnc_wepMags = {
-		private ["_w","_magarr"];
-		_w = _this select 0;
-		
-		//Get possible magazines for weapon
-		_wepMags = getArray (configFile >> "CfgWeapons" >> _w >> "magazines");
+    private ["_magarr"];
+    params["_w"];
 
-  		// Compare weapon magazines with player magazines
-  		_magArr = [];
-  		{
-  			// findInPairs returns the first index that matches the checked for magazine
-  			_s = [_mags,_x] call BIS_fnc_findInPairs;
+    //Get possible magazines for weapon
+    _wepMags = getArray (configFile >> "CfgWeapons" >> _w >> "magazines");
 
-  			//If we have a match
-  			if (_s != -1) then {
-  				// Add the number of magazines to the list
-				_numMags = ([_mags,[_s, 1]] call BIS_fnc_returnNestedElement);
-  				_magArr set [count _magArr,_numMags];
-  				// Remove the entry
-  				_mags = [_mags, _s] call BIS_fnc_removeIndex;
+    // Compare weapon magazines with player magazines
+    _magArr = [];
+    {
+        // findInPairs returns the first index that matches the checked for magazine
+        _s = [_mags,_x] call BIS_fnc_findInPairs;
 
-  			};
-  		} forEach _wepMags;
+        //If we have a match
+        if (_s != -1) then {
+            // Add the number of magazines to the list
+            _numMags = ([_mags,[_s, 1]] call BIS_fnc_returnNestedElement);
+            _magArr pushBack _numMags;
+            // Remove the entry
+            _mags = [_mags, _s] call BIS_fnc_removeIndex;
 
-  		if (count _magArr > 0) then {
-  			_text = _text + " [";
+        };
+    } forEach _wepMags;
 
-  			{
-  				_text = _text + format ["%1",_x];
-  				if (count _magarr > (_forEachIndex + 1)) then {_text = _text + "+";}
-  			} forEach _magArr;
+    if (count _magArr > 0) then {
+        _text = _text + " [";
 
-  			_text = _text + "]";
-  		};
+        {
+            _text = _text + format ["%1",_x];
+            if (count _magarr > (_forEachIndex + 1)) then {_text = _text + "+";}
+        } forEach _magArr;
+
+        _text = _text + "]";
+    };
 };
 
 // ====================================================================================
-
 // SET UP KEY VARIABLES
 
 _text = "<br/>";
-_stuff = [];
 
 // All weapons minus the field glasses
 _weps = weapons player - ["Rangefinder","Binocular","Laserdesignator"];
@@ -66,7 +64,6 @@ _items = (items player) call BIS_fnc_consolidateArray;
 _visText = "";
 
 // ====================================================================================
-
 // Do this before _mags is deleted from.
 _magVisText = "";
 {
@@ -89,7 +86,6 @@ if (count _weps > 0) then {
 
 		//Add magazines for weapon
   		[_x] call _fnc_wepMags;
-		
 
   		// Check if weapon has an underslung grenade launcher
 		if ({_x in ["GL_3GL_F","EGLM","UGL_F"]} count (getArray (configFile >> "CfgWeapons" >> _x >> "muzzles")) > 0) then {
@@ -103,7 +99,7 @@ if (count _weps > 0) then {
 		// List weapon attachments
 		// Get attached items
 		_attachments = _wepItems select (([_wepItems,_x] call BIS_fnc_findNestedElement) select 0);
-		_attachments = [_attachments,0] call BIS_fnc_removeIndex; // Remove the first element as it points to the weapon itself
+		_attachments deleteAt 0; // Remove the first element as it points to the weapon itself
 
 		{
 			if (typeName _x != typeName [] && {_x != ""}) then {
@@ -119,7 +115,6 @@ if (count _weps > 0) then {
 };
 
 // ====================================================================================
-
 // OTHER MAGAZINES
 // Add lines for all magazines not tied to any carried weapon (grenades etc.)
 
@@ -134,21 +129,15 @@ if (count _mags > 0) then {
 _visText = _visText + _magVisText;
 
 // ====================================================================================
-
 // BACKPACK
 // Add lines for all other items
 
 if !(backpack player == "") then {
 	_text = _text + "<br/><font size='18'>BACKPACK [%FULL]:</font><br/>";
-
-	_bp = backpack player;
-	_text = _text + format["%1 [%2",getText (configFile >> "CfgVehicles" >> _bp >> "displayname"), 100*loadBackpack player]+"%]<br/>";
-	//_maxload = getNumber(configFile >> "CfgVehicles" >> _bp >> "maximumload");
-	//_text = _text + format["%1 [%2/%3]<br/>",getText (configFile >> "CfgVehicles" >> _bp >> "displayname"), _maxload*loadBackpack player,_maxload];
+	_text = _text + format["%1 [%2",getText (configFile >> "CfgVehicles" >> (backpack player) >> "displayname"), 100*loadBackpack player]+"%]<br/>";
 };
 
 // ====================================================================================
-
 // ITEMS
 // Add lines for all other items
 
@@ -172,7 +161,6 @@ if (count _items > 0) then {
 };
 
 // ====================================================================================
-
 // ADD DIARY SECTION
 // Wait for the briefing script to finish, then add the created text
 

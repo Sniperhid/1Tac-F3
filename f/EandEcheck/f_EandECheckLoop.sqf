@@ -11,18 +11,14 @@ if !(isServer) exitWith {};
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_objects","_obj","_safeDistance","_alive","_safe","_end","_pos","_playersonly"];
+private ["_alive","_safe","_pos"];
 
 // ====================================================================================
 
 // SET KEY VARIABLES
 // Using variables passed to the script instance, we will create some local variables:
 
-_objects = _this select 0;
-_obj = _this select 1;
-_safeDistance = _this select 2;
-_end = _this select 3;
-_playersonly = if (count _this > 4) then {_this select 4} else {true};
+params["_objects","_obj","_safeDistance","_end",["_playersonly",true]];
 _safe = 0;
 _units = [];
 _pos = [];
@@ -56,23 +52,23 @@ if (typeName _objects == "SIDE") then {
 } else {
 	{
 
-		if(!isnil _x) then
+		if(!isNil _x) then
 		{
-			_temp = call compile format ["%1",_x];
+            _temp = missionNamespace getVariable [_x,objNull];
 			player globalchat format ["%1",typeName _temp];
 			if (typename _temp == "GROUP") then {
 				{
 					if !(_x in _units) then {
-						_units set [count _units,_x];
+						_units pushBack _x;
 					};
 				} forEach units _temp;
 			} else {
 				if !(_x in _units) then {
-					_units set [count _units,_temp];
+					_units pushBack _temp;
 				};
 			};
 		};
-	} foreach _objects;
+	} forEach _objects;
 };
 
 // If for some reason the units array is still empty exit with an error message

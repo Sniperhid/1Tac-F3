@@ -3,16 +3,11 @@
 // ====================================================================================
 
 // DECLARE VARIABLES AND FUNCTIONS
-private ["_unit","_itemCargoList","_cntFAK","_cntMediKit"];
+private ["_itemCargoList","_cntFAK","_cntMediKit"];
+
+params["_unit"];
 
 // ====================================================================================
-
-// DETECT CRATE TYPE
-
-_unit = _this select 0;
-
-// ====================================================================================
-
 // COUNT AMOUNT OF FAKS AND MEDIKITS
 
 _itemCargoList = itemCargo _unit;
@@ -20,7 +15,6 @@ _cntFAK = {_x == "FirstAidKit"} count _itemCargoList; _itemCargoList = _itemCarg
 _cntMediKit = {_x == "MediKit"} count _itemCargoList; _itemCargoList = _itemCargoList - ["Medikit"];
 
 // ====================================================================================
-
 // REMOVE ALL AND RE-ADD ALL VANILLA ITEMS
 
 clearItemCargoGlobal _unit;
@@ -30,7 +24,6 @@ clearItemCargoGlobal _unit;
 } forEach _itemCargoList;
 
 // ====================================================================================
-
 // ADD ACE MEDICAL SUPPLIES
 
 // Vanilla: MRAP 4 FAK, Truck 8 FAK, Crate 20 FAK
@@ -62,9 +55,4 @@ if (_cntFAK > 0) exitWith // Fireteam sized Cargo
     _unit addItemCargoGlobal ["ACE_morphine", _cntFAK];
     _unit addItemCargoGlobal ["ACE_bodyBag", 1];  
 };
-
-
-
-
-
 

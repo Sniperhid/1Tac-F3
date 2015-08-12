@@ -1,29 +1,21 @@
 // F3 - AI Skill Selector
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
-
 // RUN THE SCRIPT ONLY SERVER SIDE
 
 if !(isServer) exitWith {};
 
 // ====================================================================================
-
 // WAIT FOR THE MISSION TO BEGIN
 // By waiting a few seconds into the mission the server is giving time to settle and it assures that the component catches AI created during init
 
 sleep 2;
 
 // ====================================================================================
-
-// DECLARE VARIABLES AND FUNCTIONS
-
-private ["_units","_superSkill","_highSkill","_mediumSkill","_lowSkill"];
-
-// ====================================================================================
-
 // DEFINE SKILL LEVELS
 // These values define the total skill level as set by the parameter
 
+private ["_superSkill","_highSkill","_mediumSkill","_lowSkill"];
 _superSkill = 1.00;
 _highSkill = 0.7;
 _mediumSkill = 0.6;
@@ -48,37 +40,32 @@ f_param_skillSet = [
 f_param_skillRandom = 0.08;
 
 // ====================================================================================
-
 // BROADCAST PUBLIC VARIABLES
 // Make the relevant global variables known to all clients
 
 {publicVariable _x} forEach ["f_param_skillRandom","f_param_skillSet"];
 
 // ====================================================================================
-
 // SET UP SKILL Levels
 // As the params can only set full numbers, we interpret each of them to set the correct value
 
 #include "f_setAISkillValues.sqf";
 
 // ====================================================================================
-
 // SET KEY VARIABLES
 // If an array of units was passed, the skill change will apply only to the units in the array
 
-_units = if (count _this > 0) then [{_this},{allUnits}];
+params[["_units",allUnits]];
 
 // ====================================================================================
-
 // SET SKILL LEVELS FOR ALL AI
 // AI Skill for all AIs is set using side levels (see above).
 // By using the BI function BIS_fnc_MP we ensure that AI is set to the correct level for all connected clients, including the server
 
 {
-
-private ["_skill","_skillarray"];
-_skill = 0;
-_skillArray = [];
+    private ["_skill","_skillarray"];
+    _skill = 0;
+    _skillArray = [];
 
     if !(_x getVariable ["f_setAISkill",false]) then {
 		// We change the value of skill to the appropiate one depending on the unit's side

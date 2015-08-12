@@ -11,7 +11,6 @@ private["_entity","_found","_toAdd","_markerTexture","_markerColorRGB"];
         //Check if the entity is already setup to be drawn (aka in f_grpMkr_groups)
         _entity = missionNamespace getVariable[(_x select 0),objNull];
         
-        
         _found = (count ([f_grpMkr_groups,_entity] call BIS_fnc_findNestedElement) != 0);
 
         //If not add the new group.
@@ -38,10 +37,7 @@ private["_entity","_found","_toAdd","_markerTexture","_markerColorRGB"];
                     _size = [32,32];
                 };
 
-                //[_groupVarName,_markerName,_markerType,_markerColor]
-                //[_entity, _x select 1,  _markerTexture,_markerColorRGB] call F_fnc_addGroupMarker;
                 ["1PLT",(_x select 1),[_markerTexture,_markerColorRGB,_size],-1,_entity] call F_fnc_addGroupMarker;
-                //[_markerTexture,_markerColorRGB,[24,24]]
             };
         };
     };

@@ -1,24 +1,16 @@
 // F3 - Mission Maker Teleport
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
+// DECLARE VARIABLES AND FUNCTIONS AND SET KEY VARIABLES
+private ["_units","_textDone","_dispersion"];
+params["_unit","_pos"];
 
-// DECLARE VARIABLES AND FUNCTIONS
-
-private ["_pos","_units","_textDone","_dispersion"];
-
-// ====================================================================================
-
-// SET KEY VARIABLES
-
-_unit = _this select 0;
-_pos = _this select 1;
 _dispersion = 100; // The maximum dispersion for units when HALO jumping
 
 _string = if (f_param_mapClickTeleport_Height == 0) then {"Teleport"} else {"HALO"};
 f_param_mapClickTeleport_textDone = localize format ["STR_f_mapClick%1Done",_string];
 
 // ====================================================================================
-
 // LOCALITY CHECK
 // The component should not run anywhere else but where the unit is local by default
 // This check is a redundancy to ensure this
@@ -26,7 +18,6 @@ f_param_mapClickTeleport_textDone = localize format ["STR_f_mapClick%1Done",_str
 if !(local _unit) exitWith {};
 
 // ====================================================================================
-
 // TELEPORT UNITS
 // Loop through the group's units (excluding the leader) and check if they are local, if true teleport
 // them next to the leader and display a notification for players
@@ -45,19 +36,19 @@ if (_unit == vehicle player) then {["MapClickTeleport",[f_param_mapClickTeleport
 
 if (f_param_mapClickTeleport_Height > 0) then {
 	[_unit] spawn {
-		private ["_unit","_bp","_bpi"];
-		_unit = _this select 0;
+		private ["_bp","_bpi"];
+        params["_unit"];
 		_bp = backpack _unit;
-		_bpi = backPackItems _unit;
+		_bpi = backpackItems _unit;
 
 		removeBackpack _unit;
 		_unit addBackpack "B_parachute";
 		waitUntil {sleep 0.1;isTouchingGround _unit;};
 		if (alive _unit) then {
 			removeBackpack _unit;
-			_unit addBackPack _bp;
+			_unit addBackpack _bp;
 			{
-			   (unitbackpack _unit) addItemCargoGlobal [_x,1];
+			   (unitBackpack _unit) addItemCargoGlobal [_x,1];
 			} forEach _bpi;
 		};
 	};

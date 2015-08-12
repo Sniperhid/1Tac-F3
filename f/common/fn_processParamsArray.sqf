@@ -26,22 +26,3 @@ if (isServer) then {
         };
     };
 };
-
-/*
-if (isMultiplayer) then {
-	if (isServer) then {
-		{
-			_paramName =(configName ((missionConfigFile >> "Params") select _forEachIndex));
-			missionNamespace setVariable[_paramName,_x];
-			publicVariable _paramName;
-		} forEach (missionNamespace getVariable ["BIS_fnc_initParams_paramsArray",missionNamespace getVariable ["paramsArray",[]]]);
-	};
-} else {
-	//Values must be default in SP anyway and paramsArray doesn't exist in SP till postInit.
-	{
-		_paramName = (configName _x);
-		_paramValue = (getNumber (missionConfigFile >> "Params" >> _paramName >> "default"));
-		missionNamespace setVariable[_paramName,_paramValue];
-	} forEach ((missionConfigFile >> "Params") call bis_fnc_returnChildren);
-};
-*/

@@ -1,38 +1,20 @@
-
-In head's PRs
-description.ext -> Added Seagull blank template. include CfgFunctions.
-init.sqf call to respawn_init.sqf
-
 --BUGS--
-- ACRE2 - call to set spectator false didn't work 1/10 I suspect because unit was transmitted just yet.
 - SOMEONE LEAVES WHILST BEING SELECTED and AI IS THEN IN SELECTED bit. Need to have the menus refresh in realtime.
-- 1024*768 <- check that the GUI works.
 - ACRE2 remove the setspectator the client Init already does this.
-
 - Spectator options - to disable displaying of AI?, limit third person zoomoutage and freecam?
    
 LIMITATIONS
 - New groups are made and group variable pointers remain. This may lead to the group limit being reached. Arma engine group limiation is 144?
 - Player slots do get consumed on playerDeath so it may be worth having extra slots if the intention is people to join.
-- Requires the vanilla F3 spectator component.
 - GroupMarkers/Briefing and other components are usually disabled in init.sqf, and do not use a variable to track if they have been enabled therefor the assumption is that they have been enabled.
 - Only designed for MP and the spawning of players, AI are not supported.
    
 PLANNED FEATURES
-- Function to respawn player with Pos X etc.
-
 - Spectator - Limit spectator options (no freecam/max zoomout distance) <- Insurgency game style
 - Track player data: number of respawns? what team they came from before?
-- CODE TIDY UP (F3/Functionize)
-- Integration into F3 (admin page/spectator script).
    
 KNOWN BUGS.
 - Textbox is changed when spectator is changed 'spectating: ...', the ids are different not too sure on this one. 
-- Possible issues with concurrency if two admins attempt to spawn groups at the same time.
-
----------
-Race conditions - with Group markers getting called bfore setGroup ID.
-
 
 =======================
 NOTES ON SETTING UP - RESPAWN LOCATIONS

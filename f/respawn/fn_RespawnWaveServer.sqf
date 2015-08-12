@@ -5,14 +5,7 @@
 // This code will then wait for that group to return before then notifying all clients of the new group marker.
 //
 
-_groupName = _this select 0;
-_position = _this select 1;
-_faction = _this select 2;
-_selectedRespawnGroup = _this select 3;
-_markerType = _this select 4;
-_markerColor = _this select 5;
-_markerName = _this select 6;
-_halo = _this select 7;
+params["_groupName","_position","_faction","_selectedRespawnGroup","_markerType","_markerColor","_markerName","_halo"];
 
 // Loop through each proposed client for respawn.
 {
@@ -43,7 +36,7 @@ _halo = _this select 7;
         waitUntil{sleep 3;!isNil _unitName};
         _unit = missionNamespace getVariable[_unitName,objNull];
         while{true} do {
-            if (isNull _unit) exitWith{};
+            if (isNull _unit) exitWith {};
             if (!isPlayer _unit) exitWith {
                 _unit setDamage 1;
                 [_unit] join grpNull;
@@ -58,11 +51,8 @@ _groupVarName = format ["GrpRespawn_%1",f_serverRespawnGroupCounter];
 f_serverRespawnGroupCounter = f_serverRespawnGroupCounter + 1;
 
 [_groupVarName,_markerType,_markerName,_markerColor,_faction] spawn {
-    _groupVarName = _this select 0;
-    _markerType = _this select 1;
-    _markerName = _this select 2;
-    _markerColor = _this select 3;
-    _faction = _this select 4;
+    params["_groupVarName","_markerType","_markerName","_markerColor","_faction"];
+
     waitUntil{!isNil _groupVarName};
 
     sleep 2; // Give some time to allow clients time to make their players transfer across the network.

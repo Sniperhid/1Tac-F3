@@ -9,7 +9,6 @@ if (!isDedicated && (isNull player)) then
 };
 
 // ====================================================================================
-
 // Do not execute this script anywhere but where the unit is local
 if !(local _this) exitWith {};
 
@@ -17,13 +16,11 @@ if !(local _this) exitWith {};
 if (!isNil "f_action_chargeUAV") exitWith {};
 
 // ====================================================================================
-
 // DECLARE VARIABLES
 
 private ["_code"];
 
 // ====================================================================================
-
 // ADD BRIEFING ENTRY
 
 player createDiaryRecord ["diary", ["Charge UAV","
@@ -32,7 +29,6 @@ To charge your UAV it needs to be landed and the engine turned off. The 'Charge 
 "]];
 
 // ====================================================================================
-
 // SETUP CODE
 // The following code is executed when the "recharge UAV" action fires
 
@@ -68,7 +64,6 @@ _code = {
 };
 
 // ====================================================================================
-
 // SETUP ACTION
 // Add the action to recharge the UAV
 

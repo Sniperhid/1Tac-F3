@@ -78,8 +78,7 @@ if (_halo) then {
             };
         };
       
-        //	Fix backpack?
-      
+        //TODO Fix backpack?
   };
 };
 
@@ -95,13 +94,12 @@ if (isClass(configFile >> "CfgPatches" >> "acre_main")) then {
 if (_leader) then {
     //Broadcast group var to everyone so people can join.
     missionNamespace setVariable[_groupVarName,_dummyGroup];
-    //call compile format["%1 = _dummyGroup;",_groupVarName];
     publicVariable _groupVarName;
     
 } else {
     //Wait for group be created by the group leader before joining it.
     [_groupVarName] spawn {
-        _groupVarName = _this select 0;
+        params["_groupVarName"];
         // Wait for group exist.
         sleep 1; // Ensure that everything is in Sync.
         waitUntil{!isNil _groupVarName};

@@ -1,20 +1,19 @@
 // F3 - Mount Groups Function
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
-
 // MAKE SURE THE SCRIPT IS ONLY RUN SERVER-SIDE
+
 if (!isServer) exitWith {};
 
 // ====================================================================================
-
 // DECLARE VARIABLES AND FUNCTIONS
 
 private ["_objects","_units"];
 
 // ====================================================================================
-
 // SET KEY VARIABLES
 // Using the arguments passed to the script, we first define some local variables.
+
 params["_vehs","_grps",["_crew",true],["_fill",false]];
 
 // _vehs = Array of vehicles    (objects)
@@ -23,7 +22,6 @@ params["_vehs","_grps",["_crew",true],["_fill",false]];
 // _fill Ignore fireteam cohesion in favor of filling vehicles? (optional - default:false)
 
 // ====================================================================================
-
 // CLEAN THE GROUP ARRAY
 // First we check if there are illegal groups (non-existent) in the array and remove them.
 // Check the passed groups to make sure none of them is empty and they have at least one unit that's not inside a vehicle
@@ -45,10 +43,10 @@ while {_x < _length} do {
 };
 
 // ====================================================================================
-
 // PROCESS VEHICLES
 // We make sure that there are only vehicles in the vehicle array
 // If a soldier-unit is in the array then we check if we can use the vehicle he's in
+
 {
  if (_x isKindOf "CAManBase") then {
      if (vehicle _x != _x) then {
@@ -60,17 +58,12 @@ while {_x < _length} do {
 } forEach _vehs;
 
 // ====================================================================================
-
 // CHECK ARRAY COUNT
 // If any of the arrays is empty we don't need to execute the function and exit with a warning message.
 
-if (count _vehs == 0 || count _grps == 0) exitWith {
-	player globalchat format ["f_fnc_preMount DBG: No vehicles and/or groups were parsed! _vehicles: %1,_grps: %2",_vehs,_grps];
-	diag_log format ["f_fnc_preMount DBG: No vehicles and/or groups were parsed! _vehicles: %1,_grps: %2",_vehs,_grps];
-};
+if (count _vehs == 0 || count _grps == 0) exitWith {};
 
 // ====================================================================================
-
 // MOUNT UNITS
 // We loop through all vehicles and assign crew & cargo accordingly
 
@@ -148,7 +141,6 @@ if (count _vehs == 0 || count _grps == 0) exitWith {
 } forEach _vehs;
 
 // ====================================================================================
-
 // OUTPUT
 // We return all groups that weren't fully loaded
 _grps

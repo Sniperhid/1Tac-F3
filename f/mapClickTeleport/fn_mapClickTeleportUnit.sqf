@@ -7,14 +7,12 @@
 private ["_textSelect","_textDone"];
 
 // ====================================================================================
-
 // SET KEY VARIABLES
 
 f_telePositionSelected = false;
 if (isNil "f_param_mapClickTeleport_Used") then {f_param_mapClickTeleport_Used = 0};
 
 // ====================================================================================
-
 // TELEPORT FUNCTIONALITY
 // Open the map for the player and display a notification, then set either the player's vehicle
 // or the unit to the new position. If the group needs to be teleported too, set the group's position
@@ -56,14 +54,13 @@ openMap false;
 ["MapClickTeleport",[f_param_mapClickTeleport_textDone]] call BIS_fnc_showNotification;
 
 // ====================================================================================
-
 // HALO functionality
 // If the players are parajumping spawn the following code to add a backpack and restore the old backpack on landing
 
 if (f_param_mapClickTeleport_Height > 0) then {
 	[player] spawn {
-		private ["_unit","_bp","_bpi"];
-		_unit = _this select 0;
+		private ["_bp","_bpi"];
+        params["_unit"];
 		_bp = backpack _unit;
 		_bpi = backPackItems _unit;
 
@@ -79,7 +76,6 @@ if (f_param_mapClickTeleport_Height > 0) then {
 };
 
 // ====================================================================================
-
 // REMOVE AND READ ACTION
 // Remove the action and re-add if we have uses left (or if they are infinite)
 

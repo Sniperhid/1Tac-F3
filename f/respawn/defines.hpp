@@ -176,7 +176,6 @@ class respawnMenu_RscCombo
     text = "";
     shadow = 0;
     font = "PuristaLight";
-    //SizeEx = 0.02300;
     sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 50) * 2)";
     fixedWidth = 0;
     arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";

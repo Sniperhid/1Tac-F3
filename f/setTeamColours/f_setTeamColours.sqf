@@ -36,7 +36,7 @@ _isFireteam = false;
 
 // WAIT UNTIL 10 SECONDS AFTER INITIALIZING
 
-uiSleep 5;
+sleep 10;
 
 _unit = player;
 if (isNull _unit) exitWith {};
@@ -87,4 +87,4 @@ if(!_isFireteam) exitWith {};
 		};
 	} forEach _white;
 
-} foreach units (group _unit);
+} forEach units (group _unit);

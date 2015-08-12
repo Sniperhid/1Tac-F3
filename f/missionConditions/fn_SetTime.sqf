@@ -2,29 +2,21 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-// RUN ONLY ON THE SERVER
-// This function does never need to run on a client
-//if !(isServer) exitWith {};
-
-// DECLARE VARIABLES AND FUNCTIONS
-
-private ["_timeOfDay","_year","_month","_day","_hour","_minute"]; //,"_transition"
+private ["_hour","_minute"];
 
 // ====================================================================================
 
 // SET KEY VARIABLES
 // We interpret the values parsed to the script. If the function was called from the parameters those values are used.
 
-_timeOfDay = _this select 0;
+params["_timeOfDay"];
 
 // ====================================================================================
 
 // SET DEFAULT VALUES
 // The default values that together form the in-game date are set.
 
-_day = date select 2;
-_month = date select 1;
-_year = date select 0;
+date params ["_year","_month","_day"];
 _hour = 0;
 _minute = 0;
 
@@ -87,24 +79,6 @@ switch (_timeOfDay) do
 
 // ====================================================================================
 
-// CHECK IF TRANSITION IS NEEDED
-// If we're changing the date in-mission, set the BIS function to display a smooth transition
-// We check the varios dates to make sure we stick with a smart value
-/*
-_transition = false;
-if (time > 0) then {
-	_transition = true;
-	_day = date select 2;
-	_month = date select 1;
-	_year = date select 0;
-
-	if (date select 3 > _hour) then {_day = _day + 1};
-	if (_day > 31) then {_day = 1; _month = _month + 1};
-	if (_month > 12) then {_month = 1; _year = _year + 1};
-};*/
-
-// ====================================================================================
-
 // SET DATE VARIABLE
 // Using the single variables, we construct a new variable _date
 _date = [_year,_month,_day,_hour,_minute];
@@ -116,4 +90,3 @@ _date = [_year,_month,_day,_hour,_minute];
 setDate _date;
 
 // ====================================================================================
-

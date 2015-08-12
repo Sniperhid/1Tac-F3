@@ -1,5 +1,4 @@
 
-
 // Include the file settings.
 #include "respawn_settings.sqf"
 
@@ -31,11 +30,4 @@ if (hasInterface) then {
 
     // Create markers for any respawned markers that have occured before the client has joined.
     [] call F_fnc_RespawnGroupMarkerUpdate;
-    
-    
-    [] spawn {
-      waitUntil{sleep 5; (serverCommandAvailable "#kick")};
-      player addAction ["<font color='#00baff'>[F3] Admin Respawn Menu</font>", {createDialog 'respawnMenuDialog';}, 0, 0];
-        
-    };
 };

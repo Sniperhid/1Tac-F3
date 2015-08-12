@@ -176,7 +176,6 @@ fn_respawnMenuRemoveAction = {
     [] call fn_update_aliveListBox;
 };
 
-
 fn_respawnMenuChangeRoleAction = {
     disableSerialization;
     _deadListBox = ((findDisplay 26893) displayCtrl 26891);
@@ -210,7 +209,6 @@ fn_respawnMenuChangeRankAction = {
 // This is the function that gets called when the respawn button is clicked.
 //
 
-
 fn_respawnMenuToggleGroupCheckbox = {
     respawnMenuCheckBoxChecked = !respawnMenuCheckBoxChecked;
 };
@@ -219,10 +217,8 @@ fn_respawnMenuRespawnAction = {
     // Respawn button
     disableSerialization;
     
-    
     if (count selectedRespawnGroup < 1) exitWith { hint "No players selected"; };
    
-        
     _groupName = ctrlText ((findDisplay 26893) displayCtrl 26898);
     if (_groupName=="INSERT_GROUP_NAME") then {
       _groupName = "Untitled Group";  
@@ -230,7 +226,6 @@ fn_respawnMenuRespawnAction = {
     
     // respawnMenuFactions control.
     _control = ((findDisplay 26893) displayCtrl 26894);
-    
     _side = lbCurSel _control;
     
     _markerName = ctrlText ((findDisplay 26893) displayCtrl 26899);
@@ -239,13 +234,11 @@ fn_respawnMenuRespawnAction = {
     if (!respawnMenuCheckBoxChecked) then {
       _markerType = -1;  
     }; 
-        
-    
+          
     // Hand over control to the map dialog.
     closeDialog 26893;
     createDialog "respawnMenuMapDialog";
 
-    
     var1_side = _side;
     var2_groupName = _groupName;
     var3_markerType = _markerType;
@@ -290,11 +283,8 @@ fn_toggleSpectator = {
 };
 
 fn_respawnMap_onMouseButtonDown = {
-    private["_x","_y","_type","_i","_fullmapWindow","_var","_pos","_found"];
-    _fullmapWindow = _this select 0;
-    _type = _this select 1;
-    _x = _this select 2;
-    _y = _this select 3;
+    private["_i","_var","_pos","_found"];
+    params["_fullmapWindow","_type","_x","_y"];
 	
     if (_type == 0) then { // left click
         _i = 1;
@@ -318,10 +308,8 @@ fn_respawnMap_onMouseButtonDown = {
 fn_respawnMap_keyUp = {
     private["_type","_halo","_position","_var"];
     _type = _this select 1;
-    //28 = enter
+    //28 = enter key
     if (_type == 28) then {
-          //  _pos = (_this select 0) ctrlMapScreenToWorld [(_this select 2), (_this select 3)];
-        // var1_side,var2_groupName,var3_markerType,var4_markerColor,var5_markerName
         if (f3_respawnMousePos isEqualTo -1) then {
             hint "No position selected for respawn. Click on a position then hit enter.";
             
@@ -350,8 +338,6 @@ fn_respawnMap_keyUp = {
             ((findDisplay 26950) displayCtrl 26902) mapCenterOnCamera false;
             closeDialog 26950;
         };
-        
-        
     };
     //SPACEBAR (HALO TOGGLE)
     if (_type == 57) then {
