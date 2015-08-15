@@ -59,7 +59,7 @@ switch (_faction) do
 			["GrpNATO_C2","NATO_C2_Badge"],
 			["GrpNATO_C3","NATO_C3_Badge"],
 			["GrpNATO_CO","NATO_CO_Badge"],
-			["GrpNATO_DC","NATO_DC_Badge"]
+			["GrpNATO_SGT","NATO_SGT_Badge"]
 		];
 	};
 	case "opf_f": {
@@ -77,7 +77,7 @@ switch (_faction) do
 			["GrpCSAT_C2","CSAT_C2_Badge"],
 			["GrpCSAT_C3","CSAT_C3_Badge"],
 			["GrpCSAT_CO","CSAT_CO_Badge"],
-			["GrpCSAT_DC","CSAT_DC_Badge"]
+			["GrpCSAT_SGT","CSAT_SGT_Badge"]
 		];
 	};
 	case "ind_f": {
@@ -95,7 +95,7 @@ switch (_faction) do
 			["GrpAAF_C2","AAF_C2_Badge"],
 			["GrpAAF_C3","AAF_C3_Badge"],
 			["GrpAAF_CO","AAF_CO_Badge"],
-			["GrpAAF_DC","AAF_DC_Badge"]
+			["GrpAAF_SGT","AAF_SGT_Badge"]
 		];
 	};
 	case "blu_g_f" : {
@@ -113,46 +113,9 @@ switch (_faction) do
 			["GrpFIA_C2","NATO_C2_Badge"],
 			["GrpFIA_C3","NATO_C3_Badge"],
 			["GrpFIA_CO","NATO_CO_Badge"],
-			["GrpFIA_DC","NATO_DC_Badge"]
+			["GrpFIA_SGT","NATO_SGT_Badge"]
 		];
 	};
-	case "opf_g_f" :{
-		_groupBadges = [
-			["GrpOFIA_ASL","NATO_ASL_Badge"],
-			["GrpOFIA_A1","NATO_A1_Badge"],
-			["GrpOFIA_A2","NATO_A2_Badge"],
-			["GrpOFIA_A3","NATO_A3_Badge"],
-			["GrpOFIA_BSL","NATO_BSL_Badge"],
-			["GrpOFIA_B1","NATO_B1_Badge"],
-			["GrpOFIA_B2","NATO_B2_Badge"],
-			["GrpOFIA_B3","NATO_B3_Badge"],
-			["GrpOFIA_CSL","NATO_CSL_Badge"],
-			["GrpOFIA_C1","NATO_C1_Badge"],
-			["GrpOFIA_C2","NATO_C2_Badge"],
-			["GrpOFIA_C3","NATO_C3_Badge"],
-			["GrpOFIA_CO","NATO_CO_Badge"],
-			["GrpOFIA_DC","NATO_DC_Badge"]
-		];
-	};
-	case "ind_g_f" :{
-		_groupBadges = [
-			["GrpIFIA_ASL","NATO_ASL_Badge"],
-			["GrpIFIA_A1","NATO_A1_Badge"],
-			["GrpIFIA_A2","NATO_A2_Badge"],
-			["GrpIFIA_A3","NATO_A3_Badge"],
-			["GrpIFIA_BSL","NATO_BSL_Badge"],
-			["GrpIFIA_B1","NATO_B1_Badge"],
-			["GrpIFIA_B2","NATO_B2_Badge"],
-			["GrpIFIA_B3","NATO_B3_Badge"],
-			["GrpIFIA_CSL","NATO_CSL_Badge"],
-			["GrpIFIA_C1","NATO_C1_Badge"],
-			["GrpIFIA_C2","NATO_C2_Badge"],
-			["GrpIFIA_C3","NATO_C3_Badge"],
-			["GrpIFIA_CO","NATO_CO_Badge"],
-			["GrpIFIA_DC","NATO_DC_Badge"]
-		];
-	};
-
 };
 
 // ====================================================================================

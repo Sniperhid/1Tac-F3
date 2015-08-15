@@ -2,7 +2,6 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-
 // ====================================================================================
 // BABEL API
 
@@ -30,7 +29,6 @@ f_radios_settings_acre_babel_assignment = {
 // Whether any radios should be assigned at all, to any units
 // TRUE = Disable radios for all units
 f_radios_settings_acre2_disableRadios = false;
-
 
 // ACRE Radio loss settings.
 // Indiciates how much terrian loss should be modelled.
@@ -89,28 +87,28 @@ f_radios_settings_acre2_radioChannels = [
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]             
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]             
 	],
 	[   // 1
 		{side _unit == east},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]                 
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]                 
 	],
 	[   // 2
 		{side _unit == resistance}, 
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]          
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]          
 	],
 	[   // 3
 		{toLower (faction _unit) == "blu_g_f"},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","DC","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc"])}]           
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]           
 	]
 ];
 

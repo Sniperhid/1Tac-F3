@@ -76,7 +76,7 @@ class AAF_CSL_Badge
 	author = "F3 Framework";
 	texture = "f\assignGear\insignia\AAF_CSL.paa";
 };
-class AAF_DC_Badge
+class AAF_SGT_Badge
 {
 	displayName = "AAF DC";
 	author = "F3 Framework";
@@ -190,7 +190,7 @@ class CSAT_CSL_Badge
 	author = "F3 Framework";
 	texture = "f\assignGear\insignia\CSAT_CSL.paa";
 };
-class CSAT_DC_Badge
+class CSAT_SGT_Badge
 {
 	displayName = "CSAT DC";
 	author = "F3 Framework";
@@ -328,7 +328,7 @@ class CSAT_Urban_CSL_Badge
 	author = "F3 Framework";
 	texture = "f\assignGear\insignia\CSAT_Urban_CSL.paa";
 };
-class CSAT_Urban_DC_Badge
+class CSAT_Urban_SGT_Badge
 {
 	displayName = "CSAT Urban DC";
 	author = "F3 Framework";
@@ -418,7 +418,7 @@ class NATO_CSL_Badge
 	author = "F3 Framework";
 	texture = "f\assignGear\insignia\NATO_CSL.paa";
 };
-class NATO_DC_Badge
+class NATO_SGT_Badge
 {
 	displayName = "NATO DC";
 	author = "F3 Framework";

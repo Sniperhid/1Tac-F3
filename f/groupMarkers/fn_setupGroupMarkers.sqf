@@ -29,7 +29,8 @@ if(_reset) then
 {
 	if(faction (leader _x) == _unitfaction) then
 	{
-        _name = ([groupID _x," "] call BIS_fnc_splitString) select 1;
+		_split = ([groupID _x," "] call BIS_fnc_splitString);
+        _name = _split select ((count _split) - 1);
 		_style = [_name] call F_fnc_getGroupMarkerStyle;
         _entity = _x;
         
@@ -80,7 +81,7 @@ switch (_unitfaction) do {
     case "blu_f": {
         _units = [
         ["UnitNATO_CO_M","COM","1PLT"],
-        ["UnitNATO_DC_M","DCM","1PLT"],
+        ["UnitNATO_SGT_M","SGTM","1PLT"],
         ["UnitNATO_ASL_M","AM","A"],
         ["UnitNATO_BSL_M","BM","B"],
         ["UnitNATO_CSL_M","CM","C"]
@@ -90,7 +91,7 @@ switch (_unitfaction) do {
     case "opf_f": {
         _units = [
         ["UnitCSAT_CO_M","COM","1PLT"],
-        ["UnitCSAT_DC_M","DCM","1PLT"],
+        ["UnitCSAT_SGT_M","SGTCM","1PLT"],
         ["UnitCSAT_ASL_M","AM","A"],
         ["UnitCSAT_BSL_M","BM","A"],
         ["UnitCSAT_CSL_M","CM","A"]
@@ -99,7 +100,7 @@ switch (_unitfaction) do {
     case "ind_f": {
         _units = [
         ["UnitAAF_CO_M","COM","1PLT"],
-        ["UnitAAF_DC_M","DCM","1PLT"],
+        ["UnitAAF_SGTC_M","SGTCM","1PLT"],
         ["UnitAAF_ASL_M","AM","A"],
         ["UnitAAF_BSL_M","BM","B"],
         ["UnitAAF_CSL_M","CM","C"]
@@ -108,7 +109,7 @@ switch (_unitfaction) do {
     case "blu_g_f": {
         _units = [
         ["UnitFIA_CO_M","COM","1PLT"],
-        ["UnitFIA_DC_M","DCM","1PLT"],
+        ["UnitFIA_SGTC_M","SGTCM","1PLT"],
         ["UnitFIA_ASL_M","AM","A"],
         ["UnitFIA_BSL_M","BM","B"],
         ["UnitFIA_CSL_M","CM","C"]

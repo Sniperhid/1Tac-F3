@@ -33,6 +33,7 @@
 //		vc			- vehicle commander
 //		vg			- vehicle gunner
 //		vd			- vehicle driver (repair)
+//		jp			- jet pilot
 //		pp			- air vehicle pilot / co-pilot
 //		pcc			- air vehicle co-pilot (repair) / crew chief (repair)
 //		pc			- air vehicle crew
@@ -158,6 +159,12 @@ _chemred = "Chemlight_red";
 _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
+// Handflare
+_handflaregreen = "ACE_HandFlare_Green";
+_handflarered = "ACE_HandFlare_Red";
+_handflareyellow = "ACE_HandFlare_Yellow";
+_handflare = "ACE_HandFlare_White";
+
 // Backpacks
 _bagsmall = "B_AssaultPack_mcamo";			// carries 120, weighs 20
 _bagmedium = "B_FieldPack_khk";				// carries 240, weighs 30
@@ -236,6 +243,7 @@ _light = [];
 _heavy =  ["eng","engm"];
 _diver = ["div"];
 _pilot = ["pp","pcc","pc"];
+_jetpilot = ["jp"];
 _crew = ["vc","vg","vd"];
 _ghillie = ["sn","sp"];
 _specOp = [];
@@ -262,6 +270,12 @@ _pilotUniform = ["U_B_HeliPilotCoveralls"];
 _pilotHelmet = ["H_PilotHelmetHeli_B"];
 _pilotRig = ["V_TacVest_blk"];
 _pilotGlasses = [];
+
+// Jet Pilot
+_jetPilotUniform = ["U_B_PilotCoveralls"];
+_jetPilotHelmet = ["H_PilotHelmetFighter_B"];
+_jetPilotRig = ["V_TacVest_blk"];
+_jetPilotGlasses = [];
 
 // Crewman
 _crewUniform = ["U_B_CombatUniform_mcam_vest"];
@@ -648,8 +662,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
 		_unit addWeapon "Rangefinder";
 	};
 
@@ -659,8 +672,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
 		["cc"] call _backpack;
 	};
 
@@ -670,18 +682,32 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
 	};
 
+// LOADOUT: JET PILOT
+	case "jp":
+	{
+		_unit addmagazines [_pistolmag,5];
+		_unit addweapon _pistol;
+		_unit addmagazines [_smokegrenadegreen,2];
+		_unit linkItem "ItemGPS";
+		_unit addBackpack "B_Parachute";
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
+	};
+	
 // LOADOUT: AIR VEHICLE PILOTS
 	case "pp":
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit addmagazines [_smokegrenadegreen,2];
+		_unit linkItem "ItemGPS";
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 	};
 
 // LOADOUT: AIR VEHICLE CREW CHIEF
@@ -689,8 +715,11 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
+		_unit addmagazines [_smokegrenadegreen,2];
 		["cc"] call _backpack;
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 	};
 
 // LOADOUT: AIR VEHICLE CREW
@@ -698,7 +727,10 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
+		_unit addmagazines [_smokegrenadegreen,2];
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 	};
 
 // LOADOUT: ENGINEER (DEMO)

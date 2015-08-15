@@ -150,8 +150,6 @@ _nvg = "NVGoggles";
 
 // UAV Terminal
 _uavterminal = "B_UavTerminal";	  // BLUFOR - FIA
-//_uavterminal = "O_UavTerminal"; // OPFOR - FIA
-//_uavterminal = "I_UavTerminal"; // INDP - FIA
 
 // Chemlights
 _chemgreen =  "Chemlight_green";
@@ -159,14 +157,18 @@ _chemred = "Chemlight_red";
 _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
+// Handflare
+_handflaregreen = "ACE_HandFlare_Green";
+_handflarered = "ACE_HandFlare_Red";
+_handflareyellow = "ACE_HandFlare_Yellow";
+_handflare = "ACE_HandFlare_White";
+
 // Backpacks
 _bagsmall = "B_AssaultPack_rgr";			// carries 160, weighs 20
 _bagmedium = "B_FieldPack_khk";				// carries 200, weighs 30
 _baglarge =  "B_Carryall_oli"; 				// carries 320, weighs 60
 _bagmediumdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "B_UAV_01_backpack_F";			// used by UAV operator - BLUFOR FIA
-//_baguav = "O_UAV_01_backpack_F";			// used by UAV operator - OPFOR FIA
-//_baguav = "I_UAV_01_backpack_F";			// used by UAV operator - INDP FIA
 _baghmgg = "B_HMG_01_weapon_F";				// used by Heavy MG gunner
 _baghmgag = "B_HMG_01_support_F";			// used by Heavy MG assistant gunner
 _baghatg = "B_AT_01_weapon_F";				// used by Heavy AT gunner
@@ -235,6 +237,7 @@ _light = [];
 _heavy =  ["eng","engm"];
 _diver = ["div"];
 _pilot = ["pp","pcc","pc"];
+_jetpilot = ["jp"];
 _crew = ["vc","vg","vd"];
 _ghillie = ["sn","sp"];
 _specOp = [];
@@ -262,6 +265,12 @@ _pilotUniform = _baseUniform;
 _pilotHelmet = _baseHelmet;
 _pilotRig = ["V_TacVest_blk","V_TacVest_brn","V_TacVest_camo","V_TacVest_oli"];
 _pilotGlasses = [];
+
+// Jet Pilot
+_jetPilotUniform = _baseUniform;
+_jetPilotHelmet = _baseHelmet;
+_jetPilotRig = ["V_TacVest_blk"];
+_jetPilotGlasses = [];
 
 // Crewman
 _crewUniform = _baseUniform;
@@ -645,8 +654,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
 		_unit addWeapon "Rangefinder";
 	};
 
@@ -656,8 +664,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
 		["cc"] call _backpack;
 	};
 
@@ -667,8 +674,20 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
 		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit linkItem "ItemGPS";
+	};
+	
+// LOADOUT: JET PILOT
+	case "jp":
+	{
+		_unit addmagazines [_pistolmag,5];
+		_unit addweapon _pistol;
+		_unit addmagazines [_smokegrenadegreen,2];
+		_unit linkItem "ItemGPS";
+		_unit addBackpack "B_Parachute";
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 	};
 
 // LOADOUT: AIR VEHICLE PILOTS
@@ -676,9 +695,10 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
-		_unit addItem "ItemGPS";
-		_unit assignItem "ItemGPS";
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
+		_unit linkItem "ItemGPS";
 	};
 
 // LOADOUT: AIR VEHICLE CREW CHIEF
@@ -686,7 +706,9 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 		["cc"] call _backpack;
 	};
 
@@ -695,7 +717,9 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag,5];
 		_unit addweapon _smg;
-		_unit addmagazines [_smokegrenade,2];
+		_unit addmagazines[_chemgreen,2];
+		_unit addmagazines[_handflare,1];
+		_unit addmagazines[_handflaregreen,2];
 	};
 
 // LOADOUT: ENGINEER (DEMO)

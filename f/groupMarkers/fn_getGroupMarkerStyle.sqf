@@ -19,7 +19,7 @@ if (f_groupMarkers_pboLoaded) then {
 		case (_input in ["CO"]): {
 			_texture = "\f3_groupmarkers\textures\yellow_hq.paa";
 		};
-		case (_input in ["DC"]): {
+		case (_input in ["SGT"]): {
 			_texture = "\f3_groupmarkers\textures\yellow_chevrons.paa";
 		};
 		case (_input in ["ASL"]):
@@ -129,6 +129,10 @@ if (f_groupMarkers_pboLoaded) then {
 		{
 			 _texture = "\f3_groupmarkers\textures\yellow_helo_attack.paa";
 		};
+		case (_input in ["CAS1"]):
+		{
+			 _texture = "\f3_groupmarkers\textures\yellow_fixedwing.paa";
+		};
 		case (_input in ["AM"]):
 		{
 			_texture = "\f3_groupmarkers\textures\red_cross.paa";
@@ -147,7 +151,7 @@ if (f_groupMarkers_pboLoaded) then {
 			_color = [1,1,1,0.9];
 			_size = [18,18];
 		};
-		case (_input in ["COM","DCM","AM","BM","CM"]):
+		case (_input in ["COM","SGTM","AM","BM","CM"]):
 		{
 			_texture = "\f3_groupmarkers\textures\yellow_cross.paa";
 			_color = [1,1,1,0.9];
@@ -315,7 +319,7 @@ if (f_groupMarkers_pboLoaded) then {
 			_texture = _air;
 			_color = _orange ;
 		};
-		case (_input in ["AH1","AH2","AH3"]):
+		case (_input in ["AH1","AH2","AH3","CAS1"]):
 		{
 			_texture = _air;
 			_color = _orange ;

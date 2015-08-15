@@ -40,6 +40,14 @@ if (_typeOfUnit in _pilot) then {
 	_glasses = _pilotGlasses
 };
 
+// Jet Pilot
+if (_typeOfUnit in _jetpilot) then {
+	_helmet = _jetPilotHelmet;
+	_uniform = _jetPilotUniform;
+	_rig = _jetPilotRig;
+	_glasses = _jetPilotGlasses
+};
+
 // Crew
 if (_typeOfUnit in _crew) then {
 	_helmet = _crewHelmet;
