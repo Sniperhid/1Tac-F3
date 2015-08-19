@@ -44,26 +44,23 @@ _presetName = "default";
 
 {
 	_radioPresetSetting = _x;
-	_radioPresetSettingIndex = _forEachIndex;
 	_condition = _radioPresetSetting select 0;
 	if (call _condition) exitWith {
 		//uses these presets.
-		_ourPresetIndex = _radioPresetSettingIndex;
+		_ourPresetIndex = _forEachIndex;
 		
-		_presetName = format["f3preset%1",_radioPresetSettingIndex];
+		_presetName = format["f3preset%1",_ourPresetIndex];
 		{
 		   _radioList = _x select 0; // RadioList 
 			{ [_x, _presetName] call acre_api_fnc_setPreset; } forEach (_radioList);
 		} forEach f_radios_settings_acre2_radioSettings;
 		
-		{
-			if (_forEachIndex != 0) then { // ignore idx = 0, stores the condition.
-				_channelEntry = _x;
-				_radio = (_channelEntry select 2);
-				_condition = (_x select 3);
-				(_channelsProcessed select ([_radio] call f_acre2_radioBaseNameToSettingsIdx)) pushBack (_channelEntry + [call _condition]);    
-			};
-		} forEach _radioPresetSetting;
+        for "_i" from 1 to (count _radioPresetSetting)-1 do {
+            _channelEntry = _radioPresetSetting select _i;
+            _radio = (_channelEntry select 2);
+            _condition = (_channelEntry select 3);
+            (_channelsProcessed select ([_radio] call f_acre2_radioBaseNameToSettingsIdx)) pushBack (_channelEntry + [call _condition]);    
+        };
 	};
 } forEach f_radios_settings_acre2_radioChannels;
 if (_ourPresetIndex == -1) then { systemChat "[Warning] F3-ACRE no preset assigned for myself"; };
@@ -72,17 +69,16 @@ if (_ourPresetIndex == -1) then { systemChat "[Warning] F3-ACRE no preset assign
 
 _assignedRadioChannels = []; { _assignedRadioChannels pushBack [_x,-1]; } forEach _radiosToGive; // 'ClassName','Chan num'
 _usedRadioIndexs = []; // Used for tracking colours, so that we know which ones we have already used.
-_symbolForPresent = "<font color='#ff4747'>*</font>";
-_ltext = format["<font size='11'>Legend: %1 is used to denote a channel you are suppose to be on.<br/>The colours are used to match your radios with channels (your radios will be set to these channels), white radios will remain on channel 1.<br/>I can speak any languages that are <font color='#ff4747'>highlighted</font>.</font><br/><br/>",_symbolForPresent];
+_ltext = "<font size='11'>Legend: <font color='#ff4747'>*</font> is used to denote a channel you are suppose to be on.<br/>The colours are used to match your radios with channels (your radios will be set to these channels), white radios will remain on channel 1.<br/>I can speak any languages that are <font color='#ff4747'>highlighted</font>.</font><br/><br/>";
 
 // BRIEFING: LANGUAGES
 _ltext = _ltext + "<font size='16'>BABEL - LANGUAGES</font><br/>Languages spoken in this area:<br/>";
 {
   if (_forEachIndex != 0) then {_ltext = _ltext + ", "; };
   if ((_x select 0) in _languagesToSpeak) then {
-	_ltext = _ltext + format["<font color='#ff4747'>%1</font>",_x select 1];
+      _ltext = _ltext + format["<font color='#ff4747'>%1</font>",_x select 1];
   } else {
-	_ltext = _ltext + format["%1",_x select 1];
+      _ltext = _ltext + (_x select 1);
   };
 } forEach f_radios_settings_acre2_languages;
 
@@ -140,9 +136,9 @@ _text = "<br/><font size='16'>RADIO CHANNEL LISTING</font>";
               };
 
 			  _color = [_radioFndIdx] call fn_numToColor;
-			  _channelLine = format[" %1 ",_symbolForPresent] + format["<font color='%1'>",_color] + _channelLine + "</font><br/>";  
+                _channelLine = " <font color='#ff4747'>*</font> " + format["<font color='%1'>",_color] + _channelLine + "</font><br/>";  
 		  } else {
-              _channelLine = format["   "] +_channelLine + "<br/>";
+                _channelLine = "   " +_channelLine + "<br/>";
           };
 		  _text = _text + _channelLine;
 		} forEach (_channelsProcessed select _radioSettingsIndex);

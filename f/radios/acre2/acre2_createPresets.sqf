@@ -31,7 +31,7 @@ f_acre2_radioBaseNameToSettingsIdx = {
 
 	_fndIdx = -1;
 	{
-		if (_radio in (_x select 0)) then {
+		if (_radio in (_x select 0)) exitWith {
 		  _fndIdx = _forEachIndex;
 		};
 	} forEach f_radios_settings_acre2_radioSettings;
@@ -50,13 +50,11 @@ f_acre2_radioBaseNameToSettingsIdx = {
 	_channelsProcessed = []; // This will store channels, binned by radio type.
 	{ _channelsProcessed pushBack []; } forEach f_radios_settings_acre2_radioSettings;
 
-	{
-		if (!(_forEachIndex == 0)) then { // ignore idx = 0, stores the condition.
-			_channelEntry = _x;
-			_radio = (_channelEntry select 2);
-			(_channelsProcessed select ([_radio] call f_acre2_radioBaseNameToSettingsIdx)) pushBack _channelEntry + [false];    
-		}; 
-	} forEach _radioPresetSetting;
+    for "_i" from 1 to (count _radioPresetSetting)-1 do {
+        _channelEntry = _radioPresetSetting select _i;
+        _radio = (_channelEntry select 2);
+        (_channelsProcessed select ([_radio] call f_acre2_radioBaseNameToSettingsIdx)) pushBack _channelEntry + [false];  
+    };
 
 	///// Add Special Channels for consideration.
 	{
