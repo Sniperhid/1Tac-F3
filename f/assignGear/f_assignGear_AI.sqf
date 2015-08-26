@@ -10,7 +10,7 @@ if !(isServer) exitWith {};
 // ====================================================================================
 // DECLARE PRIVATE VARIABLES
 
-private ["_units","_unit","_faction","_known","_unitFactions","_unitClasses"];
+private ["_unit","_faction","_known","_unitFactions","_unitClasses"];
 
 // ====================================================================================
 // SETUP CUSTOM VARIABLES
@@ -58,8 +58,7 @@ _unitClasses = [
 
 // ====================================================================================
 
-// Interpret parameters
-_units = if (count _this == 0) then [{waitUntil {scriptDone f_script_setLocalVars};f_param_men},{_this}];
+params[["_units",allUnits]];
 
 // LOOP THROUGH AI UNITS AND ASSIGN GEAR
 {

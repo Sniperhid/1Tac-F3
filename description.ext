@@ -113,7 +113,7 @@ class Params
 
     class f_param_debugMode
     {
-            title = "$STR_f_param_debugMode";
+            title = "Debug Mode";
             values[] = {0,1};
             texts[] = {"Off","On"};
             default = 0;
@@ -126,7 +126,7 @@ class Params
 
     class f_param_backpacks
     {
-            title = "$STR_f_param_loadouts";
+            title = "Loadouts";
             values[] = {0,1,2};
             texts[] = {"Light","Medium","Heavy"};
             default = 1;
@@ -139,9 +139,9 @@ class Params
 
     class f_param_mission_timer
     {
-            title = "$STR_f_param_mission_timer";
+            title = "Safe Start (mins)";
             values[] = {0,1,2,3,4,5,6,7,8,9,10,15};
-            texts[] = {"$STR_f_param_mission_timer_off","1","2","3","4","5","6","7","8","9","10","15"};
+            texts[] = {"Off","1","2","3","4","5","6","7","8","9","10","15"};
             default = 0;
     };
 
@@ -152,9 +152,9 @@ class Params
 	
 	class f_param_weather
 	{
-		title = "$STR_f_param_weather";
+		title = "Weather";
 		values[] = {0,1,2,3,4,5,6,7,8};
-		texts[] = {$STR_f_param_weather_Option0,$STR_f_param_weather_Option1,$STR_f_param_weather_Option2,$STR_f_param_weather_Option3,$STR_f_param_weather_Option4,$STR_f_param_weather_Option5,$STR_f_param_weather_Option6,$STR_f_param_weather_Option7,$STR_f_param_weather_Option8};
+		texts[] = {"Clear (Calm)","Clear (Light Winds)","Clear (Strong Winds)","vercast (Calm)","Overcast (Light Winds)","Overcast (Strong Winds)","Rain (Light Winds)","Rain (Strong Winds)","Storm"};
 		default = 0;
 		function = "f_fnc_setWeather";		// This function is called to apply the values
 		isGlobal = 0;						// Execute this only on the server
@@ -172,9 +172,9 @@ class Params
 
     class f_param_timeOfDay
 	{
-		title = "$STR_f_param_timeOfDay";
+		title = "Time of Day";
 		values[] = {0,1,2,3,4,5,6,7};
-		texts[] = {$STR_f_param_timeOfDay_Option0,$STR_f_param_timeOfDay_Option1,$STR_f_param_timeOfDay_Option2,$STR_f_param_timeOfDay_Option3,$STR_f_param_timeOfDay_Option4,$STR_f_param_timeOfDay_Option5,$STR_f_param_timeOfDay_Option6,$STR_f_param_timeOfDay_Option7};
+		texts[] = {"Dawn      ","Early Morning","Morning","Noon","Afternoon","Evening","Dusk","Night"};
 		default = 4;
 		function = "f_fnc_setTime";			// This function is called to apply the values
  		isGlobal = 1;						// Execute this only on the server
@@ -188,9 +188,9 @@ class Params
 /*
 	class f_param_AISkill_BLUFOR
 	{
-		title = "$STR_f_param_AISkill_BLUFOR";
+		title = "AI Skill (BLUFOR)";
 		values[] = {0,1,2,3};
-		texts[] = {$STR_f_param_AISkill_Option0,$STR_f_param_AISkill_Option1,$STR_f_param_AISkill_Option2,$STR_f_param_AISkill_Option3};
+		texts[] = {"Super","High","Medium","Low"};
 		default = 1;
 	};
 */
@@ -198,9 +198,9 @@ class Params
 /*
 	class f_param_AISkill_OPFOR
 	{
-		title = "$STR_f_param_AISkill_OPFOR";
+		title = "AI Skill (OPFOR)";
 		values[] = {0,1,2,3};
-		texts[] = {$STR_f_param_AISkill_Option0,$STR_f_param_AISkill_Option1,$STR_f_param_AISkill_Option2,$STR_f_param_AISkill_Option3};
+		texts[] = {"Super","High","Medium","Low"};
 		default = 1;
 	};
 */
@@ -208,9 +208,9 @@ class Params
 /*
 	class f_param_AISkill_INDP
 	{
-		title = "$STR_f_param_AISkill_INDP";
+		title = "AI Skill (INDEPENDENT)";
 		values[] = {0,1,2,3};
-		texts[] = {$STR_f_param_AISkill_Option0,$STR_f_param_AISkill_Option1,$STR_f_param_AISkill_Option2,$STR_f_param_AISkill_Option3};
+		texts[] = {"Super","High","Medium","Low"};
 		default = 1;
 	};
 */

@@ -33,8 +33,8 @@ To charge your UAV it needs to be landed and the engine turned off. The 'Charge 
 // The following code is executed when the "recharge UAV" action fires
 
 _code = {
-	private ["_unit","_move","_uav"];
-	_unit = _this select 0;
+	private ["_move","_uav"];
+    params["_unit"];
 
 	// Remove one battery
 	_unit removeMagazine 'Laserbatteries';

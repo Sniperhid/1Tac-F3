@@ -26,8 +26,10 @@ if (hasInterface) then {
         [] call F_fnc_RespawnGroupMarkerUpdate;
     };
 
-    waitUntil{scriptDone f_script_setGroupMarkers}; // Wait till the group marker componeny has setup its event 
-
-    // Create markers for any respawned markers that have occured before the client has joined.
-    [] call F_fnc_RespawnGroupMarkerUpdate;
+    if (!isNil "f_script_setGroupMarkers") then {
+        waitUntil{scriptDone f_script_setGroupMarkers}; // Wait till the group marker componeny has setup its event 
+		
+		// Create markers for any respawned markers that have occured before the client has joined.
+		[] call F_fnc_RespawnGroupMarkerUpdate;
+    };
 };

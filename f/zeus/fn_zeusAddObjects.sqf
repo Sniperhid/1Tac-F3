@@ -1,29 +1,23 @@
 // F3 Zeus Support - Add Objects
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
-
 // DECLARE VARIABLES
 
-private ["_curator","_mode","_objects","_getGlobalVars"];
+private ["_objects"];
 
 // ====================================================================================
-
 // SERVER CHECK
 // Ensure this script only executes on the server:
 
 if !(isServer) exitWith {};
 
 // ====================================================================================
-
 // SET KEY VARIABLES
 // Using variables passed to the script instance, we will create some local variables:
 
-_curator = [_this,0,objNull] call bis_fnc_param;
-_mode = [_this,1,[],[true,west,objNull,[]]] call bis_fnc_param;
-_groupLeaders = [_this,2,false] call bis_fnc_param;
+params[["_curator",objNull],["_mode",[],[true,west,objNull,[]]],["_groupLeaders",false]];
 
 // ====================================================================================
-
 // RESOLVE CURATOR VARIABLE
 // If the passed unit is not in the list of all curators, check whether the curator is assigned to it
 
@@ -37,7 +31,6 @@ if (isNull _curator || typeOf _curator != "ModuleCurator_F") exitWith {
 };
 
 // ====================================================================================
-
 // Decide which objects to add based on passed mode
 
 _objects = [];
@@ -45,18 +38,9 @@ switch (typeName _mode) do {
 	case "ARRAY": {_objects = _mode};
 	case "OBJECT": {_objects = [_mode]};
 	case "SIDE": {
-		_getGlobalVars = [0] execVM "f\common\f_setLocalVars.sqf";
-		waitUntil {scriptDone _getGlobalVars};
-
-		_objects = switch (_mode) do {
-			case west: {f_param_units_BLU};
-			case blufor: {f_param_units_BLU};
-			case east: {f_param_units_OPF};
-			case opfor: {f_param_units_OPF};
-			case resistance: {f_param_units_RES};
-			case independent: {f_param_units_RES};
-			case civilian: {f_param_units_CIV};
-		};
+        {
+            if (side _x == _mode) then { _objects pushBack _x; };
+        } forEach (allUnits);
 	};
 	case "BOOL": {
 		 if (_mode) then {
@@ -66,12 +50,10 @@ switch (typeName _mode) do {
 		 	if (_objects isEqualTo (curatorEditableObjects _curator)) then {
 		 		_objects = [];
 		 	};
-
 		 }
 		 else {
 		 	_curator removeCuratorEditableObjects [curatorEditableObjects _curator,true];
 		 };
-
 	 };
 };
 

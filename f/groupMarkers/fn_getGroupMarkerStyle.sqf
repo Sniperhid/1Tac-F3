@@ -1,11 +1,11 @@
-private ["_red","_green","_blue","_yellow","_orange","_black","_pink","_white","_fireteam","_unknown","_hq","_support","_supportAT","_recon","_mortar","_maint","_mech","_armor","_air","_plane","_artillery","_med","_size","_input","_texture","_color"];
+private ["_red","_green","_blue","_yellow","_orange","_black","_pink","_white","_fireteam","_unknown","_hq","_support","_supportAT","_recon","_mortar","_maint","_mech","_armor","_air","_plane","_artillery","_med","_size","_texture","_color"];
 // ====================================================================================
 // data values
 
 _size = [28,28];
 // ====================================================================================
 
-_input = _this select 0;
+params["_input"];
 _texture = "";
 _color = [1,1,1,1];
 

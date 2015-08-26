@@ -7,8 +7,7 @@ params["_unit","_pos"];
 
 _dispersion = 100; // The maximum dispersion for units when HALO jumping
 
-_string = if (f_param_mapClickTeleport_Height == 0) then {"Teleport"} else {"HALO"};
-f_param_mapClickTeleport_textDone = localize format ["STR_f_mapClick%1Done",_string];
+f_param_mapClickTeleport_textDone = "You have been moved to the selected location.";
 
 // ====================================================================================
 // LOCALITY CHECK

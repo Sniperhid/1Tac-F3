@@ -47,14 +47,6 @@ f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_initGroupMarkers.sqf";
 
 // ====================================================================================
-// F3 - F3 Common Local Variables
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-// WARNING: DO NOT DISABLE THIS COMPONENT
-if(isServer) then {
-	f_script_setLocalVars = [] execVM "f\common\f_setLocalVars.sqf";
-};
-
-// ====================================================================================
 // F3 - Automatic Body Removal
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
