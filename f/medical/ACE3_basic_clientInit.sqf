@@ -74,3 +74,9 @@ if (isClass(configFile >> "CfgPatches" >> "ace_logistics_wirecutter")) then {
         player addItem "ACE_wirecutter";
     };  
 };
+
+// Put weapon safety on.
+sleep 0.01;
+if (currentWeapon player != "") then {
+    [player, currentWeapon player, currentMuzzle player] call ACE_safemode_fnc_lockSafety;
+};
