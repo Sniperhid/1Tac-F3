@@ -116,12 +116,6 @@ f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_initGroupMarkers.sqf";
 [] execVM "f\briefing\f_loadoutNotes.sqf";
 
 // ====================================================================================
-// F3 - Join Group Action
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-
-[false] execVM "f\groupJoin\f_groupJoinAction.sqf";
-
-// ====================================================================================
 // F3 - Mission Timer/Safe Start
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 

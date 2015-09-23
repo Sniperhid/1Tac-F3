@@ -28,25 +28,38 @@ if (isClass(configFile >> "CfgPatches" >> "f3_groupmarkers")) then {
 f_grpMkr_groups = [];
 f_grpMkr_delay = 3;
 
-
-[] spawn {
-	uiSleep 2;
-	if(isServer) then {
-		waitUntil {!isNull (findDisplay 52)};
-		 ((findDisplay 52) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-	} else {
-		waitUntil {!isNull (findDisplay 53)};
-		 ((findDisplay 53) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-	};
+// Briefing
+if (isMultiplayer) then {
+    [] spawn {
+        uiSleep 2;
+        if(isServer) then {
+            waitUntil {!isNull (findDisplay 52)};
+             ((findDisplay 52) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
+        } else {
+            waitUntil {!isNull (findDisplay 53)};
+             ((findDisplay 53) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
+        };
+    };
 };
 
-[] spawn {
-	sleep 1; // won't be null till game start, might as well stop waiting during the briefing.
-	waitUntil {!isNull (findDisplay 12)};
-	((findDisplay 12) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-	waitUntil {sleep 1;!isNull (uiNamespace getVariable "RscMiniMap")};
-	((uiNamespace getVariable "RscMiniMap") displayctrl 101) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-};
+
+// Ingame Map
+[{
+    if (isNull findDisplay 12) exitWith {};
+    
+    ((findDisplay 12) displayctrl 51) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
+    [_this select 1] call CBA_fnc_removePerFrameHandler;
+}, 0] call CBA_fnc_addPerFrameHandler;
+
+//GPS
+[{
+    if (isNull (uiNamespace getVariable "RscMiniMap")) exitWith {};
+    
+    if ((((uiNamespace getVariable "RscMiniMap") displayctrl 101) ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}]) > 0) then {
+        [_this select 1] call CBA_fnc_removePerFrameHandler;
+    };
+}, 1] call CBA_fnc_addPerFrameHandler;
+
 
 // Displays that are not created using createDialog, are not easily trackable such as tao's folding map.
 
@@ -67,26 +80,30 @@ if (isClass(configFile >> "CfgPatches" >> "tao_foldmap_a3")) then {
 
 //ACE3 Micro Dagr
 if (isClass(configFile >> "CfgPatches" >> "ace_microdagr")) then {
-	[] spawn {
-		private "_control1";
-		disableSerialization;
-		while {true} do {
-			waitUntil {sleep 1;!isNull (uiNamespace getVariable "ace_microdagr_dialogdisplay")};
-			_control1 = ((uiNamespace getVariable "ace_microdagr_dialogdisplay") displayctrl 77702);
-			_control1 ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-			waitUntil{sleep 1;isNull _control1};
-		};
-	};
-	[] spawn {
-		private "_control1";
-		disableSerialization;
-		while {true} do {
-			waitUntil {sleep 1;!isNull (uiNamespace getVariable "ace_microdagr_rsctitledisplay")};
-			_control1 = ((uiNamespace getVariable "ace_microdagr_rsctitledisplay") displayctrl 77702);
-			_control1 ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
-			waitUntil{sleep 1;isNull _control1};
-		};
-	};
+    
+    [{
+        disableSerialization;
+        params["_args"];
+        _args params ["_gm_ace_md_display","_gm_ace_md_dialog"];
+       
+        if (isNull _gm_ace_md_display) then {
+            if (!isNull (uiNamespace getVariable "ace_microdagr_rsctitledisplay")) then {
+                _gm_ace_md_display = ((uiNamespace getVariable "ace_microdagr_rsctitledisplay") displayctrl 77702);
+                _gm_ace_md_display ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
+                _args set [0,_gm_ace_md_display];
+            };
+        };
+        
+        if (isNull _gm_ace_md_dialog) then {
+            if (!isNull (uiNamespace getVariable "ace_microdagr_dialogdisplay")) then {
+                _gm_ace_md_dialog = ((uiNamespace getVariable "ace_microdagr_dialogdisplay") displayctrl 77702);
+                _gm_ace_md_dialog ctrlAddEventHandler ["draw",{_this call F_fnc_drawGroupMarkers}];
+                _args set [1,_gm_ace_md_dialog];
+            };
+        };
+        
+    }, 1,[controlNull,controlNull]] call CBA_fnc_addPerFrameHandler;
+
 };
 
 
@@ -96,27 +113,29 @@ if (isClass(configFile >> "CfgPatches" >> "ace_microdagr")) then {
 [_unitfaction,true] call f_fnc_setupGroupMarkers;
 
 //Spawn thread to update fireteam positions overtime.
-[] spawn {
-    uiSleep 1;
-    private["_color","_dir","_pos","_fireTeamMarkers"];
-    while {true} do {
-        f_grpMkr_groups call f_fnc_updateGroupMarkers;
-        _fireTeamMarkers = [];
-        {
-            if (!isNull _x) then {
-                _color = [1,1,1,0.85];
-                switch (assignedTeam _x) do {
-                  case "RED": {_color = [1,0,0,0.85]};
-                  case "GREEN": {_color = [0,1,0,0.85]};
-                  case "BLUE": {_color = [0,0,1,0.85]};
-                  case "YELLOW": {_color = [1,1,0,0.85]};
-                };
-                _dir = getDir _x;
-                _pos = getPos _x;
-                _fireTeamMarkers pushBack [_pos,_dir,_color];
+
+f_groupMarkersPFHUpdate = {
+    private["_color","_fireTeamMarkers"];
+    f_grpMkr_groups call f_fnc_updateGroupMarkers;
+    _fireTeamMarkers = [];
+    {
+        if (!isNull _x) then {
+            _color = [1,1,1,0.85];
+            switch (assignedTeam _x) do {
+              case "RED": {_color = [1,0,0,0.85]};
+              case "GREEN": {_color = [0,1,0,0.85]};
+              case "BLUE": {_color = [0,0,1,0.85]};
+              case "YELLOW": {_color = [1,1,0,0.85]};
             };
-        } forEach (units (group player));
-        f_ftMkr_data = _fireTeamMarkers; // atomic :)
-        sleep f_grpMkr_delay;    
-    };
+            _fireTeamMarkers pushBack [(getPos _x),(getDir _x),_color];
+        };
+    } forEach (units (group player));
+    f_ftMkr_data = _fireTeamMarkers; // atomic :) 
+};
+
+
+[] spawn {
+    [] call f_groupMarkersPFHUpdate;
+    sleep f_grpMkr_delay;
+    [f_groupMarkersPFHUpdate, f_grpMkr_delay, []] call CBA_fnc_addPerFrameHandler;
 };
