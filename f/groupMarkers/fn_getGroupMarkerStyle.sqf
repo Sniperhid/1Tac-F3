@@ -49,6 +49,11 @@ if (f_groupMarkers_pboLoaded) then {
 		{
 			_texture = "\f3_groupmarkers\textures\green_inf.paa";
 		};
+		case (_input in ["WSL"]):
+		{
+			_texture = "\f3_groupmarkers\textures\yellow_sl_flag.paa";
+			_size = [24,24];
+		};
 		case (_input in ["MMG1","MMG2","MMG3"]):
 		{
 			_texture = "\f3_groupmarkers\textures\yellow_mg_m.paa";
@@ -151,7 +156,7 @@ if (f_groupMarkers_pboLoaded) then {
 			_color = [1,1,1,0.9];
 			_size = [18,18];
 		};
-		case (_input in ["COM","SGTM","AM","BM","CM"]):
+		case (_input in ["COM","SGTM","WM"]):
 		{
 			_texture = "\f3_groupmarkers\textures\yellow_cross.paa";
 			_color = [1,1,1,0.9];

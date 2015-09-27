@@ -508,3 +508,9 @@ case "cc":
 	clearMagazineCargoGlobal (unitBackpack _unit);
 	(unitBackpack _unit) addItemCargoGlobal ["ToolKit",1];
 };
+
+// BACKPACK: FAC
+case "fac":
+{
+	_unit addBackpack _baglarge;
+};

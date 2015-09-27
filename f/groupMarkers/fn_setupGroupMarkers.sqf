@@ -82,6 +82,7 @@ switch (_unitfaction) do {
         _units = [
         ["UnitNATO_CO_M","COM","1PLT"],
         ["UnitNATO_SGT_M","SGTM","1PLT"],
+		["UnitNATO_WSL_M","WM","1PLT"],
         ["UnitNATO_ASL_M","AM","A"],
         ["UnitNATO_BSL_M","BM","B"],
         ["UnitNATO_CSL_M","CM","C"]
@@ -92,6 +93,7 @@ switch (_unitfaction) do {
         _units = [
         ["UnitCSAT_CO_M","COM","1PLT"],
         ["UnitCSAT_SGT_M","SGTCM","1PLT"],
+		["UnitCSAT_WSL_M","WM","1PLT"],
         ["UnitCSAT_ASL_M","AM","A"],
         ["UnitCSAT_BSL_M","BM","A"],
         ["UnitCSAT_CSL_M","CM","A"]
@@ -101,6 +103,7 @@ switch (_unitfaction) do {
         _units = [
         ["UnitAAF_CO_M","COM","1PLT"],
         ["UnitAAF_SGTC_M","SGTCM","1PLT"],
+		["UnitAAF_WSL_M","WM","1PLT"],
         ["UnitAAF_ASL_M","AM","A"],
         ["UnitAAF_BSL_M","BM","B"],
         ["UnitAAF_CSL_M","CM","C"]

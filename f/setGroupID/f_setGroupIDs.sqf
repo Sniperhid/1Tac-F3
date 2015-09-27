@@ -29,6 +29,7 @@ _groups = [
 ["GrpNATO_C2","NATO C2"],
 ["GrpNATO_C3","NATO C3"],
 
+["GrpNATO_WSL","NATO WSL"],
 ["GrpNATO_MMG1","NATO MMG1"],
 ["GrpNATO_MMG2","NATO MMG2"],
 ["GrpNATO_HMG1","NATO HMG1"],
@@ -141,6 +142,7 @@ _groups = [
 ["GrpCSAT_C2","CSAT C2"],
 ["GrpCSAT_C3","CSAT C3"],
 
+["GrpCSAT_W3","CSAT W3"],
 ["GrpCSAT_MMG1","CSAT MMG1"],
 ["GrpCSAT_MMG2","CSAT MMG2"],
 ["GrpCSAT_HMG1","CSAT HMG1"],
@@ -198,6 +200,7 @@ _groups = [
 ["GrpAAF_C2","AAF C2"],
 ["GrpAAF_C3","AAF C3"],
 
+["GrpAAF_WSL","AAF WSL"],
 ["GrpAAF_MMG1","AAF MMG1"],
 ["GrpAAF_MMG2","AAF MMG2"],
 ["GrpAAF_HMG1","AAF HMG1"],

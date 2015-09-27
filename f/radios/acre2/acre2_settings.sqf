@@ -62,11 +62,11 @@ f_radios_settings_acre2_allocation = {
 	_radiosToGive pushBack "ACRE_PRC343";
     
 
-	if (_typeOfUnit in ["co","dc","ftl","m"]) then {
+	if (_typeOfUnit in ["co","dc","fac","ftl","m","fac"]) then {
 		_radiosToGive pushBack "ACRE_PRC148";   
 	};
-	if (_typeOfUnit in ["co","dc"]) then {
-	//	_radiosToGive pushBack "ACRE_PRC117F";
+	if (_typeOfUnit in ["fac"]) then {
+		_radiosToGive pushBack "ACRE_PRC117F";
 	};
     //_radiosToGive pushBack "ACRE_PRC148";
     //_radiosToGive pushBack "ACRE_PRC152";
@@ -87,28 +87,28 @@ f_radios_settings_acre2_radioChannels = [
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]             
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL","WSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp","fac"])}]             
 	],
 	[   // 1
 		{side _unit == east},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]                 
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL","WSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp","fac"])}]                 
 	],
 	[   // 2
 		{side _unit == resistance}, 
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]          
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL","WSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp","fac"])}]          
 	],
 	[   // 3
 		{toLower (faction _unit) == "blu_g_f"},
 		["Alpha","Alpha Squad Net","ACRE_PRC343",{[_unit,"ASL","A1","A2","A3"] call f_isUnitInGroupArray}],
 		["Bravo","Bravo Squad Net","ACRE_PRC343",{[_unit,"BSL","B1","B2","B3"] call f_isUnitInGroupArray}],
 		["Charlie","Charlie Squad Net","ACRE_PRC343",{[_unit,"CSL","C1","C2","C3"] call f_isUnitInGroupArray}],
-		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp"])}]           
+		["1PLT-COM","Platoon Command Net","ACRE_PRC148",{([_unit,"CO","SGT","ASL","BSL","CSL"] call f_isUnitLeaderInGroupArray) or (_typeOfUnit in ["m","pp","vc","jp","fac"])}]           
 	]
 ];
 

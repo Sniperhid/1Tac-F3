@@ -41,6 +41,7 @@
 //		engm		- engineer (mines)
 //		uav			- UAV operator"
 //		div    		- divers
+//		fac			- forward air controller
 //
 //		r 			- rifleman
 //		car			- carabineer
@@ -387,6 +388,25 @@ switch (_typeofUnit) do
 		_unit addWeapon "Rangefinder";
 		_unit linkItem "ItemGPS";
 		["g"] call _backpack;
+	};
+	
+// LOADOUT: FORWARD AIR CONTROLLER
+	case "fac":
+	{
+		_unit addmagazines [_glriflemag,7];
+		_unit addmagazines [_glriflemag_tr,2];
+		_unit addmagazines [_glmag,3];
+		_unit addmagazines [_glsmokewhite,4];
+		_unit addweapon _glrifle;					//_DCrifle
+		_unit addmagazines [_pistolmag,2];
+		_unit addweapon _pistol;
+		_unit addmagazines [_grenade,2];
+		_unit addmagazines [_smokegrenade,2];
+		_unit addmagazines [_smokegrenadeblue,2];
+        _unit addmagazines [_smokegrenadepurple,2];
+		_unit addWeapon "Rangefinder";
+		_unit linkItem "ItemGPS";
+		["fac"] call _backpack;
 	};
 
 // LOADOUT: MEDIC
