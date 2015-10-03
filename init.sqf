@@ -148,3 +148,11 @@ f_var_cachingAggressiveness = 2;
 // ====================================================================================
 
 [] execVM "f\respawn\respawn_init.sqf";
+
+// DISABLE COMMAND BAR/UI elements (https://community.bistudio.com/wiki/showHUD)
+[] spawn {
+	sleep 1;
+	private "_showHud"; _showHud = shownHUD; _showHud set [6,false];
+	showHUD _showHud;
+};
+

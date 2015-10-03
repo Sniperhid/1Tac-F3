@@ -14,7 +14,7 @@ if (!isDedicated && (isNull player)) then
 
 // DECLARE PRIVATE VARIABLES
 
-private ["_unit","_isFireteam","_white","_red","_blue","_yellow","_green","_unitStr"];
+private ["_unit","_isFireteam","_white","_red","_blue","_yellow","_green","_unitStr","_splits"];
 
 // ====================================================================================
 
@@ -26,8 +26,8 @@ _leaders = ["_FTL"];
 
 // Set suffixes for each color
 _white = [];
-_red = ["_AR","_AAR"];
-_blue = ["_AT","_FTL"];
+_red = [];
+_blue = [];
 _yellow = [];
 _green = [];
 _isFireteam = false;
@@ -52,6 +52,19 @@ if (isNull _unit) exitWith {};
 } forEach _leaders;
 
 if(!_isFireteam) exitWith {};
+
+_splits = (str player) splitString "_";
+if ((count _splits) >= 2) then {
+	_splits = _splits select 1;
+	if (_splits in ["A1","B1","C1"]) exitWith {
+		_red = ["_FTL", "_AT", "_R1"];
+		_green = ["_AR", "_AAR", "_R2"];
+	};
+	if (_splits in ["A2","B2","C2"]) exitWith {
+		_blue = ["_FTL", "_AT", "_R1"];
+		_yellow = ["_AR", "_AAR", "_R2"];		
+	};
+};
 
 // SET TEAM COLOURS
 {
