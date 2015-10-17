@@ -5,7 +5,7 @@
 // This code will then wait for that group to return before then notifying all clients of the new group marker.
 //
 
-params["_groupName","_position","_faction","_selectedRespawnGroup","_markerType","_markerColor","_markerName","_halo"];
+params ["_groupName", "_position", "_faction", "_selectedRespawnGroup", "_markerType", "_markerColor", "_markerName", "_halo"];
 
 // Loop through each proposed client for respawn.
 {
@@ -14,8 +14,8 @@ params["_groupName","_position","_faction","_selectedRespawnGroup","_markerType"
     } else {
         _position = _position vectorAdd [1,0,0]; // do position transofmration
     };
-    _typeOfUnit = _x select 2;
-    _rank = _x select 0;
+    
+    _x params ["_rank", "_client", "_typeOfUnit"];
     _leader = _forEachIndex==0;
 
 
@@ -26,11 +26,11 @@ params["_groupName","_position","_faction","_selectedRespawnGroup","_markerType"
       _rank,
       f_serverRespawnPlayerCounter,
       _leader,_halo],
-      "F_fnc_RespawnLocalClient", _x select 1] call BIS_fnc_MP;
+      "F_fnc_RespawnLocalClient", _client] call BIS_fnc_MP;
     
     //Setup respawned player to die if he disconnects?
     [f_serverRespawnPlayerCounter] spawn {
-        private["_unitName","_unit"];
+        private["_unitName", "_unit"];
         sleep 5;
         _unitName = format["respawnedUnit%1",(_this select 0)];
         waitUntil{sleep 3;!isNil _unitName};

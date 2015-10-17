@@ -330,7 +330,7 @@ fn_respawnMap_keyUp = {
             } else {
                 hint "Group created on ground.";
             };
-            [[var2_groupName,_position,var1_side,selectedRespawnGroup,var3_markerType, var4_markerColor, var5_markerName,_halo], "F_fnc_RespawnWaveServer", false] call BIS_fnc_MP;
+            [[var2_groupName,_position, var1_side, selectedRespawnGroup, var3_markerType, var4_markerColor, var5_markerName,_halo], "F_fnc_RespawnWaveServer", false] call BIS_fnc_MP;
             selectedRespawnGroup = [];
 
             // Close the Map

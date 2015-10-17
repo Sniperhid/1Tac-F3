@@ -66,7 +66,7 @@ fn_respawnSelectClass = {
                 case "engm":{ _type = "B_engineer_F"; };
                 case "vd":{ _type = "B_soldier_repair_F"; };
                 case "pcc":{ _type = "B_soldier_repair_F"; };
-                default  { _type = "B_Soldier_02_f"; };
+                default  { _type = "B_Soldier_F"; };
             };
         };
         case "opf_f":{

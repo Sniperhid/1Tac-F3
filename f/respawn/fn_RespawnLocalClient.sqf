@@ -1,7 +1,7 @@
 params["_groupNum","_position","_faction","_typeOfUnit","_rank","_number","_leader","_halo"];
 
 _faction = (respawnMenuFactions select _faction) select 0;
-_class = [_faction,_typeOfUnit] call fn_respawnSelectClass;
+_class = [_faction, _typeOfUnit] call fn_respawnSelectClass;
 
 _sideNum = getNumber (configfile >> "CfgFactionClasses" >> _faction >> "side");
 _side = switch (_sideNum) do {
@@ -35,7 +35,8 @@ respawn_initComplete = false;
 _unitName = format["respawnedUnit%1",_number];
 _init = format[" %1 = this; ['%2',this] call f_fnc_assignGear; if (local this) then { respawn_initComplete = true; }; this setName '%1';",_unitName, (respawnMenuRoles select _typeOfUnit) select 0, name player];
 _oldUnit = player;
-_class createUnit [_position,_dummyGroup,_init,0.5,_rankName];	
+
+_class createUnit [_position, _dummyGroup, _init, 0.5, _rankName];	
 
 // Wait till the unit is created
 waitUntil{!isNil _unitName};
