@@ -67,7 +67,7 @@ params[["_units",allUnits]];
 	_unit = _x;
 
 	// Check if the unit was already touched by the F3 Assign Gear Component
-	if (!(_unit getvariable ["f_var_assignGear_done", false]) && {!(_unit in playableUnits) && (_unit isKindOf "Man")}) then {
+	if (!(_unit getvariable ["f_var_assignGear_done", false]) && {(_unit isKindOf "Man")}) then {
 
 			_faction = toLower (faction _unit);
 
@@ -93,4 +93,4 @@ params[["_units",allUnits]];
 				_x setvariable ["f_var_assignGear_done", true,true];
 			};
 	};
-} foreach _units;
+} forEach (_units - playableUnits);

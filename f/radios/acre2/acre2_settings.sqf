@@ -128,7 +128,7 @@ f_radios_settings_acre2_addActionRadios = ["ACRE_PRC343","ACRE_PRC148"];
 f_radios_settings_acre2_radioSettings = [
 		// Array of Radio names, min freq, max freq, freq step, freq spacing between channels (for channel allocation), default preset name to copy
 		[["ACRE_PRC343"],2400,2420,0.01,0.1,"default2"],
-		[["ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F"],30,300,0.00625,1,"default"]//,
+		[["ACRE_PRC148","ACRE_PRC152","ACRE_PRC117F"],60,360,0.00625,1,"default"]//,
 	 //   [["ACRE_PRC77"],30,75.95,0.05,5] <- Doesn't support preset assignment.
 	];
 

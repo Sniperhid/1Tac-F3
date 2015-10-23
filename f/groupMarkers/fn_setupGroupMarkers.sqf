@@ -8,8 +8,10 @@
 	Returns
 		Nothing
 */
-_unitfaction = toLower ([_this, 0, "",[""]] call BIS_fnc_param);
-_reset = [_this, 1, false,[true,false]] call BIS_fnc_param;
+params [["_unitfaction","",[""]],
+        ["_reset",false,[true,false]]];
+//_unitfaction = toLower ([_this, 0, "",[""]] call BIS_fnc_param);
+//_reset = [_this, 1, false,[true,false]] call BIS_fnc_param;
 
 if(_reset) then
 {

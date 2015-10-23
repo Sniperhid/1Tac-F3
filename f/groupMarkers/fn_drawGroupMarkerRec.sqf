@@ -1,7 +1,7 @@
- private["_rootData","_hasChildren","_drawMe","_minSiblingDist","_maxChildCenterDist","_myPos"];
- params["_in","_mapControl"];
+private["_hasChildren","_drawMe","_minSiblingDist","_maxChildCenterDist","_myPos"];
+params["_in","_mapControl"];
 
-_rootData = _in select 0;
+_in params ["_rootData"];
 _hasChildren = count _in > 1;
 _drawMe = !_hasChildren; // no children = draw me.
 

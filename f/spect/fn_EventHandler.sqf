@@ -192,6 +192,11 @@ case "KeyDown":
     _key = _args select 1;
     _handled = false;
     if(!isNull (findDisplay 49)) exitWith {if(_key == 1) then {true}};
+    
+    if (!isNil "CBA_events_fnc_keyHandler") then {
+        [_args, "keydown"] call CBA_events_fnc_keyHandler;
+    };
+    
     switch (_key) do
     {
         case 78: // numpad +
@@ -421,6 +426,11 @@ case "KeyUp":
     if(!isNull (findDisplay 49)) exitWith {};
     _key = _args select 1;
     _handled = false;
+    
+    if (!isNil "CBA_events_fnc_keyHandler") then {
+        [_args, "keydown"] call CBA_events_fnc_keyHandler;
+    };
+    
     switch (_key) do
     {
         case 42:
