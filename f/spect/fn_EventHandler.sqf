@@ -114,6 +114,8 @@ case "LBListSelChanged":
             };
         };
     };
+    ctrlEnable [2100, false];
+    ctrlEnable [2100, true];
 };
 case "LBListSelChanged_modes":
 {
@@ -522,4 +524,5 @@ case "KeyUp":
 };
 _handled
 };
+
 

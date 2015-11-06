@@ -35,7 +35,7 @@ class RscSpectListBox {
     color[] = {1, 1, 1, 0.1};
     colorDisabled[] = {1, 1, 1, 0.25};
     period = 1.2;
-    maxHistoryDelay = 1;
+    maxHistoryDelay = 99999999999999999;
     autoScrollSpeed = -1;
     autoScrollDelay = 5;
     autoScrollRewind = 0;
@@ -545,7 +545,7 @@ class RscSpectList
     colorText[] = {1,1,1,1};
     font = "TahomaB";
     h = 0.035;
-    maxHistoryDelay = 1;
+    maxHistoryDelay = 99999999999999999;
     shadow = 1;
     sizeEx = "(         (           (           ((safezoneW / safezoneH) min 0.9) / 1.2) / 25) * 1)";
     soundCollapse[] = {"\A3\ui_f\data\sound\RscCombo\soundCollapse",0.1,1};
@@ -591,7 +591,7 @@ class RscSpectCombo
     colorText[] = PRIMARYCOLOR;
     font = "PuristaLight";
     h = 0.035;
-    maxHistoryDelay = 1;
+    maxHistoryDelay = 99999999999999999;
     shadow = 0;
     colorBorder[] = PRIMARYCOLOR;
     sizeEx = "(         (           (           ((safezoneW / safezoneH) min 1.0) / 1.0) / 25) * 1)";
