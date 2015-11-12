@@ -250,7 +250,7 @@ fn_respawnMapLoaded = {
     disableSerialization;
     _mapCtrl = ((findDisplay 26950) displayCtrl 26902);//_this select 0;//
     _pos = [0,0,0];
-    if (alive player) then {
+    if (alive player && !(player isKindOf "VirtualCurator_F")) then {
       _pos = getPos player;  
     } else {
         if (count playableUnits > 0) then {
