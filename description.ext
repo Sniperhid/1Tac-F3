@@ -436,3 +436,18 @@ class CfgUnitInsignia {
 
 #include "f\respawn\defines.hpp"
 #include "f\respawn\dialogs.hpp"
+
+// ACE3 - Finger pointing
+
+class ACE_settings {
+	class ace_finger_enabled {
+		value = 1;
+		typeName = "BOOL";
+		force = 1;
+	};
+	class ace_finger_maxRange {
+		value = 5;
+		typeName = "SCALAR";
+		force = 1;
+	};
+};
