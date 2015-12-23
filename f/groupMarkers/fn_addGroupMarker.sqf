@@ -10,8 +10,8 @@ _line = [_ourName,_style select 0,_style select 1,_style select 2,[0,0,0],[0,0,0
 if (!isNull _entity) then {
     _line pushBack _entity;
     _pos = [0,0,0];
-    if(typeName _entity == "GROUP") then {_pos = getPos leader _entity};
-    if(typeName _entity == "OBJECT") then {_pos = getPos _entity};
+    if(_entity isEqualType grpNull) then {_pos = getPos leader _entity};
+    if(_entity isEqualType objNull) then {_pos = getPos _entity};
     _line set [4,_pos];
 };
 

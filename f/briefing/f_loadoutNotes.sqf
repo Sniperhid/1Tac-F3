@@ -102,7 +102,7 @@ if (count _weps > 0) then {
 		_attachments deleteAt 0; // Remove the first element as it points to the weapon itself
 
 		{
-			if (typeName _x != typeName [] && {_x != ""}) then {
+			if ((!(_x isEqualType [])) && {_x != ""}) then {
                 _icon = getText(configFile >> "CfgWeapons" >> _x >> "picture");
                 if (_icon find ".paa" == -1) then { _icon = _icon + ".paa"};
 				_text = _text + format["<br/> |- %1",getText (configFile >> "CfgWeapons" >> _x >> "displayname")];

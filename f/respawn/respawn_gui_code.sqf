@@ -316,7 +316,7 @@ fn_respawnMap_keyUp = {
         } else {
             _position = [0,0,0];
             _halo = false;
-            if (typeName f3_respawnMousePos == "ARRAY") then {
+            if (f3_respawnMousePos isEqualType []) then {
                 _position = f3_respawnMousePos;  
                 _halo = f3_respawnHalo;
             } else {

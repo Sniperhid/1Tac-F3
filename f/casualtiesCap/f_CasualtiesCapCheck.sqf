@@ -42,7 +42,7 @@ params["_grpstemp","_pc","_end",["_onlyPlayers",true],["_faction",[]]];
 
 _grps = [];
 
-if(typeName _grpstemp == "SIDE") then // if the variable is any of the side variables use it to consturct a list of groups in that faction.
+if(_grpstemp isEqualType west) then // if the variable is any of the side variables use it to consturct a list of groups in that faction.
 {
 
 	{
@@ -146,11 +146,11 @@ while {true} do
 // END CASCAP
 // Depending on input, either MPEnd or the parsed code itself is called
 
-if (typeName _end == typeName 0) exitWith {
+if (_end isEqualType 0) exitWith {
 	[_end] call f_fnc_mpEnd;
 };
 
-if (typeName _end == typeName {}) exitWith {
+if (_end isEqualType {}) exitWith {
 	[_end,"bis_fnc_spawn",true] call BIS_fnc_MP;
 };
 

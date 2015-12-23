@@ -51,8 +51,8 @@ if (count _in > 1) then {
     private["_thing","_pos"];
     _thing = _rootNode select ((count _rootNode) -1);
     _pos = [0,0,0];
-    if(typeName _thing isEqualTo "GROUP") then {_pos = getPos leader _thing};
-    if(typeName _thing isEqualTo "OBJECT") then {_pos = getPos _thing};
+    if(_thing isEqualType grpNull) then {_pos = getPos leader _thing};
+    if(_thing isEqualType objNull) then {_pos = getPos _thing};
     if !(_pos isEqualTo [0,0,0]) then {
         _rootNode set[4,_pos];
         _retPos = _pos;

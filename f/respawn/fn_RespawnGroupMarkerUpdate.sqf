@@ -17,7 +17,7 @@ private["_entity","_found","_toAdd","_markerTexture","_markerColorRGB"];
         if (!_found) then {
           //Check if we should be adding the group.
             _toAdd = false;
-            if(typeName _entity == "GROUP") then {
+            if(_entity isEqualType grpNull) then {
                 _toAdd = faction player == faction leader _entity;
             } else {
                 _toAdd = faction player == faction _entity;

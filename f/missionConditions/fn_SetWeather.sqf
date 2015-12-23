@@ -141,7 +141,7 @@ switch (_weather) do
 // Use new values to set
 // mission conditions on server and all clients (including JIP clients).
 
-if (typeName _transition == typeName 0) then {
+if (_transition isEqualType 0) then {
 
 _transition setOvercast  _MissionOvercast;
 _transition setRain _MissionRain;

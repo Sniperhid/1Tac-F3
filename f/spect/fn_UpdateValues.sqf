@@ -81,7 +81,7 @@ while {true} do
 
 	{
 		_index = _x GetVariable ["f_spect_listBoxIndex",-1];
-		if(typeName _x == "GROUP") then
+		if(_x isEqualType grpNull) then
 		{
 			if(_index >= 0 && ({alive _x} count units _x) > 0 && {lbText [_listBox,_index] != (toString(toArray(groupID _x) - [45]))}) then
 			{

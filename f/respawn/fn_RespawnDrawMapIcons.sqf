@@ -76,7 +76,7 @@ while {true} do {
     _i = _i + 1;
 };
 
-if (typeName _mousePos == "ARRAY") then {
+if (_mousePos isEqualType []) then {
     if (count _mousePos > 1) then {
         _text = "User selected respawn location";
         if (f3_respawnHalo) then {

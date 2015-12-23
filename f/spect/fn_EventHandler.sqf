@@ -95,7 +95,7 @@ case "LBListSelChanged":
         _unit = f_cam_listUnits select (_args select 1);
         if(!isnil "_unit") then
         {
-            if(typeName _unit == "GROUP") then {_unit = leader _unit};
+            if(_unit isEqualType grpNull) then {_unit = leader _unit};
             if(f_cam_mode == 0 || f_cam_mode == 1) then
             {
                 f_cam_curTarget = _unit;
