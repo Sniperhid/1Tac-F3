@@ -50,21 +50,21 @@ f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_initGroupMarkers.sqf";
 // F3 - Automatic Body Removal
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
-// f_var_removeBodyDelay = 180;
-// f_var_removeBodyDistance = 500;
-// f_var_doNotRemoveBodies = [];
+// f_param_removeBodyDelay = 180;
+// f_param_removeBodyDistance = 500;
+// f_param_doNotRemoveBodies = [];
 // [] execVM "f\removeBody\f_addRemoveBodyEH.sqf";
 
 // ====================================================================================
 // F3 - Dynamic View Distance
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
-// f_var_viewDistance_default = 1250;
-// f_var_viewDistance_tank = 2000;
-// f_var_viewDistance_car = 2000;
-// f_var_viewDistance_rotaryWing = 2500;
-// f_var_viewDistance_fixedWing = 5000;
-// f_var_viewDistance_crewOnly = true;
+// f_param_viewDistance_default = 1250;
+// f_param_viewDistance_tank = 2000;
+// f_param_viewDistance_car = 2000;
+// f_param_viewDistance_rotaryWing = 2500;
+// f_param_viewDistance_fixedWing = 5000;
+// f_param_viewDistance_crewOnly = true;
 // [] execVM "f\dynamicViewDistance\f_setViewDistanceLoop.sqf";
 
 // ====================================================================================
