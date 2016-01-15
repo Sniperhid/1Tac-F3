@@ -3,7 +3,7 @@
 // ====================================================================================
 
 // Only run this for players
-if (isDedicated) exitWith {};
+if (!hasInterface) exitWith {};
 
 // ====================================================================================
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
